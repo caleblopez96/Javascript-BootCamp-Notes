@@ -686,4 +686,396 @@ console.log(parseFloat(sayingFive)); // NaN
 
 
 
+//---------------------------------------------------------------------------
+//Making decisions with logic
+
+
+//Comparison Operators
+//allows you to compare values in order to make decisions
+
+// > - greater than 
+
+// < - less than
+
+// >= - greater than or equal to
+
+// <= - less than or equal to 
+
+// == - equality 
+
+// != - not equal / dont use this unless you HAVE to
+
+// === - strict equality
+
+// !== strict non-equality
+
+
+// 10 > 1 // true
+// 0.2 > 0.3 // false
+// -10 < 0 // true
+// 50.5 < 5 // false
+// 0.5 <= 0.5 // true
+// 99 >= 4 // true
+// 99 >= 99 // true
+// 'a' < 'b' // true
+// 'A' > 'a' // true 
+
+// these comparison operators will always return a boolean: true or false
+
+// though its uncommon, you can compare strings. Just be careful, things
+// get dicey when dealing with case, special characters and accents
+
+// these operators can be used to make decisions in order to change the code
+// thats being read 
+
+let message1 = 'hello'
+let message2 = 'hello!'
+console.log(message1.length >= message2.length); // false
+//hello! has greater length in characters than hello so message1 is not
+//greater than or equal to hello! its 1 character less making it false
+
+//----------------------------------------------------------------------------
+
+// == (double equals) vs === (tripple equals)
+
+// == (double equals)
+//Checks for equality of value, but not equality of type. 
+//it coerces (converts) both values to the same type and then compares them
+//(like boolean or number or string).
+//using == will usually give you unexpected results due to type coercion, so
+//its best to not use it
+//DONT USE THIS UNLESS YOU HAVE TO (which should be around 1% of the time)
+
+
+/* to the console:
+5==5; // true
+'b' == 'c' // false
+7 == '7'; // true
+0 == ''; // true
+true == false; // false 
+0 == false; // true
+null == undefined; // true
+*/
+
+
+// === (tripple equals)
+//checks for equality of value AND type (boolean number string etc..)
+//you 99% of the time use === because you need the performed operation to
+//to ensure that its checking not only equality of value, but equality of 
+//type as well.
+//using == will usually give you unexpected results due to type coercion, so
+//its best to not use it
+
+//to the console:
+// 2 === '2'; // false (=== checks for the same value and same type like number to number)
+
+// BUT
+
+// 2=='2'; // true (== converts one of the values so that both values are the same type) 
+
+// note these difference as well :
+
+// 0 == false; // true
+// 0 === false; // false (same value but not the same type so false)
+
+// undefined == null; // true
+// undefined === null; // false
+// 3===3; // true
+// null === null // true
+
+let numberExample3 = 5;
+console.log(numberExample3 === 5); // true
+console.log(numberExample3 === 20); // false
+
+let stringExample2 = 'is logged in';
+console.log(stringExample2==='is logged in'); // true
+
+let logInStatus = false;
+console.log(logInStatus === true) // false
+console.log(logInStatus === false) // true
+
+
+// non equality vs strict non equality
+
+// != vs !==
+// These are the exact same as the examples above, they just are checking
+
+
+/* console logged:
+10 != '10';  // false
+10 !== '10' // true
+*/
+
+// != - not equal to
+// checks to see if the value is NOt equal using type coercion
+
+// !== -strict inequality
+// checks to see if the value is NOT equal NOT using type coercion
+
+console.log(logInStatus !== false); // false (log in status IS set to false)
+console.log(logInStatus !== true); // true (is NOT equal to true so is true)
+
+let logInStatus2 = true;
+console.log(logInStatus !== logInStatus2); // true (one is false other true)
+console.log(logInStatus === logInStatus2); // false
+console.log(logInStatus !== true); // true
+
+let num10 = 10;
+console.log(num10 === 10); // true
+console.log(num10 !== 10); // false
+console.log(num10 === '10'); // false
+console.log(num10 !== '10'); // true
+
+// its a good rule of thumb to NEVER use == and !=
+
+
+//----------------------------------------------------------------------------
+
+//conditional statement - making decisions with code
+// conditional statments can have an:
+
+
+/* IF - Run code if a given condition is true */
+
+/* ELSE IF - if not the first thing, then maybe this other thing */
+
+/* ELSE - if nothing else was true, do this */
+
+
+
+//if statements
+// run certain code 'if' a given condition is true
+//syntax:
+/*              
+                if () {
+                
+                }
+*/
+
+let newRating = 3;
+
+// if newRating is equal to 3 console.log the string
+if (newRating === 3) {
+    console.log('you are a superstar!'); // you are a superstar
+}
+
+// newRating is greater than or equal to 3 console.log the string
+if (newRating >= 3) {
+    console.log('you exceed expectations'); // 'you exceed expectations'
+}
+
+// if newRating is less than or equal to 3 console.log the string
+if (newRating <= 3) {
+    console.log('you dont meet expectations') // nothing runs in console
+}                                            // cuz statement is not true
+
+// if newRating is less than 4 console.log the variable badRatingMsg
+let badRatingMsg = 'you didnt quite make it to 4'
+if (newRating < 4) {
+    console.log(badRatingMsg) // you didnt quite make it to 4
+}
+
+// if 1 is equal to 1 console.log the string
+if (1===1) {
+    console.log('its true!') // its true!
+}
+
+// if 5 is not equal to 10 console.log the string
+if (5!== 10) {
+    console.log('5 is not equal to 10.'); // 5 is not equal to 10.
+}
+
+//checking if a number is false
+let num37 = 37;
+
+// if a number can go in even there will be no remainder
+// so if modulus is equal to 0 then its an equal number
+// if modulus as a remainder its an odd number
+// if 37 is not equal to 0 meaning it has a remainder 
+// then it has to be an odd number
+// so 2 can go into 37 18 times with 1 remainder so 37 is odd
+if (num37 % 2 !== 0) {
+    console.log('odd number'); // odd number
+}
+
+
+
+/*
+
+if (3===5) {
+    console.log('not true'); // doesnt log to console cuz not true
+}
+
+this 'if' statement will not run because the code executed inside the
+parenthesis is not true. the condition must be true in order to run the
+if statement in order to make this work you could do: 
+
+if (3!==5) {
+    console.log('not true'); // 'not true'
+}
+*/
+
+/* console logged examples 
+10 > 1; // true
+0.2 > 0.3; // false
+-10 < 0; // true
+50.5 < 5; // false
+0.5 <= 0.5; // true
+99 >= 4; // true
+99 >= 99; // true
+'a' < 'b'; // true
+'A' > 'a'; // false
+*/
+
+/* though its uncommon, you can compare strings. Just be careful,
+things get dicey when dealing with character case, special characters
+and accents. */
+
+
+
+
+// else if 
+// if the 'if' statement is false, then the 'else if' statement will run 
+
+//syntax:
+
+/*
+
+if () {
+    console.log()
+}
+else if () {
+    console.log();
+}
+
+replace the 'console.log' with the code that needs to be executed
+*/
+
+// if newRating1's value is true execute that code, else if do the next
+let newRating1 = 0;
+
+// if newRating1 is greater than or equal to 3 run the 'if' statement
+// if its false, then run the 'else if' statement
+if (newRating1 >= 3) {
+    console.log('you exceed expectations'); // not true doesnt run
+}
+else if (newRating1 === 1, newRating1 === 2) {
+    console.log('meets expectations'); // not true doesnt run
+}
+else if (newRating1 === 0) {
+    console.log('not enough reviews to generate rating'); // not enough reviews to generate rating
+                                                         // the two prior statements were false
+                                                        // this one is true, so it gets logged
+}
+
+
+
+
+// else 
+
+// think of it as 'otherwise'
+// runs if nothing else before it is true.
+// no conditions are needed because the conditions are already set as in if the code above is not 
+// executed, then the else is ran.
+// it wont work if there is not an initial 'if' statement.
+// else does not require parenthesis like 'if' and 'else if' because we dont set the condition
+// else to operate. the condition is 'else' only operates if no other lines of code above it
+// are executed
+// you can only have one 'else' per 'if' statement
+
+// syntax:
+
+/*  
+
+with 'if' and 'else if':
+
+if () {
+    console.log()
+}
+else if () {
+    console.log();
+}
+else {
+    console.log()
+}
+
+just 'if' and 'else':
+
+if () {
+    console.log()
+}
+else {
+    console.log()
+}
+
+replace the 'console.log' with the code that needs to be executed
+*/
+
+let newRating2 = 'a'
+
+if (newRating2 >= 3) {
+    console.log('you exceed expectations'); // not true doesnt run
+}
+else if (newRating2 === 1, newRating2 === 2) {
+    console.log('meets expectations'); // not true doesnt run
+}
+else if (newRating2 === 0) {
+    console.log('not enough reviews to generate rating'); // not true doesnt run 
+}
+else {
+    console.log ('invalid rating'); // invalid rating
+}
+// the 'else' above is ran and logged to the console because the other 3 statments above were
+// all false
+
+let highScore = 1500;
+let userScore = 1250;
+
+//'if' userScore is greater than or equal to 1500 console.log the string
+if (userScore >= highScore) {
+    console.log('congrats, you got a new high score!'); // doesnt run not true
+    console.log(`Your score of ${userScore} is now the new high score!`);
+    // doesnt run not true
+    highScore = userScore; // if user beats high score than their score is the new high score
+}
+else {
+    console.log(`Your score of ${userScore} did not beat the high score of ${highScore}.`);
+    console.log(`You were only ${highScore - userScore} points away from the high score! Try Again?`);
+    // you were only 250 points away from the high score! Try Again?
+}
+
+
+
+
+// nesting conditonals
+
+// nesting is essentially putting conditional statements within 
+// other conditional statements
+// nested means its inside something 
+// allows you to have multiple layers of conditions
+
+
+
+// here we have an 'if' statement inside and 'if' statement
+// and we're basically checking two things before we move onto other 
+// statements. here its the 'if' statements. 
+// if one of the 'if' statements are false, then it will move to the 
+// 'else' statements
+// we use indexOf to ensure it meets the 6 character minimum
+// then we look for indexOf a space (' ') and we check if its not equal to
+// one because if its equal to any number but -1 that means that what youre 
+// looking for is there and in this case we want to check to make sure a 
+// space character is not there
+let password = 'catdog';
+if (password.length >=6) {
+    if (password.indexOf (' ') !== -1) {
+        console.log('Password cannot include spaces.');
+    }
+    else {
+        console.log('valid password!');
+    }
+}
+else {
+    console.log('Password is too short.');
+}
 
