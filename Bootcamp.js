@@ -982,6 +982,7 @@ else if (newRating1 === 0) {
 // else to operate. the condition is 'else' only operates if no other lines of code above it
 // are executed
 // you can only have one 'else' per 'if' statement
+// else is used as kind of like an escape from the expression
 
 // syntax:
 
@@ -1072,10 +1073,512 @@ if (password.length >=6) {
         console.log('Password cannot include spaces.');
     }
     else {
-        console.log('valid password!');
+        console.log('valid password!'); // valid password
     }
 }
 else {
     console.log('Password is too short.');
 }
 
+
+
+//----------------------------------------------------------------------------
+
+// truthy and falsy values
+
+// all values have an inherent truthy or falsy boolean value
+/* falsy values:
+
+    * false
+    * 0
+    * '' (empty string)
+    * null
+    * undefined
+    * NaN
+*everything else is truthy
+
+*/ 
+
+// the first 'if' statement is true because 5 is a 'truthy' value
+
+let mystery = 5;
+
+if (mystery) {
+    console.log('truthy') // truthy
+}
+else {
+    console.log('falsy') // does not run because first line is true
+}
+
+// every number except 0 is truthy
+// 0 is falsy
+
+// this is pretty common. displaying a certain page. we're just checking if the variable is truthy
+
+
+if (loggedInUser) {
+    console.log('you are logged in'); // you are logged in
+} 
+else {
+    console.log('please sign in');
+}
+
+let loggedInUser2 = 'thomas123';
+
+if (loggedInUser2) {
+    console.log(`you are logged in ${loggedInUser2}`);
+}
+else {
+    console.log('please log in');
+}
+
+let loggedInUser3; 
+// since this is an 'undefined' variable, the first 'if' statement is false. if the variable had a value then it wouldnt inherently be falsy and the first line would have ran like the example above
+
+if (loggedInUser3) {
+    console.log('you are logged in');
+}
+else {
+    console.log('please log in')
+}
+
+// truthy is commonly used as a way of checking if something has content, if it exist, if its not false, 0 ,'', null, undefined, NaN
+
+
+
+
+//----------------------------------------------------------------------------
+
+/* logical operators: 
+Allow you to add more than one condition inside parenthesis
+
+&& - AND
+
+|| - OR
+
+! - NOT
+
+*/
+
+
+
+// logical AND (&&)
+// takes two seperate boolean expressions (the left and right side of the   locigal operator (&&)) the entire line will only be true only if both sides is true. if one is false, the entire thing is false
+//  Both sides must be true in order for the whole things to be true
+// if you start to need multiple conditions and the line of code becomes to hard to read, or is too long, you're going to have to use nesting.
+// this is great when you just need two things
+
+
+
+console.log( false && false ); // false
+console.log( true & false ); // false
+console.log( true && true ); // true
+
+console.log( 1 <= 2 && 5 === 5); // true
+//           true        true       true
+
+console.log(1 <= 4 && 'a' === 'a'); // true
+// 1 is less than or equal to four and 'a' is === 'a';
+
+console.log(9 > 10 && 9 >= 9); // false
+// 9 is not greater than 10, but 9 is greater than or equal to 9. both sides have to be true in order to receive a true value which is why the console prints false for the above example
+
+console.log('abc'.length === 3 && 1 + 1 === 4) // false
+//abc.length === 3 which is true but 1 + 1 does not equal 4. since both sides arent true, console logs false 
+
+let someExample = 25;
+let someExample2 = 'caleb'
+console.log(someExample === 25 && someExample2 !== 'caleb'); // false
+
+console.log(someExample === 25 && someExample2 === 'caleb'); // true
+
+console.log(someExample <= 40 && someExample2.length === 5 ) // true
+//someExample is less than or equal to 40 && someExample2.length is === 5
+
+
+// 'if' passwordExample is less than or equal to 6 && passwordExample does not contain a space 
+
+// passwordExample.indexOf(' ') searches for a space in the password because indexOf returns the value -1 if it is unable to find the index of whatever you're looking for, in this case its a space (represented as a string that only has a space inside it)
+
+// so we want to check if indexOf passwordExample contains a space. if it does it'll tell you where the index is located with a positive number. if its unable to find it, itll return -1. so we want it to be === -1 because if its === -1 then that means it could not find a space in the indexOf whatever you searched
+
+let passwordExample = 'taco tuesday'
+
+
+if (passwordExample.length >= 6 && passwordExample.indexOf(' ') === -1) {
+    console.log('valid password');
+}
+else {
+    console.log('invalid password');
+}
+
+let passwordExample2 = "chickenGal";
+
+if (passwordExample2.length >= 6 && passwordExample2.indexOf(' ') === -1) {
+    console.log ('your password is valid')
+}
+else {
+    console.log('please enter a valid password')
+}
+
+// if you start to need multiple conditions and the line of code becomes to hard to read, or is too long, you're going to have to use nesting 
+
+// this is great when you just need two things
+
+
+//checks to see if user picked a number between 1-10
+let num3 = 3;
+
+//if num3 is greater than or equal to 1 and less than 11
+if (num3 >= 1 && num3 < 11) {
+    console.log('you picked a valid number') // you picked a valid number
+}
+else {
+    console.log('please pick a number between 1 - 10')
+}
+
+
+let num99 = 99;
+if (num99 >= 1 && num99 < 11) {
+    console.log('you picked a valid number');
+}
+else {
+    console.log('please pick a number between 1 - 10'); // please pick a number between 1-10
+}
+
+
+
+// logical OR (||)
+// if one side is true, the whole thing is true
+// it takes two sides, but only one side needs to be true
+// if one or both are true, you will get true 
+
+console.log(1 !== 1 || 10 === 10); // true
+// 1 is not equal to 1 (false)
+// 10 === 10 (true)
+// only one side needs to be true
+
+console.log(10/2 === 5 || null); // true
+// 10 / 2 is === 5 (true)
+// null evaluates to false, but since the left is true, it prints true to the console
+
+console.log(0 || undefined); // false 
+// 0 is a falsy value 
+// undefined is a falsy value
+// since neither side are true it prints false to the console
+
+console.log(true || false); // true
+// true is a truthy value
+// false is falsy 
+// since one side is true it evalutes to true
+
+console.log(false || false); // false
+// both sides are false so false is logged to the console
+
+
+//below code checks to see if someone is 6 or younger OR (||) 65 and older to give a discounted ticket price
+// it calculates the users age and runs code based of the age in order to let the person know what their ticket price will be
+
+// if exampleAge is less than 6 OR (||) greater than 65 log the string to console 
+let exampleAge = 76;
+if (exampleAge < 6 || exampleAge >= 65) {
+    console.log('you get in for free! :)'); // you get in for free! :)
+}
+else {
+    console.log('please enter your age to calculate ticket price');
+}
+
+// this is the same code above, just extra lines because we didnt use the OR (||) logical operator which required us to write an 'if', an 'else if', and an 'else'
+if (exampleAge < 6) {
+    console.log('you get in for free');
+}
+else if (exampleAge >= 65) {
+    console.log('you get in for free');
+}
+else {
+    console.log('please enter your age to calculate ticket price');
+}
+
+// if favColor is === green OR lime green OR neon green then log to console the string
+// only one of these in the 'if' statement needs to be true in order for the log to console to actually happen
+
+let favColor = 'green'
+if (favColor === 'green' || favColor ==='lime green' || favColor === 'neon green' ) {
+    console.log('Great choice!'); // Great choice!
+}
+
+
+
+// logical NOT(!) operator 
+// expression returns true if the expression is false
+// logical NOT(!) operates on a SINGLE expression and evalutes to true if the expression is false
+
+
+console.log(!(3===4)); // true
+//          3 IS NOT === 4
+// we know 3 is NOT === 4, so true is logged to the console
+
+console.log(!(3===3)); // false
+//          3 IS NOT === 3
+// we know that 3 IS === to 3, so false is logged to the console
+
+console.log(!null); // true
+//          NOT null(false)
+//          its false, but since we used NOT it logs true to console
+
+console.log(!(45)); // false
+//           NOT 45 (truthy value)
+//           this basically reads NOT true
+//           we know that 45 is a truthy value so false is logged to the 
+//           console
+
+// checking if there is NOT a logged in user so we can boot them off the webpage
+// if there isnt a logged in user, kick em out
+let loggedInUser4;
+
+// since loggedInUser wasnt given a value, its currently null. since its null, there is no loggedInUser4 so the string is logged to the console
+if (!loggedInUser4) {
+    console.log('please sign in to gain access to this page'); // please sing in to gain access to this page
+}
+
+// simluating a user being logged in 
+// the code below does not run because loggedInUser4 now has a logged user stored inside of it so loggedInUser4 is now a user and not not null
+
+loggedInUser4 = `${username} logged in`;
+
+if (!loggedInUser4) {
+    console.log('please sign in'); // this code does not execute
+}
+
+
+
+let flavor = 'watermelon'
+
+if (flavor !== 'grape' && flavor !== 'cherry') {
+    console.log('we dont have that flavor'); // we dont have that flavor
+}
+// heres another way to check if the flavor is grape or cherry using NOT(!)
+// so the string is logged to the console because it is NOT grape or NOT cherry
+if (!(flavor === 'grape' || flavor === 'cherry')) {
+    console.log('we dont have that flavor'); // we dont have that flavor
+}
+
+// since flavor2 === 'grape' nothing is logged to the console
+let flavor2 = 'grape'
+
+if (flavor2 !== 'grape' && flavor2 !== 'cherry') {
+    console.log('we dont have that flavor'); 
+}
+
+
+
+
+// Operator precedence 
+// operator precedence will run in the order below unless there are parenthesis. expressions inside the parenthesis will evaluate first regardless of operator precedence. you can use this to your advantage by using parenthesis to dictates what runs first.
+// precedence order :
+// NOT (!) has higher precendence than 
+// and (&&) has higher precendece than 
+// OR (||)
+// this order can be alterted by using parenthesis
+
+let num7 = 7;
+console.log(num7 == 7 || num7 === 3 && num7 > 10); // true
+// operator precedence turns the expression to this: 
+//              EVALUATES RIGHT SIDE FIRST CUZ THE &&
+// num7 == 7 || (num7===3 && num7 > 10)
+//             num 7 is not === 3 and num7 is not greater than 10
+//             so the RIGHT SIDE OF THE EQUATION IS FALSE.
+//             next we go to the or: 
+//             num7==7 OR(||) false
+//                 true || false
+// since there is 1 true value in this expression and its with an OR (||), the expression evaluates to true and logs true to the console because with logical OR(||) only one side needs to be true
+
+
+
+
+
+//----------------------------------------------------------------------------
+
+// switch statements
+// syntax:
+/*
+
+        switch (variableToBeSwitched) {
+            case 1:
+                expression;
+                break;
+            case 2: 
+                expression;
+                break;
+            case 3: 
+                expression;
+                break;
+            default:                   (like else: ends the switch)
+                expression;
+        }
+
+*/ 
+// this is long, but works. switch statements are useful in scenarios like this
+
+let dayOfWeek = 3;
+
+if (dayOfWeek === 1) {
+    console.log('monday');
+}
+else if (dayOfWeek === 2) {
+    console.log('tuesday');
+}
+else if (dayOfWeek === 3) {
+    console.log('wednesday'); // wednesday
+}
+else if (dayOfWeek === 4) {
+    console.log('thursday');
+}
+else if (dayOfWeek === 5) {
+    console.log('friday');
+}
+else if (dayOfWeek === 6) {
+    console.log('saturday');
+}
+else if (dayOfWeek === 7) {
+    console.log('sunday');
+}
+else if (dayOfWeek > 7) {
+    console.log('invalid day');
+}
+
+// heres how to write the above code with a switch statement
+// if you do not use the break; after the code has run and it has found one of the case's to be true, it will log every case after that. In order to stop that we use break; at the end of every case so that it only logs the one that is correct. since dayOfWeek currently === 3, wednesday is logged to the console. without the break, wednesday, thursday, friday, saturday and sunday would also be logged to the console.
+
+switch (dayOfWeek) {
+    case 1: 
+        console.log('monday');
+        break;
+    case 2:
+        console.log('tuesday');
+        break;
+    case 3:
+        console.log('wednesday'); // wednesday
+        break;
+    case 4: 
+        console.log('thursday');
+        break;
+    case 5: 
+        console.log('friday');
+        break;
+    case 6:
+        console.log('saturday');
+        break;
+    case 7:
+        console.log('sunday');
+        break;
+    default: 
+        console.log('invalid day');
+}
+
+// the default value in a switch expression is kinda like else in a sense that it kinda terminates or gives a default value to go off of if none of the above expressions are ran.
+
+
+// recreated example above but if you save $20 to your account with each case
+
+let savingsAccount; // the value assigned here should be 1 and the cases below should contain the expressions for each case. in this example the value is left as null, so it longs the default value to the console
+
+switch (savingsAccount) {
+    case 1:
+        console.log(`your savings is ${savingsAccount + 20}`);
+        break;
+    case 2:
+        console.log(`your savings balance is ${savingsAccount + 40}`);
+        break;
+    case 3: 
+        console.log(`your savings is ${savingsAccount + 60}`);
+    default:
+        console.log('enter starting balance'); // enter starting balance
+}
+
+let emoji = 'eggplant';
+
+switch (emoji) {
+    case 'happy face':
+        console.log('yellow');
+        break;
+    case 'sad face':
+        console.log('yellow');
+        break;
+    case 'eggplant':
+        console.log('purple'); // purple
+        break;
+    case 'heart':
+        console.log('red');
+        break;
+    case 'lips':
+        console.log('red');
+        break;
+    default:
+        console.log('enter emoji');
+}
+
+// the code above is the same as the code below. since we had emoji's that were the same color as each other we can combine them into 1 case by specifying the case and listing out the cases before the case expression
+// heres an example using the code above
+
+switch (emoji) {
+    case 'happy face':
+    case 'sad face':
+        console.log('yellow');
+        break;
+    case 'eggplant':
+        console.log('purple'); // purple
+        break;
+    case 'heart':
+    case 'lips':
+        console.log('red')
+        break;
+    default:
+        console.log('enter emoji');
+}
+
+
+
+
+
+//----------------------------------------------------------------------------
+
+//ternary operator (three pieces 'ternary')
+// if this condition is true this code runs, if not this other code runs
+
+// condition ? expressionIfTrue: expressionIfFalse
+
+//takes an 'if' and 'else' statement and combines them to one line of code
+// this only works with simple yes or no (so 'if' and 'else')
+
+// regular expression without the ternary operator
+let num9 = 9;
+
+if (num9 === 9) {
+    console.log('lucky');
+}
+else {
+    console.log('unlucky');
+}
+
+// above expression with ternary operator
+
+num9 === 9 ? console.log('lucky') :console.log('unlucky')
+// condition  ?  expressionIfTrue : expressionIfFalse
+// condition  ?  expression       : expression
+// logs lucky to the console
+
+
+// status offline / online
+
+let status1 = 'offLine'
+let onlineColor ='green'
+let offlineColor = 'red'
+
+status1 === 'offLine' ? console.log(`${offlineColor}`) :console.log(`${onlineColor}`); // red
+
+let status2 = 'onLine'
+let color2 = status2 === 'offline' ? 'red' : 'green'; // green
+// if you type color2 into the console you get green back because on this example the status is set to online. if you change the variable value to anything other than 'online' itll log red
+console.log(color2) // green 
+// because status is online and its checking to see if youre offline make color red, if youre online make color green
