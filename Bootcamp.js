@@ -1563,7 +1563,7 @@ else {
 
 // above expression with ternary operator
 
-num9 === 9 ? console.log('lucky') :console.log('unlucky')
+num9 === 9 ? console.log('lucky') :console.log('unlucky') // lucky
 // condition  ?  expressionIfTrue : expressionIfFalse
 // condition  ?  expression       : expression
 // logs lucky to the console
@@ -1582,3 +1582,409 @@ let color2 = status2 === 'offline' ? 'red' : 'green'; // green
 // if you type color2 into the console you get green back because on this example the status is set to online. if you change the variable value to anything other than 'online' itll log red
 console.log(color2) // green 
 // because status is online and its checking to see if youre offline make color red, if youre online make color green
+
+
+
+
+
+
+
+//-----------------------------------------------------------------------
+
+// arrays & objects - collections of data
+
+
+// arrays - ordered colletions of values
+//ex of things that may be stored in an array:
+//list of comments on an IG post
+//collection of levels in a game 
+//songs in a playlist 
+// javascript arrays dont have to contain data of the same type: they can include strings, numbers, booleans etc. other programming languages only allow one type of data to go in 1 array
+
+//creating arrays
+
+// syntax:
+//                            let arrayName = [];
+//                            new Array(value, value, value);            
+// the new Array() is not used often. its better to use []
+
+// to make an empty array
+let students = [];
+
+// to make an array of strings
+let colorArray = ['red', 'yellow', 'green'];
+
+// to make an array of numbers
+let numberArray  = [12, 24, 45, 7, 18];
+
+// to make a mixed array 
+let mixedArray = [true, 13, 'string', null, 'string', 47];
+
+//examples 
+
+let shoppingList = ['cheese', 'bread', 'cereal', 'ice'];
+console.log(shoppingList); // (4) ['cheese', 'bread', 'cereal', 'ice'];
+//                  (num of items in array) [array items]
+
+// the console logs the amount of items in the array, and also list the items in the array
+
+let lottoNumbers = [54, 16, 91, 18, 7];
+console.log(lottoNumbers.length); // 5 
+// there are 5 values in the array
+
+
+
+
+// array indices
+// arrays are index'd meaning they start counting the corresponding num at 0
+
+//                      let array = [5, 10, 15, 20]
+//                                   0  1   2   3
+//.length will give you 5 because there are 5 values
+//.indexOf(10) will give you 1 because 1 is at index 1
+
+let colorArray2 = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'cyan', 'white']
+console.log(colorArray2.length); // 8
+console.log(colorArray2.indexOf('yellow')); // 2
+console.log(colorArray2);
+
+// Moddifying arrays
+// syntax:                                                       arrayName[indexNumber] = 'the value you want to change at the specified index';
+
+colorArray2[0] = 'black';
+console.log(colorArray2[0]); // black
+console.log(colorArray2); // full array with black at index 0
+
+colorArray2[7] = 1; // 1
+console.log(colorArray2); // full array with 1 at index 7
+// ['black', 'orange', 'yellow', 'green', 'blue', 'purple', 'cyan', '1']
+// we modified the array by changing index 0 to black and index 7 to a number (1)
+
+//arrays are mutable and can be modified at any time 
+
+let shoppingList2 = ['cheese', 'milk'];
+shoppingList2[1] = 'whole milk'
+console.log(shoppingList2) // cheddar cheese, whole milk
+
+//in order to add an item to the array we need to know the last index of the array. we can find that by using .length - 1.
+console.log(shoppingList2.length - 1); // 1 (cheddar cheese at index 0, milk at index 1)
+
+// add an item to the array
+shoppingList2[2] = 'water';
+shoppingList2[3] = 'candy';
+console.log(shoppingList2); // cheese, whole milk, water, candy
+// we added items at index 2 and 3 even though those index's never exisited
+
+//another way if you dont know the length of the array
+shoppingList2[shoppingList2.length] = 'eggs';
+console.log(shoppingList2); // [cheese, whole milk, water, candy, eggs]
+// eggs is now the last item in the array
+
+
+
+// common array methods
+
+// push() - adds to end (specify what to add in parenthesis)
+
+// pop() - remove from end (parenthesis stay empty- removes from end) and returns new length of array 
+
+// shift() - remove from start
+
+// unshift() - add to start
+
+
+let topSongs = [
+    'first time i ever saw your face', 
+    'god only knows',
+    'a day in the life', 
+    'life on mars'
+];
+
+// push() - adding to end
+topSongs.push('fortunate sun')
+console.log(topSongs); // [first time i ever saw your face, god only knows, a day in the life, life on mars, fortunate sun]
+
+
+// pop() - take value from end
+topSongs.pop();
+console.log(topSongs); // [first time i ever saw your face, god only knows, a day in the life, life on mars,] it removed forutnate sun from arrray
+
+console.log(topSongs.pop()); // life on mars 
+// returns to the console the value it removed
+
+console.log(topSongs) // [first time i ever saw your face, god only knows, a day in the life]
+
+let nextSong = topSongs.pop(); // took the value of the last song in the array and stored it in a variable
+
+
+console.log(nextSong); // a day in the life 
+
+// notice once you 'pop' an item its gone
+// its great for things like to do list where, once you do something, its removed forever
+
+
+// unshift() always adds the value to the very first item of the array. seperate multiple values in the parenthses with commas
+
+let dishesToDo = ['baking pan'];
+
+dishesToDo.unshift('large plate'); // adds 'large plate' to the first item in the array
+
+dishesToDo.unshift('small plate'); // adds 'small plate' to the first item
+console.log(dishesToDo) // ['small plate', 'large plate', 'baking pan']
+
+// shift() removes first item from array. seperate multiple values in the parentheses with a comma
+
+console.log(dishesToDo.shift()); // small plate (returns item it removed)
+console.log(dishesToDo); // ['large plate', 'baking pan'];
+// it removed the first item 'small plate' from the array
+
+dishesToDo.push('cookie sheet', 'cutting board');
+console.log(dishesToDo); // ['large plate', 'baking pan', 'cookie sheet', 'cutting board']
+
+dishesToDo.unshift('knife', 'spoon');
+console.log(dishesToDo); // ['knife', 'spoon', 'large plate', 'baking pan', 'cookie sheet', 'cutting board']
+
+
+
+
+// more array methods 
+
+// concat() - merges array (concatnates arrays)
+
+// includes() - helps look for value in array and returns true or false
+
+// indexOf() - gives you index number of value
+
+// join() - creates a string from array 
+
+// reverse() - reverses an array 
+
+// slice() - copy portion of an array
+
+// splice() - remove/replace elements
+
+// sort() - sorts an array 
+
+
+
+// concat()
+const array1 = ['a', 'b', 'c']; // [a, b, c]
+const array2 = ['d', 'e', 'f']; // [d, e, f,]
+console.log(array1.concat(array2)); // [a, b, c, d, e, f]
+// this creates a new 'copy' of the array but does not store the values into the original arrays 
+
+// notice array 1 remains unchanged after we concatenated them
+console.log(array1); // [a, b, c]
+
+// same with array 2 
+console.log(array2); // [d, e, f]
+
+
+//saving the concatenated array to a new variable
+const arrayConcat = array1.concat(array2);
+console.log(arrayConcat); // [a, b, c, d, e, f]
+
+let fruits = ['apples', 'bananas'];
+let veggies = ['asparagus', 'brussel sprouts'];
+console.log(fruits.concat(veggies)); // [apples, bananas, asparagus, brussel sprouts]
+console.log(veggies.concat(fruits)); // [asparagus, brussel sprouts, apples, bananas]
+
+
+// concatenating multiple arrays
+// concatenating the fruit array, veggie array and meat array
+let meats = ['steak', 'chicken'];
+console.log(fruits.concat(veggies, meats)); // ['apples', 'bananas', 'asparagus', 'brussel sprouts', 'steak', 'chicken']
+
+// storing all three concatenated variables into one
+
+let allFood = meats.concat(fruits, veggies);
+console.log(allFood); // ['steak', 'chicken', 'apples', 'bananas', 'asparagus', 'brussel sprouts']
+
+
+
+
+// includes()
+// searches the array for a value and returns boolean value
+// if multiple values are received, it only needs to find one in order for it to return true 
+//syntax:
+//             array.includes(value youre looking for)
+//             array.includes(value youre looking for, fromIndex)
+//             from index allows you to specify where your search starts from in terms on index position
+
+// searches the array allFood and looks for the string 'steak'
+console.log(allFood.includes('steak')); // true
+console.log(allFood.includes(1)); // false 
+
+console.log(allFood.includes('chicken')); // true
+console.log(allFood.includes('chicken', 3)); // false
+//checking to see if chicken exist in the array after index 3 which is after bananas. chicken only exist in index 1 so it returns false because chicken cant be found in index 3 or any index after 3
+
+let petList = ['dog', 'cat', 'bird'];
+console.log(petList.includes('pig')); // false
+console.log(petList.includes('dog', 'pig')); // true
+console.log(petList.includes('cat', 1)); // true 
+
+// using an array and .includes() in a conditional
+if(petList.includes('bird')) {
+    console.log('im allergic!'); // im alergic!
+}
+else {
+    console.log('i have no allergy to that pet')
+}
+// im allergic logs to the console.
+
+
+
+// indexOf()
+// Searches for value and returns its index position
+// if value is not present, it returns -1
+
+let ingredients = [
+    'water',
+    'corn starch',
+    'flour',
+    'cheese',
+    'sugar',
+    'shrimp',
+    'butter'
+]
+
+console.log(ingredients.indexOf('water')); // 0
+console.log(ingredients.indexOf('sugar')); // 4
+console.log(ingredients.indexOf(3)); // -1
+// index of 3 does not exist (theres only strings in ingredients array)
+console.log(ingredients.indexOf('candy')); // -1 
+// index of 'candy' does not exist in the array
+console.log(ingredients.indexOf('cheese', 2)); // 3
+// butter is located after index 2 in index 3
+console.log(ingredients.indexOf('cheese', 5)); // -1
+//cheese exist, but not if we start counting at index 5 
+console.log(ingredients.indexOf('flour') !== -1); // true
+// flour is not equal to -1 because -1 is the value it returns when it cannot find an items index. since flour is indexed in the array it is not equal to -1 its equal to 2
+
+
+
+
+// reverse()
+// reverses order of array
+// mutates original array
+
+let letters = ['t', 'c', 'e', 'p', 's', 'e', 'r'];
+console.log(letters.reverse()); // ['r', 'e', 's', 'p', 'e', 'c', 't']
+console.log(letters); // ['r', 'e', 's', 'p', 'e', 'c', 't']
+// notice after we used .reverse(), it stored the reversed array into the original variable
+
+
+// join()
+// 'joins' the elements of an array into a string
+// turns all values into a string, then 'joins' them to 1 string
+// the default value to seperate values inside of the string is commas, but you can change it to whatever you want as long as you specify in the .join() parentheses
+
+let elements = [
+    'fire',
+    'water',
+    'air'
+]
+
+console.log(elements.join()); // fire,water,air
+console.log(elements.join('')) // firewaterair
+console.log(elements.join('-')); // fire-water-air
+console.log(elements.join(' ')); // fire water air
+console.log(elements.join(', ')) // fire, water, air
+
+console.log(letters.join('')); // respect
+console.log(letters.join(' ')); // r e s p e c t
+console.log(letters.join('&')) // r&e&s&p&e&c&t
+console.log(letters.reverse().reverse().join('.').toUpperCase()); // R.E.S.P.E.C.T
+// since the original was already reversed, i had to reverse it twice to get back to the original.
+
+console.log([12.5, false, 'yellow'].join()); // '12.5,false,yellow'
+// regardless of value type, join always returns a string value
+console.log([12.5, false, 'yellow'].join(', ')) // 12.5, false, yellow
+
+
+
+
+// slice()
+// takes portion of array, and makes new array with the specified portion(whats inside the parentheses) with the index of the values
+//                        array.slice(start, end);
+// if you dont specify an end value it will slice until the end of the array
+// if no values are given to the parenthesis it makes a new copy of the entire array. no values specify entire array. allows you to make a quick copy of an array because it doesnt impact the original
+
+let zooAnimals = ['bison', 'zebra', 'lion', 'tiger', 'duck', 'fish','eel'];
+console.log(zooAnimals.slice(2, 4)); // [lion, tiger]
+console.log(zooAnimals.slice(0, 2)); // [bison, zebra]
+console.log(zooAnimals.slice(3, 6)); // [tiger, duck, fish]
+console.log(zooAnimals.slice(3)); // [tiger, duck, fish, eel]
+//since no end was specified it just returned the start and assumed the stop was the end of the array
+
+// storing the slice 2, 4 of the array zooAnimals to an array called jungleAnimals
+let jungleAnimals = (zooAnimals.slice(2, 4));
+console.log(jungleAnimals); // [lion, tiger]
+
+let swimmers = zooAnimals.slice(-2);
+console.log(swimmers) // [fish, eel]
+// the negative value tells it to count backwards at the end of the array
+
+console.log(zooAnimals.slice(-4, -2)); // [tiger, duck]
+// starts at the -4 index value so tiger, and goes to the -2 index value which is duck
+
+
+
+
+// splice()
+// remove/replace elements in an array that are not at the beggingng or end because thats what push(), pop(), shift() and unshift() are for
+
+//syntax:
+//   array.splice(index start, how many to delete, item to be put in)
+
+// start at index 1
+// delete 0 items
+// add 'buffalo'
+console.log(zooAnimals.splice(1, 0, 'buffalo')); // [] logs empty array
+//          array.splice(start, deleting nothing so 0, what we want to add)
+
+console.log(zooAnimals); // ['bison', 'buffalo', 'zebra', 'lion', 'tiger', 'duck', 'fish', 'eel']
+
+// deleting a value returns the deleted value to the console
+// starting at index 1
+// delete 1 
+console.log(zooAnimals.splice(1, 1)); // buffalo
+console.log(zooAnimals) // ['bison', 'zebra', 'lion', 'tiger', 'duck', 'fish', 'eel'] returns the original array before we added buffalo
+
+
+// started at the last item in array (-1)
+// replaced the 1 item where im starting
+// replaces it with 'shark'
+console.log(zooAnimals.splice(-1, 1, 'shark'));
+console.log(zooAnimals); // ['bison', 'zebra', 'lion', 'tiger', 'duck', 'fish', 'shark']
+
+// started at index item 3
+// deleted nothing
+// added in 'liger'
+console.log(zooAnimals.splice(3, 0, 'liger')); // [] logs empty array
+console.log(zooAnimals); // ['bison', 'zebra', 'lion', 'liger', 'tiger', 'duck', 'fish', 'shark']
+
+// starting at index 0 
+// deleting that value
+// replacing it with 'BISON!'
+console.log(zooAnimals.splice(0, 1, 'BISON!')); // [bison] logs what it removed
+console.log(zooAnimals); // ['BISON!', 'zebra', 'lion', 'liger', 'tiger', 'duck', 'fish', 'shark']
+
+
+
+
+
+// sort()
+// array.sort()
+// if you dont pass in a function to specify how it sorts, then it sorts alphabetically for strings and UTF-16 character codes for numbers which results in a weird sort
+
+let people = ['robinson', 'angie', 'jolene', 'maggie', 'roxanne'];
+console.log(people.sort()); // [angie, jolene, maggie, robinson, roxanne]
+// sorted alphabetically
+
+console.log(people); // [angie, jolene, maggie, robinson, roxanne] is the new value stored in the variable people
+
+let numArray = [12, 17, 81, 0, 5, 73];
+console.log(numArray.sort()); // [0, 12, 17, 5, 73, 81]
+// converts every number to a string then sorts them based on their UTF-16 codes
