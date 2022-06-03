@@ -476,7 +476,7 @@ console.log(sayingFour);
 //string template literals `${}`
 //template literals are strings that allow embedded expressions, which will be //evaluated and then turned into a resulting string
 //special strings that take in information expressions, other variables, data
-//etc, and spit out one variable at the end
+//etc, and spit out one value at the end
 //data is being interpolated inside the string
 // syntax:
 //                              `${}` 
@@ -1600,11 +1600,12 @@ console.log(color2) // green
 //collection of levels in a game 
 //songs in a playlist 
 // javascript arrays dont have to contain data of the same type: they can include strings, numbers, booleans etc. other programming languages only allow one type of data to go in 1 array
+// use const to declare arrays. Since arrays are not primitive data, the values inside of the array can change, as long as the variable name does not
 
 //creating arrays
 
 // syntax:
-//                            let arrayName = [];
+//                            const arrayName = [];
 //                            new Array(value, value, value);            
 // the new Array() is not used often. its better to use []
 
@@ -1988,3 +1989,387 @@ console.log(people); // [angie, jolene, maggie, robinson, roxanne] is the new va
 let numArray = [12, 17, 81, 0, 5, 73];
 console.log(numArray.sort()); // [0, 12, 17, 5, 73, 81]
 // converts every number to a string then sorts them based on their UTF-16 codes
+// this can lead to unexpected results
+
+
+
+
+//----------------------------------------------------------------------
+
+//Refrence types 
+
+// primitive types are value type vaiables
+// javascript stores the actual value  
+
+// non primitive data types like arrays and objects are stored as refrences. the variable doesnt actually hold the array, it just holds the 'label' of the array as reference to its place in memory 
+// think of it like this 
+// let array = [1, 2, 3]  #refrence ID :129966
+// the variable "array" points to the refrence and the reference is where the actual array is stored
+
+//when you put an array in variable, the variable does NOT hold the array, it holds an arrow (or reference) pointing to the array
+
+let nums = [5, 6, 7, 8]
+let otherNums = nums; 
+console.log(otherNums); // [5, 6, 7, 8]
+nums.push(9); // add 9 to the end of the array
+console.log(nums); // [5, 6, 7, 8, 9]
+console.log(otherNums); // [5, 6, 7, 8, 9]
+//notice when we changed nums with .push(9) we updated the value of the array, but the refrence that javascript points to didnt change which is why nums and otherNums output the same array, but only num recevied the push (on line 2010);
+
+// same happens if you change otherNums. since nums and otherNums are equal to each other, if one changes they both change
+
+console.log(otherNums.pop()); // 9
+// logs the removed value to the console 
+console.log(nums); // [5, 6, 7, 8]
+
+// the changes happen to both despite only one receiving the method. thats because the array value changes, however the refrence to the array that javascript is pointing to does not change. so since both variables are pointing to the same value(the same array), and arrays arent primitive, they change values but keep the same pointer. 
+
+
+
+
+// Const with arrays
+
+// even if you declare an array using const, the values stored inside the array can change. the values are being changed inside of the array, but since the const is pointing to a reference, and not the variable or variable name its self, it can change
+
+const myEggs = ['brown', 'brown'];
+myEggs.push('purple');
+console.log(myEggs); // ['brown', 'brown', 'purple']
+// the only thing that is const about the myEggs is its refernce to its value, and its name. the values of the array can change.
+
+// inserts green at index 0 of the array myEggs
+// logging to make sure 'green' is at index 0 confirming the first line works
+//if myEggs array includes the word 'green'then its equal to true
+// so the console logs the string
+myEggs[0]= 'green';
+console.log(myEggs.indexOf('green')); // 0
+if (myEggs.includes('green') === true) {
+    console.log('green egg was added to front of the array')
+    console.log(myEggs); // ['green, 'brown', 'purple']
+}
+
+
+
+
+
+// nested arrays
+// we can store arrays inside other arrays:
+//syntax:
+
+//      const arrayName = [ 
+//        [value,value],                    element 1
+//        [value,value,value],              element 2
+//        [value, value]                    element 3
+//        [value, value, value, value]      element 4
+//      ];
+
+
+const colorArray3 = [
+    ['red', 'crimson'], 
+    ['orange', 'dark orange'], 
+    ['yellow', 'golden rod'], 
+    ['green', 'olive'], 
+    ['blue', 'navy blue'], 
+    ['purple', 'orchid']
+];
+//each array, or item, or object inside of the array is considered 1 element. and for something like an array inside of an array, the nested array's items are indexed
+
+// how to pull the blue colors outside of the array  
+console.log(colorArray3[4]); // ['blue', 'navy blue']
+
+//how to pull the purple colors
+console.log(colorArray3[5]); // [purple, orchid]
+
+
+// how to pull the word blue outside of the array 
+console.log(colorArray3[4][0]) // blue
+//         colorArray3[element][index of the element]
+//                      [4]              [0]
+
+// how to pull olive
+console.log(colorArray3[3][1]); //olive
+
+const animalPairs = [
+    ['doe' ['buck', 'ram']],
+    ['ewe', 'ram'],
+    ['peahen', 'peacock']
+];
+//nested arrays inside an array
+
+
+
+
+const ticTacToeBoard = [
+    ['O', null, 'X'], // element 1 with 3 elements inside 
+    [null, 'X', 'O'], // element 2 with 3 elements inside
+    ['X', 'O', null], // element 3 with 3 elements inside
+];
+// above is a 3x3 tic tac toe board 
+
+
+
+
+
+
+
+
+
+// Javascript Objects
+// curly braces signify an object
+//syntax:
+//                         let myObject = {}
+
+// objects allow us to store data that we can assciate in groups of things by specifying labels (properties)
+// objects are collections of properties
+// properties are a key-value pair
+// and properties are pairs of information 
+// PROPERTIES ALWAYS EXIST AS KEY VALUE PAIRS
+// commas go after all key value pairs except the last. if there is only one property inside of the object, there is no need for a comma. for every property after the first and excluding the very last, must have a comma
+
+// an object is just a container that holds information in the form of key-value pairs
+
+// objects are NON PRIMITIVE data types meaning the value is stored in the refrence to the object. meaning you can change things inside of the object even if its declared as a const. 
+
+// rather than accessing data using an index, we use custom keys
+
+// javascript doesnt care what you name your property. it can be a number or a string. no matter what it is, the key is converted TO A STRING.
+
+// syntax:
+
+/* 
+const object = {
+    property1: value,
+    property2: value,
+    property3: value
+}
+
+const object = {
+    property1: value,
+     -key-   -value                           key value pair
+    property2: value
+};
+*/ 
+
+//                             username: -----> dableb
+//                                key           value
+
+//                              upvotes: -----> 7
+//                                key         value
+
+//                                text -----> 'great post'
+//                                 key            value
+
+
+// object literals
+/*
+
+{
+                                object literal
+}
+
+*/ 
+//creates an empty object with no key value pairs
+
+
+const fitBitData = {
+    totalSteps: 305077,
+    totalMiles: 211.5,
+    avgCalorieBurn: 5755,
+    workoutsThisWeek: '5 of 7',
+    avgGoodSleep: '2:13',
+    45: 'fourty five'
+};
+console.log(fitBitData); // {45: 'fourty five', totalSteps: 305077, totalMiles: 211.5, avgCalorieBurn: 5755, workoutsThisWeek: '5 of 7', avgGoodSleep: '2:13'}
+
+// how to access an individual property in an object
+
+//getting totalSteps 
+console.log(fitBitData.totalSteps); // 305077
+
+// getting avgCalorieBurn
+console.log(fitBitData.avgCalorieBurn); // 5755
+
+// getting avgGoodSleep
+console.log(fitBitData.avgGoodSleep); // 2:13
+
+
+
+
+const comment = {
+    username: `${username}`,
+    downVotes: 19,
+    upVotes: 214,
+    netScore: 195,
+    commentText: 'taste like chicken lol',
+    tags: ['#hilarious', '#delicious', '#lol'],
+    isLoggedIn: true
+};
+
+
+
+
+// accessing object properties
+
+const numberObject = {
+    100: 'one hundred',
+    200: 'two hundred',
+    37: 'thirty seven'
+};
+
+// how to extract values out of an object
+// syntax:
+//                objectName[property]
+console.log(numberObject[100]); // one hundred 
+
+// heres how the above worked nehind the scenes:
+/* 
+    const numberObject = {
+        '100': 'one hundred'
+        '200': 'two hundred'
+
+}
+
+it converts the key to a string then searches for that string. 
+the number you put inside the brackets (above its 100) is what it converts into a string. 
+then it searches the object for it. in the example above it converts the 100 inside the brackets to '100' and its able to find that property inside of the object because the same thing happened inside the object, the 100: became '100'. 
+you dont have to do the string conversion inside of the brackets, it does it for you.
+
+*/
+
+// this is how to access 'other wise' invalid javascript characters.
+// notice we have an object key value pair that are both strings, however that doesnt matter to javascript 
+
+// normally you wouldnt be able to start the name of something in javascript with a number. for example:
+
+// const 76Names = {}      is invalid because you cant start a variable name with a number, however, you can inside of objects
+
+const numberObject2 = {
+    100: 'one hundred',
+    16: 'sixteen',
+    '76 trombones': 'great song!' // string stored as both key value pair
+}
+console.log(numberObject2); // {16: 'sixteen', 
+//                              100: 'one hundred', 
+//                              76 trombones: 'great song!'}
+
+// the brackets allow us to access a key or value that would otherwise throw an error in javascript 
+
+// dot notation example: 
+// numberObject2.76 trombones            would throw an error because of the space in between 76 trombones
+
+// dot notation (period syntax) does not work. instead, include the string inside of brackets
+// example:
+console.log(numberObject2['76 trombones']); // great song!
+
+const colorPalette = {
+    red: '#eb4d4b',
+    yellow: '#f9ca24',
+    blue: '#30336b'
+};
+
+// getting the VALUE of red key using dot notation
+console.log(colorPalette.red) // #eb4bd4b
+//getting the VALUE of red key using brackets
+console.log(colorPalette['red']); // #eb4bd4b
+
+// declaring a variable with its value being an obect property:
+// in order to declare a variable that has teh value of a property of a string, you use the property name inside of quotes
+
+// declaring the variable color equal to the value of 'yellow' inside of the object
+let color = 'yellow';
+console.log(colorPalette[color]) // #f9ca24
+// the value of 'yellow' inside of our object is #f9ca24 thats why the console printed the hex code. here color's value isnt a string that says 'yellow', its the value of the yellow key in the object colorPalette
+
+console.log(colorPalette.blue); //#30336b
+console.log(colorPalette.yellow); // #f9ca24
+console.log(colorPalette['yellow']); // #f9ca24
+// console.log(colorPalette[yellow]) 
+// without the quotes would look for a variable called yellow. theres no variable called yellow, so it wont find anything. if I want to find the property inside the object it has to be in quotes
+
+let mysteryColor = 'red'
+console.log(colorPalette['red']); // #ed4bd4b
+
+// below we stored the value of 'red' from our object colorPalette into the variable of mystery color. then we logged the variable and it returned the value of 'red' inside of the object because thats what we declared our variable to be equal to
+console.log(colorPalette[mysteryColor]); // #ed4bdb4
+// console.log(colorPalette.mysteryColor) // would not work because with dot notation its looking for a key called 'mystery color' and inside of our colorPalette, there is not.
+// it wont throw an error, but it will throw undefined if you were to use dot notation
+
+
+
+// we're forced to use the square brackets when the name of the property we are trying to access has invalid identifiers (illegal characters)
+
+// good rule of thumb is to use dot notation whenever possible and use the square brackets when you have. I guess a good way to learn would be that if one way doesnt work try the other. i.e: if dot notation doesnt work, try using square brackets and vice versa. if youre using a variable or some other dynamic value as your key, you have to use square brackets
+
+
+
+
+
+// adding and updating properties inside of objects
+
+//take fitbit example:
+/* 
+
+const fitBitData = {
+    totalSteps: 305077,
+    totalMiles: 211.5,
+    avgCalorieBurn: 5755,
+    workoutsThisWeek: '5 of 7',
+    avgGoodSleep: '2:13',
+    45: 'fourty five'
+};
+
+
+*/
+
+//updating properties inside the object.
+fitBitData.workoutsThisWeek = '6 of 7';
+console.log(fitBitData.workoutsThisWeek); // 6 of 7
+// the property workoutsThisWeek inside of the fitBitData objet was updated to 6 of 7 from 5 of 7. the new permanent value of workoutsThisWeek is now 6 of 7 until it is changed again.
+
+// adding 7.5 to the value of totalMiles 
+fitBitData.totalMiles += 7.5;
+console.log(fitBitData.totalMiles); // 219
+// 7.5 was added to the value of fitBitData.totalMiles leaving the new permanent value of totalMiles to 219
+
+// adding a new property inside of an object
+fitBitData.heartStillBeating = true;
+console.log(fitBitData); // {45: 'fourty five', totalSteps: 305077, totalMiles: 219, avgCalorieBurn: 5755, workoutsThisWeek: '6 of 7', avgGoodSleep: '2:13', heartStillBeating: true'}
+
+// adding property to empty object
+//syntax:
+
+// myObject['key name'] = value;
+
+const userReviews = {};
+
+userReviews[`${username}`] = 5.0;
+console.log(userReviews); // {dableb: 5}
+// the object now has a key --> dableb and value --> 5
+userReviews.username = `${username}`;
+//             key           value
+console.log(userReviews); // {dableb: 5, username: 'dableb'}
+
+
+//changing the value of key username
+userReviews.username = 'your username';
+console.log(userReviews); // {dableb: 5, username: 'your username'}
+
+//add 2 to the username key value pair
+userReviews[`${username}`] += 2;
+console.log(userReviews); // {dableb: 7, username: 'your username', gender: 'male'}
+
+
+// adding a new key and value pair to the object userReviews
+userReviews.gender = 'male';
+console.log(userReviews); // {dableb: 7, username: 'your username', gender: 'male'}
+
+//deleting the key value of gender
+//deleting the key deletes the value because a property cannot exist without a key value pair
+//syntax:
+//                        delete myObject.key;
+delete userReviews.gender;
+console.log(userReviews); // {dableb: 7, username: 'your username'}
+
+
+
+
+
