@@ -474,9 +474,8 @@ console.log(sayingFour);
 //-----------------------------------------------------------------------------
 
 //string template literals `${}`
-//template literals are strings that allow embedded expressions, which will be //evaluated and then turned into a resulting string
-//special strings that take in information expressions, other variables, data
-//etc, and spit out one value at the end
+//template literals are strings that allow embedded expressions, which will be evaluated and then turned into a resulting string
+//special strings that take in information expressions, other variables, data etc, and spit out one value at the end
 //data is being interpolated inside the string
 // syntax:
 //                              `${}` 
@@ -788,7 +787,7 @@ console.log(numberExample3 === 5); // true
 console.log(numberExample3 === 20); // false
 
 let stringExample2 = 'is logged in';
-console.log(stringExample2==='is logged in'); // true
+console.log(stringExample2 === 'is logged in'); // true
 
 let logInStatus = false;
 console.log(logInStatus === true) // false
@@ -964,7 +963,7 @@ else if (newRating1 === 1, newRating1 === 2) {
 }
 else if (newRating1 === 0) {
     console.log('not enough reviews to generate rating'); // not enough reviews to generate rating
-                                                         // the two prior statements were false
+                                                        // the two prior statements were false
                                                         // this one is true, so it gets logged
 }
 
@@ -2056,10 +2055,10 @@ if (myEggs.includes('green') === true) {
 //syntax:
 
 //      const arrayName = [ 
-//        [value,value],                    element 1
-//        [value,value,value],              element 2
-//        [value, value]                    element 3
-//        [value, value, value, value]      element 4
+//        [value,value],                    element 0
+//        [value,value,value],              element 1
+//        [value, value]                    element 2
+//        [value, value, value, value]      element 3
 //      ];
 
 
@@ -2075,6 +2074,7 @@ const colorArray3 = [
 
 // how to pull the blue colors outside of the array  
 console.log(colorArray3[4]); // ['blue', 'navy blue']
+// the blue colors are the 4th indexed item 
 
 //how to pull the purple colors
 console.log(colorArray3[5]); // [purple, orchid]
@@ -2099,9 +2099,9 @@ const animalPairs = [
 
 
 const ticTacToeBoard = [
-    ['O', null, 'X'], // element 1 with 3 elements inside 
-    [null, 'X', 'O'], // element 2 with 3 elements inside
-    ['X', 'O', null], // element 3 with 3 elements inside
+    ['O', null, 'X'], // element 0 with 3 elements inside 
+    [null, 'X', 'O'], // element 1 with 3 elements inside
+    ['X', 'O', null], // element 2 with 3 elements inside
 ];
 // above is a 3x3 tic tac toe board 
 
@@ -2155,7 +2155,7 @@ const object = {
 //                              upvotes: -----> 7
 //                                key         value
 
-//                                text -----> 'great post'
+//                                text: -----> 'great post'
 //                                 key            value
 
 
@@ -2192,8 +2192,6 @@ console.log(fitBitData.avgCalorieBurn); // 5755
 console.log(fitBitData.avgGoodSleep); // 2:13
 
 
-
-
 const comment = {
     username: `${username}`,
     downVotes: 19,
@@ -2203,8 +2201,6 @@ const comment = {
     tags: ['#hilarious', '#delicious', '#lol'],
     isLoggedIn: true
 };
-
-
 
 
 // accessing object properties
@@ -2272,7 +2268,7 @@ console.log(colorPalette.red) // #eb4bd4b
 console.log(colorPalette['red']); // #eb4bd4b
 
 // declaring a variable with its value being an obect property:
-// in order to declare a variable that has teh value of a property of a string, you use the property name inside of quotes
+// in order to declare a variable that has the value of a property of a string, you use the property name inside of quotes
 
 // declaring the variable color equal to the value of 'yellow' inside of the object
 let color = 'yellow';
@@ -2297,7 +2293,7 @@ console.log(colorPalette[mysteryColor]); // #ed4bdb4
 
 // we're forced to use the square brackets when the name of the property we are trying to access has invalid identifiers (illegal characters)
 
-// good rule of thumb is to use dot notation whenever possible and use the square brackets when you have. I guess a good way to learn would be that if one way doesnt work try the other. i.e: if dot notation doesnt work, try using square brackets and vice versa. if youre using a variable or some other dynamic value as your key, you have to use square brackets
+// good rule of thumb is to use dot notation whenever possible and use the square brackets when you have to. I guess a good way to learn would be that if one way doesnt work try the other. i.e: if dot notation doesnt work, try using square brackets and vice versa. if youre using a variable or some other dynamic value as your key, you have to use square brackets
 
 
 
@@ -2368,6 +2364,166 @@ console.log(userReviews); // {dableb: 7, username: 'your username', gender: 'mal
 //                        delete myObject.key;
 delete userReviews.gender;
 console.log(userReviews); // {dableb: 7, username: 'your username'}
+
+
+
+
+// nested arrays & objects
+
+// you can nest objects inside of an array
+// you can nest an array inside an object 
+
+// nesting objects inside of an array
+// also referred to as an array of objects
+const shoppingCart = [
+    {
+        product: 'jenga classic',
+        price: 6.88,
+        quantity: 1
+    },
+    {
+        product: 'Echo Dot',
+        price: 29.99,
+        quantity: 3
+    },
+    {
+        product: 'Amazon Fire Stick',
+        price: 39.99,
+        quantity: 2
+    }
+]
+console.log(shoppingCart) // [{…}, {…}, {…}] (3 objects inside an array)
+// expanded console.log:
+/* (3) [{…}, {…}, {…}]
+0: {product: 'jenga classic', price: 6.88, quantity: 1}
+1: {product: 'Echo Dot', price: 29.99, quantity: 3}
+2: {product: 'Amazon Fire Stick', price: 39.99, quantity: 2}
+length: 3
+*/
+
+// nesting array and object inside object
+const student = {
+    firstName: 'david',
+    lastName: 'jones',
+    age: 20,
+    strengths: ['music', 'art'],
+    exams: {
+        midterm: 92,
+        final: 88
+    }
+};
+
+//accessing values inside the object student using keys
+// syntax:
+//           object.object.key       object.object.key
+console.log(student.exams.midterm + student.exams.final); // 180
+console.log((student.exams.midterm + student.exams.final) / 2); // 90
+
+// accessing the array inside the object
+// syntax:   object.key[]             use brackets and index to access array
+console.log(student.strengths[0]); // music
+console.log(student.strengths[1]); // art
+
+console.log(student); // {firstName: 'david', lastName: 'jones', age: 20, strengths: Array(2), exams: {…}}
+// console log expanded
+/* 
+{firstName: 'david', lastName: 'jones', age: 20, strengths: Array(2), exams: {…}}
+age: 20
+exams: {midterm: 92, final: 88}
+firstName: "david"
+lastName: "jones"
+strengths: (2) ['music', 'art']
+*/
+
+// in student object we have student as an object. strengths is an array. and exams: {} is an object. so inside the object student there is an array represented by the key strengths and there is another object represented by the key exam.
+
+//object with an array represented by the key 'board' and inside that 'board' array we have 3 more arrays
+const TicTacToeGame = {
+    player1: 'player',
+    player2: 'playee',
+    board: [
+        ['O', null, 'X'], 
+        ['X', 'O', 'X'], 
+        [null, 'X', 'O']
+    ]
+};
+
+console.log(TicTacToeGame); // {player1: 'player', player2: 'playee', board: Array(3)}
+// expanded console log
+/* {player1: 'player', player2: 'playee', board: Array(3)}
+board: (3) [Array(3), Array(3), Array(3)]
+player1: "player"
+player2: "playee"
+[[Prototype]]: Object
+*/ 
+
+
+// nesting arrays and objects gives us a pretty good way to model almost any data set efficently
+// nesting can get pretty crazy, so its important you take a moment to think of the best way to represent the data
+// heres an example of a fairly efficient and 'nice' way of modeling data
+const ticTacToeGame2 = {
+    player1: {
+        username: 'player',
+        team: 'O'
+    },
+    player2: {
+        username: 'player2',
+        team: 'X'
+    },
+    board: [
+        ['O', null, 'X'],
+        ['X', 'O', 'X'],
+        [null, 'X', 'O']
+    ] 
+};
+
+const astros = {
+    pitcher: {
+        playerName: 'john knap',
+        gamesPlayed: 41,
+        pitchesThrown: 135,
+        battingAverage: 174,
+        lineUpNum: '8th',
+        walkoutSong: 'stayin alive'
+    },
+    catcher: {
+        playerName: 'justin james',
+        gamesPlayed: 41,
+        pitchesThrown: null,
+        battingAverage: 325,
+        lineUpNum: '7th',
+        walkoutSong: 'gangnam style'
+    },
+    firstbaseMan: {
+        playerName: 'ben rothwell',
+        gamesPlayed: 54,
+        pitchesThrown: null,
+        battingAverage: 400,
+        lineUpNum: '4th',
+        walkoutSong: 'final countdown'
+    }
+};
+// adding key 'injured' and value false to the object firstbaseMan inside of the object astros
+astros.firstbaseMan.injured = false;
+//object.object. new key = value;
+console.log(astros); // {pitcher: {…}, catcher: {…}, firstbaseMan: {…}}
+//expanded console log of firstbaseMan: battingAverage: 400
+/*
+gamesPlayed: 54
+injured: false
+lineUpNum: "4th"
+pitchesThrown: null
+playerName: "ben rothwell"
+walkoutSong: "final countdown"
+*/ 
+
+
+
+
+
+
+
+
 
 
 
