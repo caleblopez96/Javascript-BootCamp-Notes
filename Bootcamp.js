@@ -163,6 +163,9 @@ let minusScore = 0;
 console.log(minusScore += 1); // 1
 console.log(minusScore -= 1); // 0
 console.log(minusScore); // 0
+for (let j = 5; j <= 30; j += 5) {
+    console.log( 'the +=5 adds 5 to the current value of i think of it as i=i+5', + j) // logs string to the console 6 times
+};
 
 /* *= operand: multiples */
 let baseScore = 5;
@@ -2516,6 +2519,365 @@ pitchesThrown: null
 playerName: "ben rothwell"
 walkoutSong: "final countdown"
 */ 
+
+
+
+
+//objects and reference types 
+
+//the reason arrays and objects are stored as 'refrences' is because normally the value's put inside of them are too much for the computer memory. a variable is stored straight to the computers memory because its usually not any where near the size of some arrays or objects. this is why objects and array's are normally declared with const. since javascript points to the refrence of the actual array/object, the values inside of the objects and arrays are mutable regardless of being declared by const.
+
+//making two objects with the same data inside of them. when you compare them to see if theyre equal, although they have the exact same keys and pairs, THEY ARE NOT EQUAL. Javascript is not checking the keys and value pairs when it compares the two objects. its looking at the reference of the object. since each object has its own reference, javascript says they are not equal
+
+// remember this does not compare key and value pairs!!!!!!!!!!!!!!! this is not how you check to see if array values are equal
+// it only compares the refrence in memory
+
+const colorPalette2 = {
+    red: '#eb4dbd',
+    yellow: '#f9ca24',
+    blue: '#30336b'
+};
+
+const fakeColorPalette = {
+    red: '#eb4dbd',
+    yellow: '#f9ca24',
+    blue: '#30336b'
+};
+
+console.log(colorPalette2 == fakeColorPalette); // false
+console.log(colorPalette2 === fakeColorPalette); // false
+
+
+// in order to make them equal we would have to declare a variable and make it equal to the object so that they end up having the same reference in memory as each other
+const realColorPalette = colorPalette2;
+console.log(colorPalette2); // {red: '#eb4dbd', yellow: '#f9ca24', blue: '#30336b'}
+
+console.log(realColorPalette); // {red: '#eb4dbd', yellow: '#f9ca24', blue: '#30336b'}
+
+// to prove this, lets add a new key value pair to colorPallette2, and not to realColorPalette and youll see they both change. 
+
+colorPalette2.green = '#ebf876'; // added they key of 'green' with a value of '#ebf876' to colorPalette2. Since we made realColorPalette to be equal to colorPalette2, it also received the change.
+
+console.log(colorPalette2); // {red: '#eb4dbd', yellow: '#f9ca24', blue: '#30336b', green: '#ebf876'}
+
+console.log(realColorPalette); //{red: '#eb4dbd', yellow: '#f9ca24', blue: '#30336b', green: '#ebf876'}
+
+// now these will be true
+console.log(colorPalette2 == realColorPalette); // true
+console.log(colorPalette2 === realColorPalette); // true.
+// now colorPalette2 and realColorPalette hold the same reference to the same place in memory. the two objects are now equal to each other because they have the exact same reference
+
+let randomArray = [1, 2, 3];
+let randomArray2 = [1, 2, 3];
+let actualRandomArray = randomArray;
+
+//adding 4 to the array randomArray
+actualRandomArray.push(4);
+//both arrays receive the push because they have the same refrence address in memory (line 2566)
+console.log(randomArray); // [1, 2, 3, 4]
+console.log(actualRandomArray); // [1, 2, 3, 4]
+
+// when you compare with == or === youre checking for matching reference addresses. if found, itll return true
+
+console.log(randomArray == randomArray2); // false
+// the above console log is false, because although the arrays contain the same key value pairs, randomArray and randomArray2 are two seperate arrays, and have their own unique reference stored in memory. regardless of equality or strict inequality
+
+console.log(randomArray === randomArray2); // false 
+// the above console log is false, because although the arrays contain the same key value pairs, randomArray and randomArray2 are two seperate arrays, and have their own unique reference stored in memory. regardless of equality or strict inequality
+
+console.log(randomArray == actualRandomArray); // true
+console.log(randomArray === actualRandomArray); // true
+// these two variables both reference the same address to the array that they contain, therefore they are equal. they are equal in terms of equality and strict equality 
+
+const user = {
+    username: 'cherrygarcia8',
+    email: 'garcia@gmail.com',
+    notifications: []
+};
+
+// this example below will NOT print anything to the console. user.notifications contains an empty array, and it would appear that we are asking if its equal to an empty array, but remember, each array has its own unique reference in memory. they are both blank arrays, but they are not the same blank array because they both hold different spots in memory. you would need to do something like create a new variable and set that new variable to be equal to the variable with the array you want to copy
+/* 
+
+if (user.notifications === []) {
+    console.log('no new notifications')
+};
+
+*/ 
+
+// instead use this:
+if (user.notifications.length === 0) {
+    console.log('this is how you do it')
+};
+// here we are checking if user.notifications length is === to 0 and since its an empty array, its currently === to 0 which is why the above code logs to the console
+
+console.log(user.notifications); // []
+console.log(user.notifications.length); // 0
+// so, user.notifications.length is equal to 0
+
+
+
+
+
+
+// Javascript looping 
+// its how you repeat code. allows logic to be ran over and over.
+// loops are essentially reapeted logic
+// they allow us to do things like print hello 10 times, or add all numbers in an array
+
+// there are 4 different loops:
+// for loops - 
+
+// while loops - 
+
+// for of - 
+
+// for in -
+
+
+
+
+// for loops
+//syntax*
+//similair to if statements
+
+/* 
+
+for () {
+    initialExpression;
+    conditon;
+    incrementExpression
+}
+
+same syntax just on one line:
+
+for ([initialExpression]; [condition]; [incrementExpression]);
+
+*/
+
+// if you want to print console.log('hello') 10 times without a for loop, you would have to type out 10 consonle.log statements. 
+
+// its good practice to define a variable and use it as your counter. a lot of the times people use 'i',
+
+/* 
+
+think of it like this:
+10 total times 
+
+50 initial value 
+60 what condition to meet for the loop
++1 how to change value each time
+
+so we start at 50
+we go until we hit 60
+and we add 1 to the value each time 
+50 + 1 = 51
+51 + 1 = 52
+52 + 1 = 53
+53 + 1 = 54
+54 + 1 = 55
+55 + 1 = 56
+57 + 1 = 56
+58 + 1 = 57
+58 + 1 = 58
+58 + 1 = 59
+59 + 1 = 60 
+STOPS RUNNING BECAUSE CONDITION TO MEET FOR LOOP HAS BEEN MET.
+We went over each item in the array 1 time and added 1 to the value each time. we specified that we only wanted to go until 60 so we got 10 iterations
+
+
+*/ 
+
+
+// initial value; iterations; what to add to the iteration     
+// i = 1 ; while 1 is less than 10; add 1 to 'i'
+//  ! start at 1; stop at 10; add 1 each time !
+for (let i = 1; i <= 10; i++) {
+    console.log('hello:', i); // hello: 1, hello: 2, hello: 3, hello: 4, hello: 5, hello: 6, hello: 7, hello: 8, hello: 9, hello: 10
+};
+//console logs 'hello' every time 1 is less than 10. after it prints hello, it adds 1 to i increasing the variable of i's value by 1 each iteration. after 10 iterations of adding 1, i will equal 10 and the code will no longer execute
+
+
+//  ! start at 1; stop at <=27; add 3 each time !
+for (i = 1; i <= 27; i += 3) {
+    console.log('this is 3 added to i until we get to 28:', + i);
+}
+// this is 3 added to i until we get to 28: 1
+// this is 3 added to i until we get to 28: 4
+// this is 3 added to i until we get to 28: 7
+// this is 3 added to i until we get to 28: 10
+// this is 3 added to i until we get to 28: 13
+// this is 3 added to i until we get to 28: 16
+// this is 3 added to i until we get to 28: 19
+// this is 3 added to i until we get to 28: 22
+// this is 3 added to i until we get to 28: 25
+
+//  ! start at 5; stop at <=15; add 1 each time !
+for (i = 5; i <= 15; i++) {
+    console.log(i <= 15) // the expression i <= 15 doesnt do any calculation really it just checks to see if i is less than 15 and if its true, itll log 'true' to the console until it gets to 15. so in this case it prints true  11 times because the loop ensures the value of 5 is never greater than 15. since it takes 11 iterations of adding 1 to 5 to get to 15, it prints 'true' 11 times to the console
+};
+
+// in the console log below we use the string template literal to make a string of our math equation i.e: 2 x 2 = 4. we use the two template literals with an 'x' to represent multiplication, then we have set the string = to our math inside the other template literal
+for (i = 1; i <= 20; i++) {
+console.log(`${i}x${i} = ${i * i}`); 
+//         i 'x' i     = i * i inside the template literal
+};
+/* 
+2x2 = 4
+3x3 = 9
+4x4 = 16
+5x5 = 25
+6x6 = 36
+7x7 = 49
+8x8 = 64
+9x9 = 81
+10x10 = 100
+11x11 = 121
+12x12 = 144
+13x13 = 169
+14x14 = 196
+15x15 = 225
+16x16 = 256
+17x17 = 289
+18x18 = 324
+19x19 = 361
+20x20 = 400
+
+*/
+
+// using a loop to count backwards from 50 to 10 in increments of 10 starting at 50.
+//   starting i at 50; while i is greater than or equal to 0, take 10 away from the value of i
+//   start i at 50; subtract 10 each iteration; keep going as long as i >= 0
+for (i = 50; i >= 0; i -= 10) {
+    console.log(`the value is ${i}`);
+};
+/*
+
+the value is 50
+the value is 40
+the value is 30
+the value is 20
+the value is 10
+the value is 0
+
+*/
+
+// starting at 200; while i is greater than 100; subtract 25 from the value of i
+for (i = 200; i >= 100; i -= 25) {
+    console.log(`let see: ${i}`);
+}
+/*
+
+let see: 200
+let see: 175
+let see: 150
+let see: 125
+let see: 100
+
+*/
+
+for (i = 5; i <= 20; i += 5) {
+    console.log('im logged according to the for loop'); // 'im logged according to the for loop' is printed to the console 4 times 
+}
+console.log('after the loop');
+
+
+
+
+// infinite loops 
+// run forever...
+// infinite loops are something you want to avoid
+// an infinite loops is a loop where the second condition is never met
+/*
+!while i is less than or equal to 0 (which is always because 20 is always greater than or equal to 0) and add 1 to the value of i. so it will run forever
+for (let i = 20; i >=0; i++){
+    console.log (i)
+}
+
+if you console log an infinite loop to your browser it will be unhappy as itll be doing infinite calculations basically forever until you stop it 
+*/
+
+// its a good rule of thumb to never use equality (!=, !==) in for loops. you can acheive the same results but better if you use <=, >= 
+// use <=, >= whenever possible and equality only when you HAVE to
+
+/*
+
+for (let i = 1; i !== 20; i += 2)
+the !not operator makes it where the code wont run if it hits 20. its better to use greater than or equal to just in case you need to access the value that you specified as !not running
+
+*/
+
+
+
+
+
+// for loops & arrays
+// to loop over an array, start at 0 (because arrays are indexed) and continue to the last index (.length - 1) is an easy way to specifiy the end of the array
+// ! array.length - 1 = the way to find the last index of an array !
+// ! array.length - 1 allows you to loop through the entire array.
+const animalList = [
+    'lions',
+    'tigers',
+    'bears'
+];
+
+for (i = 0; i < animalList.length; i++) {
+    console.log(i, animalList); // this will output the arrays 
+    console.log(i, animalList[i]); // the [i] makes it where we get the values inside of the array printed instead of the array itself
+}
+
+/*
+the i in the parenthesis prints out the 3 you see. then we call the animalList array so the arrays are displayed in the console. 
+console.log(i, animalList) outputs the array itsself:
+(3) ['lions', 'tigers', 'bears']
+(3) ['lions', 'tigers', 'bears']
+(3) ['lions', 'tigers', 'bears']
+
+the i in the parenthesis prints out the index number next to the value stored inside the array. then we called the animalList[i] which displayed  the animals inside the animalList array.
+console.log(i, animalList[i]) output:
+0 'lions'
+1 'tigers'
+2 'bears'
+*/ 
+//iterating over the array to print each value
+
+const examScores = [98, 77, 85, 91, 100, 66];
+// start at index 0; while i is less than the length of the array; add 1 array item to the console.log
+for(i = 0; i < examScores.length; i++) {
+    console.log(examScores[i]); 
+    /*
+    below is whats logged to console:
+
+    98
+    77
+    85
+    91
+    100
+    66
+
+    */
+};
+
+for(i = 0; i < examScores.length; i++) {
+    console.log(i, examScores[i]); 
+    /*
+    the first i inside the parenthesis is telling the console to log the index number and the i inside the brackets [i] is telling it to log the value inside each index
+    
+    below is whats logged to console:
+
+    0   98
+    1   77
+    2   85
+    3   91
+    4   100
+    5   66
+
+    */
+}
+
+
+
+
+
 
 
 
