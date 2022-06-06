@@ -2949,12 +2949,12 @@ let carsInDriveWay = {
     }
 };
 
-console.log(carsInDriveWay.Caleb.model.toUpperCase())
+console.log(carsInDriveWay.Caleb.model.toUpperCase()); // CIVIC
 
 
 for (i = 1; i <= 3; i++) {
     if (carsInDriveWay.Caleb.year <= 2015) {
-        console.log(`your car is ${2022 - carsInDriveWay.Caleb.year} years old, it may be time to upgrade soon`)
+        console.log(`your car is ${2022 - carsInDriveWay.Caleb.year} years old, it may be time to upgrade soon`) // this string logs to console
     }
     else if (carsInDriveWay.Caleb.year >= 2015) {
         console.log(`your car is ${2022 - carsInDriveWay.Caleb.year} years old. Theres no need to upgrade right now`)
