@@ -57,7 +57,7 @@ let pemdasExample = 3 - 9 * 2; // -15
 
 let notANumberExample1 = 0/0; // NaN because 0 cant be / by 0
 
-let notANumberExample2 = 1 + NaN // 1 + NaN is is still not a number
+let notANumberExample2 = 1 + NaN; // 1 + NaN is is still not a number
 
 //infinity can be postiive or negative 
 //since infinity cant be stored as a number as the numbers are infinite
@@ -68,7 +68,7 @@ let notANumberExample2 = 1 + NaN // 1 + NaN is is still not a number
 
 let infinityExample = 1/0; // Infinity 
 
-let negInfinityExample = -1/0 // -Infinity
+let negInfinityExample = -1/0; // -Infinity
 
 // let enterNumber = a number
 // if random number === NaN (meaning user didnt input a number)
@@ -111,16 +111,16 @@ let question3 = 200 + 0/0; // NaN
 //ive declared numerous varibles up top already using let and const
 //remember you can not declare variables with the same name
 let myRealAge = 25;
-console.log(myRealAge) // 25
+console.log(myRealAge); // 25
 
 let fish = 'nemo';
 console.log(fish); // 'nemo'
 
 const daysOfTheWeek = 7;
-console.log(daysOfTheWeek) // 7 
+console.log(daysOfTheWeek); // 7 
 
 const daysInAYear = 365; 
-console.log(daysInAYear) // 365
+console.log(daysInAYear); // 365
 
 let dogs = 10;
 let cats = 5;
@@ -164,17 +164,17 @@ console.log(minusScore += 1); // 1
 console.log(minusScore -= 1); // 0
 console.log(minusScore); // 0
 for (let j = 5; j <= 30; j += 5) {
-    console.log( 'the +=5 adds 5 to the current value of i think of it as i=i+5', + j) // logs string to the console 6 times
+    console.log( 'the +=5 adds 5 to the current value of i. think of it as i=i+5', + j); // logs string to the console 6 times
 };
 
 /* *= operand: multiples */
 let baseScore = 5;
 let bonusMultiplier = 3;
 console.log(baseScore *= bonusMultiplier); // 15
-console.log(baseScore) // 15 
+console.log(baseScore); // 15 
 
 /* come back to this I can only get it to work in the console
-// ++ increments by one
+++ increments by one
 
 let newGameScore = 0;
 let incrementedNumber = newGameScore++;
@@ -235,13 +235,18 @@ console.log(msg); // Please do not feed the 'animals'!
 //string concatenation
 //adding two strings together to make one string
 
-let stringFirstName = 'Caleb'
-let stringLastName = ' Lopez'
+let stringFirstName = 'Caleb ';
+let stringLastName = 'Lopez';
 console.log(stringFirstName + stringLastName); // 'Caleb Lopez'
 
-let stringConcat = "I love";
-let stringConcat2 = "Javascript"
-console.log(stringConcat + " " + stringConcat2); // "I love Javascript" 
+let stringConcat = "I love ";
+let stringConcat2 = "Javascript";
+console.log(stringConcat + stringConcat2); // "I love Javascript" 
+console.log(`${stringConcat + stringConcat2}`); // I love javascript
+//use the string template literal method seen above in order to concatenate strings
+
+// in the last word of your string, include a space if you want it to concatenate them with a string. notice above "i love ". the love has a space after it so that when javascripts concatenates them we get 2 separate words instead of two seperate words merged to one
+
 
 
 
@@ -259,7 +264,7 @@ console.log(stringConcat + " " + stringConcat2); // "I love Javascript"
 
 //.length property gives you the length in characters of the string
 
-let hello = 'hello'
+let hello = 'hello';
 console.log(hello.length); // 5 ('hello' has 5 characters)
 //note every character including spacing and periods etc are a character
 
@@ -306,7 +311,7 @@ console.log(newMsg.toUpperCase()); // WELCOME TO MY WEBSITE
 // gives me the value of newMsg uppercased printed to the console.
 
 let yell = newMsg.toUpperCase(); 
-console.log(yell) // WELCOME TO MY WEBSITE
+console.log(yell); // WELCOME TO MY WEBSITE
 
 // DONT FORGET THE PARENTHESIS AFTER .toUpperCase/.toLowerCase
 
@@ -366,7 +371,7 @@ console.log(longStr.slice(0,5)); // 'super'
 // everything before it
 console.log(longStr.slice(5)); // califragilisticexpialidocious
 
-let superhero = 'spiderman'
+let superhero = 'spiderman';
 console.log(superhero.slice(0,6)); // spider
 console.log(superhero.slice(6)); // man
 console.log(superhero.slice(7,9)); // an
@@ -454,14 +459,14 @@ console.log(trash.toLowerCase().slice(2).replace('b', '')); // rage
 
 
 //single quote escape
-let saying = 'he said he ain\'t happy'
+let saying = 'he said he ain\'t happy';
 console.log(saying); // he said he ain't happy
 // the \' allowed me to use a single quote inside a single quote because
 // it told javascript to ignore it
 
 
 //double quote escape
-let sayingTwo = "he said \"he aint happy\""
+let sayingTwo = "he said \"he aint happy\"";
 console.log(sayingTwo); // he said "he aint happy"
 
 //new line escape
@@ -512,7 +517,7 @@ console.log(`posted ${elapsedTime} minutes ago by ${username}`);
 
 const minAge = 21;
 let yourAge = 19;
-console.log(`you must be ${minAge} to enter. Please come back in ${minAge - yourAge} years`)
+console.log(`you must be ${minAge} to enter. Please come back in ${minAge - yourAge} years`);
 
 
 // Null and Undefined
@@ -634,7 +639,7 @@ console.log(diceRoll); // random number between 1-6
 //string, boolean etc
 //tells you what type of data something is
 
-let str5 = 'string :)'
+let str5 = 'string :)';
 console.log(typeof str5); // string
 
 let floatNumber5 = 4.7;
@@ -661,7 +666,7 @@ console.log(typeof boolean2); // boolean
 // mathmatical operators only concatenate strings. so if you need to perform
 // a calculation on a number but its a string, use parseInt to extract the 
 // number from the string
-let num24 = '24'
+let num24 = '24';
 console.log(parseInt(num24)); // 24
 
 console.log(parseInt(num24) - 1); // 23
@@ -730,8 +735,8 @@ console.log(parseFloat(sayingFive)); // NaN
 // these operators can be used to make decisions in order to change the code
 // thats being read 
 
-let message1 = 'hello'
-let message2 = 'hello!'
+let message1 = 'hello';
+let message2 = 'hello!';
 console.log(message1.length >= message2.length); // false
 //hello! has greater length in characters than hello so message1 is not
 //greater than or equal to hello! its 1 character less making it false
@@ -793,8 +798,8 @@ let stringExample2 = 'is logged in';
 console.log(stringExample2 === 'is logged in'); // true
 
 let logInStatus = false;
-console.log(logInStatus === true) // false
-console.log(logInStatus === false) // true
+console.log(logInStatus === true); // false
+console.log(logInStatus === false); // true
 
 
 // non equality vs strict non equality
@@ -859,33 +864,33 @@ let newRating = 3;
 // if newRating is equal to 3 console.log the string
 if (newRating === 3) {
     console.log('you are a superstar!'); // you are a superstar
-}
+};
 
 // newRating is greater than or equal to 3 console.log the string
 if (newRating >= 3) {
     console.log('you exceed expectations'); // 'you exceed expectations'
-}
+};
 
 // if newRating is less than or equal to 3 console.log the string
 if (newRating <= 3) {
     console.log('you dont meet expectations') // nothing runs in console
-}                                            // cuz statement is not true
+};                                            // cuz statement is not true
 
 // if newRating is less than 4 console.log the variable badRatingMsg
 let badRatingMsg = 'you didnt quite make it to 4'
 if (newRating < 4) {
     console.log(badRatingMsg) // you didnt quite make it to 4
-}
+};
 
 // if 1 is equal to 1 console.log the string
 if (1===1) {
     console.log('its true!') // its true!
-}
+};
 
 // if 5 is not equal to 10 console.log the string
 if (5!== 10) {
     console.log('5 is not equal to 10.'); // 5 is not equal to 10.
-}
+};
 
 //checking if a number is false
 let num37 = 37;
@@ -898,7 +903,7 @@ let num37 = 37;
 // so 2 can go into 37 18 times with 1 remainder so 37 is odd
 if (num37 % 2 !== 0) {
     console.log('odd number'); // odd number
-}
+};
 
 
 
@@ -968,7 +973,7 @@ else if (newRating1 === 0) {
     console.log('not enough reviews to generate rating'); // not enough reviews to generate rating
                                                         // the two prior statements were false
                                                         // this one is true, so it gets logged
-}
+};
 
 
 
@@ -1014,7 +1019,7 @@ else {
 replace the 'console.log' with the code that needs to be executed
 */
 
-let newRating2 = 'a'
+let newRating2 = 'a';
 
 if (newRating2 >= 3) {
     console.log('you exceed expectations'); // not true doesnt run
@@ -1027,7 +1032,7 @@ else if (newRating2 === 0) {
 }
 else {
     console.log ('invalid rating'); // invalid rating
-}
+};
 // the 'else' above is ran and logged to the console because the other 3 statments above were
 // all false
 
@@ -1045,7 +1050,7 @@ else {
     console.log(`Your score of ${userScore} did not beat the high score of ${highScore}.`);
     console.log(`You were only ${highScore - userScore} points away from the high score! Try Again?`);
     // you were only 250 points away from the high score! Try Again?
-}
+};
 
 
 
@@ -1080,7 +1085,7 @@ if (password.length >=6) {
 }
 else {
     console.log('Password is too short.');
-}
+};
 
 
 
@@ -1110,7 +1115,7 @@ if (mystery) {
 }
 else {
     console.log('falsy') // does not run because first line is true
-}
+};
 
 // every number except 0 is truthy
 // 0 is falsy
@@ -1123,7 +1128,7 @@ if (loggedInUser) {
 } 
 else {
     console.log('please sign in');
-}
+};
 
 let loggedInUser2 = 'thomas123';
 
@@ -1132,7 +1137,7 @@ if (loggedInUser2) {
 }
 else {
     console.log('please log in');
-}
+};
 
 let loggedInUser3; 
 // since this is an 'undefined' variable, the first 'if' statement is false. if the variable had a value then it wouldnt inherently be falsy and the first line would have ran like the example above
@@ -1142,7 +1147,7 @@ if (loggedInUser3) {
 }
 else {
     console.log('please log in')
-}
+};
 
 // truthy is commonly used as a way of checking if something has content, if it exist, if its not false, 0 ,'', null, undefined, NaN
 
@@ -1185,16 +1190,16 @@ console.log(1 <= 4 && 'a' === 'a'); // true
 console.log(9 > 10 && 9 >= 9); // false
 // 9 is not greater than 10, but 9 is greater than or equal to 9. both sides have to be true in order to receive a true value which is why the console prints false for the above example
 
-console.log('abc'.length === 3 && 1 + 1 === 4) // false
+console.log('abc'.length === 3 && 1 + 1 === 4); // false
 //abc.length === 3 which is true but 1 + 1 does not equal 4. since both sides arent true, console logs false 
 
 let someExample = 25;
-let someExample2 = 'caleb'
+let someExample2 = 'caleb';
 console.log(someExample === 25 && someExample2 !== 'caleb'); // false
 
 console.log(someExample === 25 && someExample2 === 'caleb'); // true
 
-console.log(someExample <= 40 && someExample2.length === 5 ) // true
+console.log(someExample <= 40 && someExample2.length === 5 ); // true
 //someExample is less than or equal to 40 && someExample2.length is === 5
 
 
@@ -1204,24 +1209,23 @@ console.log(someExample <= 40 && someExample2.length === 5 ) // true
 
 // so we want to check if indexOf passwordExample contains a space. if it does it'll tell you where the index is located with a positive number. if its unable to find it, itll return -1. so we want it to be === -1 because if its === -1 then that means it could not find a space in the indexOf whatever you searched
 
-let passwordExample = 'taco tuesday'
-
+let passwordExample = 'taco tuesday';
 
 if (passwordExample.length >= 6 && passwordExample.indexOf(' ') === -1) {
     console.log('valid password');
 }
 else {
     console.log('invalid password');
-}
+};
 
 let passwordExample2 = "chickenGal";
 
 if (passwordExample2.length >= 6 && passwordExample2.indexOf(' ') === -1) {
-    console.log ('your password is valid')
+    console.log ('your password is valid');
 }
 else {
-    console.log('please enter a valid password')
-}
+    console.log('please enter a valid password');
+};
 
 // if you start to need multiple conditions and the line of code becomes to hard to read, or is too long, you're going to have to use nesting 
 
@@ -1237,7 +1241,7 @@ if (num3 >= 1 && num3 < 11) {
 }
 else {
     console.log('please pick a number between 1 - 10')
-}
+};
 
 
 let num99 = 99;
@@ -1246,7 +1250,7 @@ if (num99 >= 1 && num99 < 11) {
 }
 else {
     console.log('please pick a number between 1 - 10'); // please pick a number between 1-10
-}
+};
 
 
 
@@ -1288,7 +1292,7 @@ if (exampleAge < 6 || exampleAge >= 65) {
 }
 else {
     console.log('please enter your age to calculate ticket price');
-}
+};
 
 // this is the same code above, just extra lines because we didnt use the OR (||) logical operator which required us to write an 'if', an 'else if', and an 'else'
 if (exampleAge < 6) {
@@ -1299,15 +1303,15 @@ else if (exampleAge >= 65) {
 }
 else {
     console.log('please enter your age to calculate ticket price');
-}
+};
 
 // if favColor is === green OR lime green OR neon green then log to console the string
 // only one of these in the 'if' statement needs to be true in order for the log to console to actually happen
 
-let favColor = 'green'
+let favColor = 'green';
 if (favColor === 'green' || favColor ==='lime green' || favColor === 'neon green' ) {
     console.log('Great choice!'); // Great choice!
-}
+};
 
 
 
@@ -1341,7 +1345,7 @@ let loggedInUser4;
 // since loggedInUser wasnt given a value, its currently null. since its null, there is no loggedInUser4 so the string is logged to the console
 if (!loggedInUser4) {
     console.log('please sign in to gain access to this page'); // please sing in to gain access to this page
-}
+};
 
 // simluating a user being logged in 
 // the code below does not run because loggedInUser4 now has a logged user stored inside of it so loggedInUser4 is now a user and not not null
@@ -1350,27 +1354,27 @@ loggedInUser4 = `${username} logged in`;
 
 if (!loggedInUser4) {
     console.log('please sign in'); // this code does not execute
-}
+};
 
 
 
-let flavor = 'watermelon'
+let flavor = 'watermelon';
 
 if (flavor !== 'grape' && flavor !== 'cherry') {
     console.log('we dont have that flavor'); // we dont have that flavor
-}
+};
 // heres another way to check if the flavor is grape or cherry using NOT(!)
 // so the string is logged to the console because it is NOT grape or NOT cherry
 if (!(flavor === 'grape' || flavor === 'cherry')) {
     console.log('we dont have that flavor'); // we dont have that flavor
-}
+};
 
 // since flavor2 === 'grape' nothing is logged to the console
-let flavor2 = 'grape'
+let flavor2 = 'grape';
 
 if (flavor2 !== 'grape' && flavor2 !== 'cherry') {
     console.log('we dont have that flavor'); 
-}
+};
 
 
 
@@ -1447,7 +1451,7 @@ else if (dayOfWeek === 7) {
 }
 else if (dayOfWeek > 7) {
     console.log('invalid day');
-}
+};
 
 // heres how to write the above code with a switch statement
 // if you do not use the break; after the code has run and it has found one of the case's to be true, it will log every case after that. In order to stop that we use break; at the end of every case so that it only logs the one that is correct. since dayOfWeek currently === 3, wednesday is logged to the console. without the break, wednesday, thursday, friday, saturday and sunday would also be logged to the console.
@@ -1537,7 +1541,7 @@ switch (emoji) {
         break;
     default:
         console.log('enter emoji');
-}
+};
 
 
 
@@ -1565,7 +1569,7 @@ else {
 
 // above expression with ternary operator
 
-num9 === 9 ? console.log('lucky') :console.log('unlucky') // lucky
+num9 === 9 ? console.log('lucky') :console.log('unlucky'); // lucky
 // condition  ?  expressionIfTrue : expressionIfFalse
 // condition  ?  expression       : expression
 // logs lucky to the console
@@ -1573,16 +1577,16 @@ num9 === 9 ? console.log('lucky') :console.log('unlucky') // lucky
 
 // status offline / online
 
-let status1 = 'offLine'
-let onlineColor ='green'
-let offlineColor = 'red'
+let status1 = 'offLine';
+let onlineColor ='green';
+let offlineColor = 'red';
 
 status1 === 'offLine' ? console.log(`${offlineColor}`) :console.log(`${onlineColor}`); // red
 
-let status2 = 'onLine'
+let status2 = 'onLine';
 let color2 = status2 === 'offline' ? 'red' : 'green'; // green
 // if you type color2 into the console you get green back because on this example the status is set to online. if you change the variable value to anything other than 'online' itll log red
-console.log(color2) // green 
+console.log(color2); // green 
 // because status is online and its checking to see if youre offline make color red, if youre online make color green
 
 
@@ -1666,8 +1670,8 @@ console.log(colorArray2); // full array with 1 at index 7
 //arrays are mutable and can be modified at any time 
 
 let shoppingList2 = ['cheese', 'milk'];
-shoppingList2[1] = 'whole milk'
-console.log(shoppingList2) // cheddar cheese, whole milk
+shoppingList2[1] = 'whole milk';
+console.log(shoppingList2); // cheddar cheese, whole milk
 
 //in order to add an item to the array we need to know the last index of the array. we can find that by using .length - 1.
 console.log(shoppingList2.length - 1); // 1 (cheddar cheese at index 0, milk at index 1)
@@ -1715,7 +1719,7 @@ console.log(topSongs); // [first time i ever saw your face, god only knows, a da
 console.log(topSongs.pop()); // life on mars 
 // returns to the console the value it removed
 
-console.log(topSongs) // [first time i ever saw your face, god only knows, a day in the life]
+console.log(topSongs); // [first time i ever saw your face, god only knows, a day in the life]
 
 let nextSong = topSongs.pop(); // took the value of the last song in the array and stored it in a variable
 
@@ -1793,7 +1797,7 @@ console.log(fruits.concat(veggies)); // [apples, bananas, asparagus, brussel spr
 console.log(veggies.concat(fruits)); // [asparagus, brussel sprouts, apples, bananas]
 
 
-// concatenating multiple arrays
+// concatenating multiple arrays (combining arrays)
 // concatenating the fruit array, veggie array and meat array
 let meats = ['steak', 'chicken'];
 console.log(fruits.concat(veggies, meats)); // ['apples', 'bananas', 'asparagus', 'brussel sprouts', 'steak', 'chicken']
@@ -1812,7 +1816,7 @@ console.log(allFood); // ['steak', 'chicken', 'apples', 'bananas', 'asparagus', 
 //syntax:
 //             array.includes(value youre looking for)
 //             array.includes(value youre looking for, fromIndex)
-//             from index allows you to specify where your search starts from in terms on index position
+//             from index allows you to specify where your search starts from in terms of index position
 
 // searches the array allFood and looks for the string 'steak'
 console.log(allFood.includes('steak')); // true
@@ -1832,8 +1836,8 @@ if(petList.includes('bird')) {
     console.log('im allergic!'); // im alergic!
 }
 else {
-    console.log('i have no allergy to that pet')
-}
+    console.log('i have no allergy to that pet');
+};
 // im allergic logs to the console.
 
 
@@ -1850,7 +1854,7 @@ let ingredients = [
     'sugar',
     'shrimp',
     'butter'
-]
+];
 
 console.log(ingredients.indexOf('water')); // 0
 console.log(ingredients.indexOf('sugar')); // 4
@@ -2010,7 +2014,7 @@ console.log(numArray.sort()); // [0, 12, 17, 5, 73, 81]
 
 //when you put an array in variable, the variable does NOT hold the array, it holds an arrow (or reference) pointing to the array
 
-let nums = [5, 6, 7, 8]
+let nums = [5, 6, 7, 8];
 let otherNums = nums; 
 console.log(otherNums); // [5, 6, 7, 8]
 nums.push(9); // add 9 to the end of the array
@@ -2038,6 +2042,7 @@ myEggs.push('purple');
 console.log(myEggs); // ['brown', 'brown', 'purple']
 // the only thing that is const about the myEggs is its refernce to its value, and its name. the values of the array can change.
 
+// adding values to an array 
 // inserts green at index 0 of the array myEggs
 // logging to make sure 'green' is at index 0 confirming the first line works
 //if myEggs array includes the word 'green'then its equal to true
@@ -2045,9 +2050,9 @@ console.log(myEggs); // ['brown', 'brown', 'purple']
 myEggs[0]= 'green';
 console.log(myEggs.indexOf('green')); // 0
 if (myEggs.includes('green') === true) {
-    console.log('green egg was added to front of the array')
+    console.log('green egg was added to front of the array');
     console.log(myEggs); // ['green, 'brown', 'purple']
-}
+};
 
 
 
@@ -2066,15 +2071,16 @@ if (myEggs.includes('green') === true) {
 
 
 const colorArray3 = [
-    ['red', 'crimson'], 
-    ['orange', 'dark orange'], 
-    ['yellow', 'golden rod'], 
-    ['green', 'olive'], 
-    ['blue', 'navy blue'], 
-    ['purple', 'orchid']
+    ['red', 'crimson'],                 // element 0
+    ['orange', 'dark orange'],          // element 1
+    ['yellow', 'golden rod'],           // element 2
+    ['green', 'olive'],                 // element 3
+    ['blue', 'navy blue'],              // element 4
+    ['purple', 'orchid']                // element 5
 ];
 //each array, or item, or object inside of the array is considered 1 element. and for something like an array inside of an array, the nested array's items are indexed
 
+//extracting items from array
 // how to pull the blue colors outside of the array  
 console.log(colorArray3[4]); // ['blue', 'navy blue']
 // the blue colors are the 4th indexed item 
@@ -2084,7 +2090,7 @@ console.log(colorArray3[5]); // [purple, orchid]
 
 
 // how to pull the word blue outside of the array 
-console.log(colorArray3[4][0]) // blue
+console.log(colorArray3[4][0]); // blue
 //         colorArray3[element][index of the element]
 //                      [4]              [0]
 
@@ -2245,7 +2251,7 @@ const numberObject2 = {
     100: 'one hundred',
     16: 'sixteen',
     '76 trombones': 'great song!' // string stored as both key value pair
-}
+};
 console.log(numberObject2); // {16: 'sixteen', 
 //                              100: 'one hundred', 
 //                              76 trombones: 'great song!'}
@@ -2275,7 +2281,7 @@ console.log(colorPalette['red']); // #eb4bd4b
 
 // declaring the variable color equal to the value of 'yellow' inside of the object
 let color = 'yellow';
-console.log(colorPalette[color]) // #f9ca24
+console.log(colorPalette[color]); // #f9ca24
 // the value of 'yellow' inside of our object is #f9ca24 thats why the console printed the hex code. here color's value isnt a string that says 'yellow', its the value of the yellow key in the object colorPalette
 
 console.log(colorPalette.blue); //#30336b
@@ -2284,7 +2290,7 @@ console.log(colorPalette['yellow']); // #f9ca24
 // console.log(colorPalette[yellow]) 
 // without the quotes would look for a variable called yellow. theres no variable called yellow, so it wont find anything. if I want to find the property inside the object it has to be in quotes
 
-let mysteryColor = 'red'
+let mysteryColor = 'red';
 console.log(colorPalette['red']); // #ed4bd4b
 
 // below we stored the value of 'red' from our object colorPalette into the variable of mystery color. then we logged the variable and it returned the value of 'red' inside of the object because thats what we declared our variable to be equal to
@@ -2361,6 +2367,8 @@ console.log(userReviews); // {dableb: 7, username: 'your username', gender: 'mal
 userReviews.gender = 'male';
 console.log(userReviews); // {dableb: 7, username: 'your username', gender: 'male'}
 
+//deleting a property (key value pair) out of an object
+
 //deleting the key value of gender
 //deleting the key deletes the value because a property cannot exist without a key value pair
 //syntax:
@@ -2394,7 +2402,7 @@ const shoppingCart = [
         price: 39.99,
         quantity: 2
     }
-]
+];
 console.log(shoppingCart) // [{…}, {…}, {…}] (3 objects inside an array)
 // expanded console.log:
 /* (3) [{…}, {…}, {…}]
@@ -2404,7 +2412,7 @@ console.log(shoppingCart) // [{…}, {…}, {…}] (3 objects inside an array)
 length: 3
 */
 
-// nesting array and object inside object
+// nesting the strength array and exam object inside an the object student
 const student = {
     firstName: 'david',
     lastName: 'jones',
@@ -2506,6 +2514,7 @@ const astros = {
         walkoutSong: 'final countdown'
     }
 };
+
 // adding key 'injured' and value false to the object firstbaseMan inside of the object astros
 astros.firstbaseMan.injured = false;
 //object.object. new key = value;
@@ -2525,7 +2534,7 @@ walkoutSong: "final countdown"
 
 //objects and reference types 
 
-//the reason arrays and objects are stored as 'refrences' is because normally the value's put inside of them are too much for the computer memory. a variable is stored straight to the computers memory because its usually not any where near the size of some arrays or objects. this is why objects and array's are normally declared with const. since javascript points to the refrence of the actual array/object, the values inside of the objects and arrays are mutable regardless of being declared by const.
+//the reason arrays and objects are stored as 'refrences' is because normally the value's put inside of them are too much for the computer memory. a variable is stored straight to the computers memory because its usually not any where near the size of some arrays or objects and that particular place in memory can hold a value such as a string or a number. this is why objects and array's are normally declared with const. since javascript points to the refrence of the actual array/object, the values inside of the objects and arrays are mutable regardless of being declared by const.
 
 //making two objects with the same data inside of them. when you compare them to see if theyre equal, although they have the exact same keys and pairs, THEY ARE NOT EQUAL. Javascript is not checking the keys and value pairs when it compares the two objects. its looking at the reference of the object. since each object has its own reference, javascript says they are not equal
 
@@ -2623,8 +2632,9 @@ console.log(user.notifications.length); // 0
 // its how you repeat code. allows logic to be ran over and over.
 // loops are essentially reapeted logic
 // they allow us to do things like print hello 10 times, or add all numbers in an array
-
 // there are 4 different loops:
+
+
 // for loops - 
 
 // while loops - 
@@ -2642,15 +2652,30 @@ console.log(user.notifications.length); // 0
 
 /* 
 
-for () {
-    initialExpression;
-    conditon;
-    incrementExpression
-}
 
-same syntax just on one line:
+for (initialExpression; conditon; incrementExpression) {
+    code to be run goes here,
+    code to be run goes here,
+    code to be run goes here
+};
 
-for ([initialExpression]; [condition]; [incrementExpression]);
+
+initial expression is what number youre staring at. think of it as a counter. if we are trying to run a for loop on an array, and we wanted to start at the first item in the array, our initial expression would be: 
+let i = 0;
+for an object we would most likely do this:
+let i = 1;
+
+condition is the condition of the for loop. what condition do we want to meet? do we need to print 'hello' to the console 5 times?
+if we wanted to print 'hello' to the console 5 times it would look like this:
+for(let i = 1; i <= 5;)
+
+increment expression is how much we want to increment by each iteration of the loop. if i needed 5 hellos to the console i would start my counter at 1. go until its less than or equal to 5, then increment the count by 1 each time. that would look like this:
+
+for (let i = 1; i <= 5; i++) {
+    code to be run here,
+    you can put more code here
+};
+
 
 */
 
@@ -2667,6 +2692,7 @@ think of it like this:
 60 what condition to meet for the loop
 +1 how to change value each time
 
+for(i = 50; i <= 60; i++)
 so we start at 50
 we go until we hit 60
 and we add 1 to the value each time 
@@ -2700,7 +2726,7 @@ for (let i = 1; i <= 10; i++) {
 //  ! start at 1; stop at <=27; add 3 each time !
 for (i = 1; i <= 27; i += 3) {
     console.log('this is 3 added to i until we get to 28:', + i);
-}
+};
 // this is 3 added to i until we get to 28: 1
 // this is 3 added to i until we get to 28: 4
 // this is 3 added to i until we get to 28: 7
@@ -2764,7 +2790,7 @@ the value is 0
 // starting at 200; while i is greater than 100; subtract 25 from the value of i
 for (i = 200; i >= 100; i -= 25) {
     console.log(`let see: ${i}`);
-}
+};
 /*
 
 let see: 200
@@ -2777,7 +2803,7 @@ let see: 100
 
 for (i = 5; i <= 20; i += 5) {
     console.log('im logged according to the for loop'); // 'im logged according to the for loop' is printed to the console 4 times 
-}
+};
 console.log('after the loop');
 
 
@@ -2872,7 +2898,73 @@ for(i = 0; i < examScores.length; i++) {
     5   66
 
     */
-}
+};
+
+// this for loop iterates 5 times
+// ONLY if 3 - 2 === 1 (due to the 'if' statement)
+// if the condition inside the 'if' statement is true it'll log true to the console 5 times
+for (i = 5; i <= 50; i += 10) {
+    if (3 - 2 === 1) {
+        console.log(true); // true true true true true
+    };
+};
+
+if (3 - 2 === 1) {
+    for (i = 5; i <= 50; i += 10) {
+        console.log(false);
+    };
+};
+
+// notice both of the code blocks above execute in the console. im not sure if theres rules or formality to which statement comes first in regards to a 'for' and 'if' statement, but they both function properly
+
+
+let exampleArray = [43, 09, 17, 54, 76, 6, 3];
+for(i = 0; i <= exampleArray.length - 1; i++) {
+    console.log(exampleArray[i]); // 43 9 17 54 76 6 3
+};
+
+
+exampleArray = [43, 09, 17, 54, 76, 6, 3];
+for(i = 3; i <= exampleArray.length - 1; i++) {
+    console.log(exampleArray[i]); // 54 76 6 3
+};
+// this starts the loop at the 3 indexed number because 'i' our counter variable is set to 3 here
+
+
+// extra practice 
+let carsInDriveWay = {
+    Caleb: {
+        make: 'honda',
+        model: 'civic',
+        trim: 'si',
+        color: 'red',
+        year: 2018
+    },
+    Cheyanne: {
+        make: 'toyota',
+        model: 'CH-R',
+        trim: 'base', 
+        color: 'blue',
+        year: 2018
+    }
+};
+
+console.log(carsInDriveWay.Caleb.model.toUpperCase())
+
+
+for (i = 1; i <= 3; i++) {
+    if (carsInDriveWay.Caleb.year <= 2015) {
+        console.log(`your car is ${2022 - carsInDriveWay.Caleb.year} years old, it may be time to upgrade soon`)
+    }
+    else if (carsInDriveWay.Caleb.year >= 2015) {
+        console.log(`your car is ${2022 - carsInDriveWay.Caleb.year} years old. Theres no need to upgrade right now`)
+    }
+    else {
+        console.log('please input your vehicle year make')
+    }
+};
+
+
 
 
 
