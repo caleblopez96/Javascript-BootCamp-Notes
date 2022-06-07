@@ -3085,7 +3085,7 @@ for (i = 0; i <= 4; i++) {
     for (let j = 0; j < str.length; j++) {
         console.log(' inner:', [j]);
     }
-}
+};
 /* 
 the console log:
 outer: 0
@@ -3116,7 +3116,7 @@ for (let i = 1; i <= 10; i++) {
     for (j = 10; j >= 0; j -= 2) {
         console.log('       Inner loop:', j);
     }
-}
+};
 
 const gameBoard = [
     [ 4, 32, 8, 4 ],
@@ -3186,7 +3186,7 @@ let guesses = (Math.floor(Math.random() * 10)); // generates another random numb
 while (guesses !== target) {
     console.log(`target: ${target} guess: ${guesses}`)
     guesses = (Math.floor(Math.random() * 10));
-}
+};
 console.log(`target: ${target} guess: ${guesses}`);
 console.log(`congrats, you guessed the number`);
 // if you dont have the console log with the template literal coded twice, once inside the 'while' loop and once outside the loop, once the number is guessed, it wont log the target and guess because once the guess is === to the target, the loop stops to execute when we actually need it to log one more thing
@@ -3216,7 +3216,7 @@ for (i = 0; i <= 10; i++) {
     if (i === 5) {
         break;
     }
-}
+};
 
 // the code above stopped at 5 although the for loop specified rules that said it should go to 10. break is a good way to force yourself out of a loop, but its not commonly used with 'for' loops because in a for loop you can set the iterations as you make the rules. break is much more commonly used in while loops because while loops typically are constructed when you dont know how many times a loop will iterate
 
@@ -3226,7 +3226,7 @@ while (true) {
     if (target === guesses) break;
     console.log(`target: ${target} guess: ${guesses}`);
     guesses = (Math.floor(Math.random() * 10));
-}
+};
 console.log(`target: ${target} guess: ${guesses}`);
 console.log(`congrats, you guessed the number`);
 
@@ -3265,7 +3265,7 @@ for (let sub of subreddits) {
 let facebookStatus = [ 'happy', 'sad', 'mad', 'glad', 'gloom' ]
 for (let fbStatus of facebookStatus) {
     console.log(fbStatus); // happy sad mad glad gloom
-}
+};
 // fbStatus is the variable that we stored the extracted array information in
 
 for (let char of "hello everyone") {
@@ -3314,7 +3314,7 @@ for (row of magicSquare) {
         sum += num;
     }
     console.log(`${row} summed to ${sum}`);
-}
+};
 /*
 
 4,3,8 summed to 15
@@ -3331,6 +3331,12 @@ const words2 = [ 'box', 'shake', 'tub', 'berry' ];
 for (i = 0; i < words1.length; i++) {
     // console.log(words1[i], words2[i]);
     console.log(`${words1[i]}${words2[i]}`); // mailbox milkshake bathtub blackberry
+};
+
+const words3 = ['this', 'just', 'for', 'of'];
+const words4 = ['is', 'practice', 'for', 'loops']
+for (i = 0; i < words3.length; i++) {
+console.log(words3[i], words4[i]);
 };
 
 
