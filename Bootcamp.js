@@ -3235,7 +3235,8 @@ console.log(`congrats, you guessed the number`);
 
 
 // for...of
-// a nice and easy way to iterate over array and other iterable objects
+// a nice and easy way to iterate over array and other iterable 
+// for of will only work on an iterable object, i.e. a string by getting the characters, or an array by getting a value
 // syntax:
 /* 
 
@@ -3341,6 +3342,407 @@ console.log(words3[i], words4[i]);
 
 
 
+
+
+// for of with objects
+// for of's dont work with objects because in Javascript objects not iterable like arrays or strings. 
+// instead javascript has Object.keys() and Object.values() which can help you loop over keys inside an object because they are iterable 
+/* syntax:
+                                Object.keys()
+inside partenthesis goes the name of the object you want to get the keys from 
+
+to get the values use:
+
+                                Object.values()
+inside the parenthesis goes the name of the object you want to get the values from
+
+/*
+the code below does not work because javascript can not loop over an object as it is not iterable
+
+for (let x of movieReviews) {
+    console.log(x);
+}
+
+*/ 
+
+
+
+const movieReviews = {
+    Arrival: 9.5,
+    Alien: 9,
+    Amelie: 8,
+    'In Bruges': 9,
+    Amadeus: 10, 
+    'Kill Bill': 8,
+    'Little Miss Sunshine': 8.5,
+    Coraline: 7.5
+};
+
+// how to access the keys
+console.log(Object.keys(movieReviews)); // ['Arrival', 'Alien', 'Amelie', 'In Bruges', 'Amadeus', 'Kill Bill', 'Little Miss Sunshine', 'Coraline']
+
+// how to access the values
+console.log(Object.values(movieReviews)); //[9.5, 9, 8, 9, 10, 8, 8.5, 7.5]
+
+
+// using a for of loop with Object.keys() and Object.values()
+// step 1: use 'for' then declare new variable that youre going to use to refer to the keys. you declare a variable so you dont have to type out Object.keys() the entire time.
+// step 2: console.log movie because our Object.keys(movieReviews) aka our keys are stored in the variable movie as its what we declared in our for (of) loop
+// step 3: 
+
+for (let movie of Object.keys(movieReviews)) {
+    console.log(movie, movieReviews[movie]); // we cant use dot notation. if we need to access part of an object and the keys are stored in a variable like we have done with 'movie' then you MUST use square brackets, dot notation WILL NOT WORK
+
+    // this is how to read the expression in the console.log
+    // movie, ( which is just a variable holding the keys of our object)
+    // movieReviews aka our object 
+    // inside the brackets goes the variable holding the keys aka movie
+}
+/* 
+
+the console log of the above expression:   
+Arrival 9.5
+Alien 9
+Amelie 8
+In Bruges 9
+Amadeus 10
+Kill Bill 8
+Little Miss Sunshine 8.5
+Coraline 7.5
+
+
+*/ 
+
+// the above is how to successfully iterate over an objects keys-value pairs
+
+// something to note on keyvalue pairs. I can set all keys to strings because theyre turned into strings anyways because thats how javascript works with objects
+
+const hotelReviews = {
+    'Marriot': 7,
+    'Motel 6': 3,
+    'Holiday Inn': 7,
+    'Sheraton': 9,
+    'Days Inn': 7
+}
+
+for (let hotel of Object.keys(hotelReviews)) {
+    console.log(hotel, hotelReviews[hotel]);
+}
+// finding average of hotelReview scores
+
+// we have to iterate over the object, but just the values now
+// declare a varaible to be equal to the values of your object
+// declare a total variable to keep count
+// for let r aka our new variable 'of' ratings aka our object
+// total is equal to total + r
+// declare new variable and set it equal to total is equal to total divided by the length of ratings aka 5
+const ratings = Object.values(hotelReviews)
+total = 0; 
+for (let r of ratings) {
+    total += r
+};
+let avg = total /= ratings.length; // here we're saying total is equal to total divided by ratings.length. in the case above 33 divided by 5
+console.log(avg);
+
+
+const movieRatings = {
+    Amadeus: 10,
+    Arrival: 9.5,
+    Alien: 9,
+    Amelie: 8
+};
+
+for (let movie of Object.keys(movieRatings)) {
+    let score = movieRatings[movie];
+    console.log(`I rated ${movie} a ${score}`);
+};
+
+/*
+
+I rated Amadeus a 10
+I rated Arrival a 9.5
+I rated Alien a 9
+I rated Amelie a 8
+
+*/ 
+
+// remember the only reason we're able to iterate over the object is because we used the Object.keys() and Object.values() methods. We can use a for of loop to iterate an object ONLY with the Object.keys() method and the Object.values() in conjuction with it
+
+
+
+
+
+
+// for in loops
+// the syntax is similiar to a for of loop, except its 'in' instead of 'of'
+// the for of will iterate over the actual values inside of the array or the iterable-- in a string each character, in an array, each value.
+// the for in loop will loop over the keys or properties inside of an object
+// for in is looking for an object and will NOT work on an iterable
+//syntax:
+/*
+
+for (variable IN object) {
+    code to be ran here 
+    code to be ran here
+}
+
+*/
+
+const jeopardyWinnings = {
+    regularPlay: 2522700,
+    watsonChallenge: 300000,
+    tournamentOfChampions: 500000,
+    battleOfTheDecades: 100000
+};
+
+// the word 'in' allows this code to execute and returns the keys 'in'side of jeopardyWinnings
+
+//getting the keys of an object with a for in loop
+// step 1: for
+// step 2: (declare a variable 'in' theNameOfTheObject)
+// log the newly created variable 'property' that holds our keys
+for (let property in jeopardyWinnings) {
+    console.log(property);
+    // regularPlay
+    // watsonChallenge
+    // tournamentOfChampions
+    // battleOfTheDecades
+};
+
+
+// getting the values of the keys using a for in loop
+// step 1: for 
+// step 2: declare varaiable 'in' theNameOfTheObject
+// console log the objects values by using the name of the object and inside brackets putting the newly declared variable that holds the keys of the object
+
+for (let property in jeopardyWinnings) {
+    console.log(jeopardyWinnings[property]); // this reads backwards property of jeopardyWinnings (its only nammed 'property' because I gave the variable name the name of what I was trying to get) the variable name can be anything and is typically declared using let and words like 'prop' 'key' etc...
+    
+    // 2522700
+    // 300000
+    // 500000
+    // 100000
+};
+
+
+// getting the key value pairs using a for in loop
+// for ()
+// declare variable 'in' theNameOfTheObject
+// console log the newly declared variable , 
+// the object with the newly declared variable inside of the brackets
+
+for (let property in jeopardyWinnings) {
+    console.log(property, jeopardyWinnings[property]);
+    // regularPLay 2522700
+    // watsonChallenge 300000
+    // tournamentOfChampions 500000
+    // battleOfTheDecades 100000
+};
+
+
+// adding the values to calcualte total earnings from Jeopardy
+// declare a counter variable
+// for 
+// declare variable 'in' theNameOfTheObject
+// set counter plus equal to the jeopardyWinnings[property]
+// console log newly declared variable
+
+
+
+let gameEarnings = 0;
+for (let property in jeopardyWinnings) {
+    gameEarnings += jeopardyWinnings[property]
+};
+console.log(`Ken jennings total earnings from playing jeopardy: ${gameEarnings}`); // this gets logged outside of the for in loop to ensure its not totalted and printed every time. we only want the total after all values have been calculated which means we have to put the console log outside of the loop. putting it inside of the loop will print the console log each iteration, and the totals wont be correct until the very last iteration of the loop. If you notice something is being calculated too many times, try maybe removing it from the loop.
+
+
+// bonus:
+// since arrays are technically objects we can use a for in to iterate an array, BUT YOU CANNOT USE A FOR OF TO ITERATE AN OBJECT. Arrays are more flexible when it comes to this. There are better and much more effecient ways to iterate an array. DONT USE THIS METHOD FOR ARRAYS ITS NOT GOOD.
+
+for (let k in [ 88, 99, 77, 66]) {
+    console.log(k);
+    // 0 
+    // 1
+    // 2
+    // 3
+};
+
+// the reason it prints the indices and not the actual values is because its treating the array as an object. we're not looping over the actual elements, we're looping over the properties. what javascript does is assingn the key to be in the indice number. All this is happening because the array is being treated like an object because its being run through a 'for 'in' instead of a 'for' loop.
+// the 
+
+
+
+
+
+
+
+
+// functions 
+
+// a function is a resuable procedure 
+// it allows us to write reusable, modular code
+// we define a 'chunk' of code that we can then execute at a later point aka its a chunk of code thats been wrapped in a function
+// functions are used ALL. THE. TIME.
+
+// think of a function as a little machine- its a bunch of code that we put together and we wrap it up into a package and that 'package' is our function
+
+// THE TWO STEP PROCCESS FOR EVERY FUNCTION 
+// step 1: define the function - kinda like registering it, we tell Javascript how its going to work and what its going to do.
+// step 2: execute the function (run it) 
+
+// things like .toUpperCase() is a great example of a function. its a bunch of code wrapped into 'toUpperCase' that tells javascript that when the function is ran, to upper case all letters. toUpperCase is a built in method/function in javascript
+// since .toUpperCase is an already defined function, when we use it, we are only executing step 2 of the process for functions which is running it.
+
+
+// step 1:
+// function declaration (function statement)
+/*  
+
+syntax:
+
+function functionName() {
+    defining what the function does
+    with your code here
+}
+
+whatever code that is inside of the function is what is ran when we call the function
+
+
+
+step 2: 
+calling the function:
+
+syntax:
+
+                functionName(); // run once
+                functionName(); // run again
+
+
+*/
+
+
+// the function below is called 'grumpus'
+// from here on out, everytime we call the function 'grumpus' the three statements will be logged to the console.
+
+
+
+// defining the function 'grumpus'
+function grumpus(){
+    console.log('ugh...you again...');
+    console.log('for the last time...!');
+    console.log('LEAVE ME ALONE!!!');
+};
+// calling the function and console.logging it
+console.log(grumpus());
+// calling the function again just without the console.log. I dont need to console.log it because inside of the function are rules that already state to log the three strings to the console every time the function is called
+grumpus();
+
+
+// using the function in a loop
+
+// defining a for loop 
+// starting at 0 while the counter(i) is less than 5, then execute the function, and add 1 to the iterations each time so we only get 5 loops
+// this logs the three console.log statements already defined in the function except it completes 5 iterations before it stops using the function because 5 was defined in our for loop.
+for (i = 0; i <= 5; i++) {
+    grumpus()
+};
+
+function dieRoll() {
+    let roll = Math.floor(Math.random() * 6) + 1;
+    console.log(`rolled ${roll}`);
+}
+
+// if we wanted to use the dieRoll function numerous times for a game like yahtzee where you roll 5 dice, this is how youd do it:
+
+function throwDice() {
+    dieRoll();
+    dieRoll();
+    dieRoll();
+    dieRoll();
+    dieRoll();
+    dieRoll();
+};
+
+// when calling throwDice, itll call the dieRoll function 6 times which is why we get 6 console logs
+
+console.log(throwDice());
+
+
+
+
+
+// function arguments
+// 'arguements' is a fancy term for inputs to a function
+
+function greet () {
+    console.log('hi');
+}
+greet(); // hi
+
+// the same function above with arguments 
+// the expression or values inside of the functions parenthesis are arguments to the function
+/* 
+
+function greet ('tim') {                        tim is the argument 
+    console.log('hi tim')
+}
+
+function greet ('anya) {                        anya is the argument
+    console.log('hi anya')
+}
+
+
+another example of a function with multiple arguments
+
+function avg (20, 25) {
+-----------------------------------> 22.5
+}
+
+function avg (3, 2, 5, 6) {
+    --------------------------------> 4
+}
+*/
+
+// weve seen this before 
+
+/* 
+
+hello.toUpperCase() is a function that doesnt accept arguments
+
+'hello'.indexOf('h') accepts arguments and takes 'h' as the argument 
+'hello'.indexOf('o') accepts arguments and takes 'o' as the argument
+*/
+// 'person' is a placeholder for the arguent that is going to be put into the function. now the placeholder person, will change to whatever value is passed ino the fucntion
+function greeting (person) { 
+    console.log(`hi ${person}`); // hi tim
+};
+// 'person' is a placeholder for the arguent that is going to be put into the function. now the placeholder person, will change to whatever value is passed ino the function
+console.log(greeting('tim')); // 'person' has the value of 'tim' because thats what was input as an argument to the function. 
+console.log(greeting('anya')); // 'person' has the value of 'anya' because I input anya as an argument. the function was called, took in anya as the argument.
+console.log(greeting('dableb')); // dableb was passed in as the argument which is now the value for the placeholder 'person' 
+
+// AGAIN 'PERSON' IS JUST A PLACEHOLDER AND THE FUNCTION CAN TAKE ANYTHING IN AS AN ARGUMENT TO BE PLACED INSIDE OF THE PLACEHOLDER. IT WOULD REPLACE THE VALUE 'PERSON' IN THE STRING TEMPLATE LITERAL
+
+// defining function (function name can be whaterver you want)
+// placing a parameter inside of the function. 'numRolls' is currently a placeholder
+// for i  = 0; while i is < than numRolls (which is the parameter set inside the parenthesis); add 1 to the counter variable 'i'
+function throwDice2(numRolls) {
+    for (i = 0; i < numRolls; i++) {
+        dieRoll();
+    }
+};
+
+// calling the function throwDice2 and giving it the parameter 2 meaning the code will execute twice
+throwDice2(2); // rolled randomnumber 
+//                rolled randomnumber
+// the PARAMETER is 2 meaning the function throwDice2 will run 2 times because i < numRolls meaning numRolls is going to set the value of how many times to call the function by accepting a parameter in this case its 2. 
+// so while i is less than 2 (which is just saying two iterations) we would run the function twice giving us two randomly rolled numbers displayed to the console via the string template literal that was defined inside of the function dieRoll() (which was defined a few lines up, scroll up if you need the reference.)
+
+throwDice2(3); // rolled randomnumber
+//                rolled randomnumber
+//                rolled randomnumber
+
+// we get 3 rolled numbers returned to the console because 3 was the parameter passed into the function.
 
 
 
