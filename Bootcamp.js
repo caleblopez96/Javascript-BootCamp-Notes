@@ -2945,7 +2945,7 @@ let carsInDriveWay = {
         model: 'CH-R',
         trim: 'base', 
         color: 'blue',
-        year: 2018
+        year: 2020
     }
 };
 
@@ -2954,7 +2954,7 @@ console.log(carsInDriveWay.Caleb.model.toUpperCase()); // CIVIC
 
 for (i = 1; i <= 3; i++) {
     if (carsInDriveWay.Caleb.year <= 2015) {
-        console.log(`your car is ${2022 - carsInDriveWay.Caleb.year} years old, it may be time to upgrade soon`) // this string logs to console
+        console.log(`your car is ${2022 - carsInDriveWay.Caleb.year} years old, it may be time to upgrade soon`) // this string logs to console 3 times due to the 'for' statement being true for 3 iterations
     }
     else if (carsInDriveWay.Caleb.year >= 2015) {
         console.log(`your car is ${2022 - carsInDriveWay.Caleb.year} years old. Theres no need to upgrade right now`)
@@ -2963,6 +2963,376 @@ for (i = 1; i <= 3; i++) {
         console.log('please input your vehicle year make')
     }
 };
+
+const myStudents = [
+    {
+        firstName: 'zeus',
+        grade: 86
+    },
+
+    {
+        firstName: 'artemis',
+        grade: 97
+    },
+
+    {
+        firstName: 'hera',
+        grade: 72
+    },
+
+    {
+        firstName: 'Apollo',
+        grade: 90
+    }
+];
+
+// how to access object inside of array
+// we have to get the index of myStudents because its an array and the items are indexed. so in order to access the object, we use the index because each object is indexed in the array just like numbers
+for (i = 0; i < myStudents.length; i++) {
+    console.log(myStudents[i]); 
+    /* 
+    {firstName: 'zeus', grade: 86}
+    {firstName: 'artemis', grade: 97}
+    {firstName: 'hera', grade: 72}
+    {firstName: 'Apollo', grade: 90}
+    
+    */
+};
+
+// the code below is the same as the code above. here we take each object inside of the array and turn it into a variable so our string template literal doesnt look like this: `${myStudents[i].firstName.grade} scored {grade}`
+
+for (i = 0; i < myStudents.length; i++) {
+    let studentTestScore = myStudents[i];
+    console.log(`${studentTestScore.firstName} scored ${studentTestScore.grade}`);
+    /*
+    zeus scored 86
+    artemis scored 97
+    hera scored 72
+    Apollo scored 90
+
+    */
+};
+
+// we stored the objects of the array inside the variable studentTestSCore because we need a way to access the objects of the array. And since we're going to be referring to just the objects multiple times we stored it in the variable. We still have to access the key value pairs with dot notation, but getting the index of each object is key to getting the actual object to display and not the word 'object'
+
+
+
+// looping through a string letter by letter starting from the end of the string. which is why we set i to be word5.length - 1 because .length gives us the amount of characters and we need the index so we just minus one from the .length of the variable
+
+const word5 = 'stressed';
+let reversedWord5 = '';
+for(i = word5.length - 1; i >= 0; i--) {
+    // console.log(i) //  7 6 5 4 3 2 1 0 (tells u index position)
+    // console.log(word5[i]); // d e s s e r t s (index position of each character in the variable)
+    reversedWord5 += word5[i];
+    console.log(reversedWord5); 
+    /*
+    d
+    de
+    des
+    dess
+    desse
+    desser
+    dessert
+    desserts
+    */
+};
+
+
+// averaging the grades in the myStudents array
+// set a new variable called total to 0
+// set counter to 0
+// while 0 is less than the length of the array(myStudents.length = 4) (common way to loop through the entirety of something is to use that object.length)
+// define new variable studentObj and set it to equal the object so we can easily refer to the objects inside of the array
+// set total to be += the grades of the student so is equal to the value of grade inside of the object
+// console log studentObj.grade to ensure we got the right values
+// outside of the 'for' statement:
+// console.log total to ensure we get the total of the grades 
+let total = 0;
+
+for (i = 0; i < myStudents.length; i++) {
+    let studentObj = myStudents[i]; // setting a variable to represent each object inside of the array
+    total += studentObj.grade; // total += the value of key grade
+    console.log(studentObj.grade); // 86 97 72 90
+};
+console.log(total); // 345
+console.log(total / myStudents.length); // 86.25
+//          345  / 4
+// if the two pervious logged statements are logged inside of the loop, youll get each answer logged to the console 4 times as thats how much the loop iterates. so in order to just get our answer once, we log it outside of the for statment so it doesnt get caught in the loop
+
+
+
+
+
+// nested loops
+
+
+
+let str = 'lol';
+for(i = 0; i <= 4; i++) {
+    console.log('outer:', i);
+    /*
+    'outer:' 0
+    'outer:' 1
+    'outer:' 2
+    'outer:' 3
+    'outer:' 4
+    */
+};
+
+for (i = 0; i <= 4; i++) {
+    console.log('outer:', i);
+    for (let j = 0; j < str.length; j++) {
+        console.log(' inner:', [j]);
+    }
+}
+/* 
+the console log:
+outer: 0
+ inner: [0]
+ inner: [1]
+ inner: [2]
+outer: 1
+ inner: [0]
+ inner: [1]
+ inner: [2]
+outer: 2
+ inner: [0]
+ inner: [1]
+ inner: [2]
+outer: 3
+ inner: [0]
+ inner: [1]
+ inner: [2]
+outer: 4
+ inner: [0]
+ inner: [1]
+ inner: [2]
+
+*/
+
+for (let i = 1; i <= 10; i++) {
+    console.log('outter loop:', i);
+    for (j = 10; j >= 0; j -= 2) {
+        console.log('       Inner loop:', j);
+    }
+}
+
+const gameBoard = [
+    [ 4, 32, 8, 4 ],
+    [ 64, 8, 32, 2 ],
+    [ 8, 32, 16, 4 ],
+    [ 2, 8, 4, 2 ]
+];
+
+let totalScore = 0;
+for (i = 0; i < gameBoard.length; i++) {
+    let row = gameBoard[i];
+    for (j = 0; j < row.length; j++) {
+        totalScore += row[j];
+    }
+};
+console.log(totalScore); // 230
+// the total score variable now holds the row[j] which is calling each individual value in each array row
+
+// we need to have at least two loops to access each element because we have two arrays that are nested. for every sub array we would need another loop
+
+// the outer for loop will iterate once, then the nested loop will iterate in its entirety before it returns back to the first nested 'for' loop
+
+
+
+
+
+
+// while loops
+// a while loop continues to run as long as its condition is true 
+// do this while this is true
+
+// syntax:
+/*
+
+while (this statement is true) {
+    run this code
+}
+
+*/
+let num0 = 0;
+
+while (num0 < 10) {
+    console.log(num0); // 1 2 3 4 5 6 7 8 9 
+    num0++; // adds one num0 while the 0 is less than 10
+};
+
+for (i =0; i <= 5; i++) {
+    console.log(i) // 0 1 2 3 4 5 
+};
+
+// the for loop above is the same as the while statement below 
+i = 0;
+while (i <= 5) {
+    console.log(i); // 0 1 2 3 4 5 s
+    i++;
+};
+
+// for loops are the better option out of the two above.
+// while excels when you have a loop that you dont know how many iterations it needs
+// good for continuing logic
+
+
+//computer guesses a number until it guesses the right number
+const target = (Math.floor(Math.random() * 10)); // target variable is the correct number. generates a random number 1 - 10 that is to be guessed 
+let guesses = (Math.floor(Math.random() * 10)); // generates another random number this time as a guess to the target
+//while the guess is not equal to the target
+while (guesses !== target) {
+    console.log(`target: ${target} guess: ${guesses}`)
+    guesses = (Math.floor(Math.random() * 10));
+}
+console.log(`target: ${target} guess: ${guesses}`);
+console.log(`congrats, you guessed the number`);
+// if you dont have the console log with the template literal coded twice, once inside the 'while' loop and once outside the loop, once the number is guessed, it wont log the target and guess because once the guess is === to the target, the loop stops to execute when we actually need it to log one more thing
+
+/*
+
+while (some condition) {
+    in the loop, updaste or attempt to make that condition false
+}
+
+if theres nothing to to make the condition false, itll run forever
+
+*/ 
+
+
+
+
+
+// break;
+// used inside of loops to break out of the loop and stop its execution.
+// whenever javascript encounters break, the loop that was executing is now done
+// uncommon in for loops because we write the exact rules of how many times it should run
+// 
+
+for (i = 0; i <= 10; i++) {
+    console.log(i); // 0 1 2 3 4 5
+    if (i === 5) {
+        break;
+    }
+}
+
+// the code above stopped at 5 although the for loop specified rules that said it should go to 10. break is a good way to force yourself out of a loop, but its not commonly used with 'for' loops because in a for loop you can set the iterations as you make the rules. break is much more commonly used in while loops because while loops typically are constructed when you dont know how many times a loop will iterate
+
+// the break will only stop the loop that its in. it wont break the entirety of the loop.
+
+while (true) {
+    if (target === guesses) break;
+    console.log(`target: ${target} guess: ${guesses}`);
+    guesses = (Math.floor(Math.random() * 10));
+}
+console.log(`target: ${target} guess: ${guesses}`);
+console.log(`congrats, you guessed the number`);
+
+
+
+
+
+// for...of
+// a nice and easy way to iterate over array and other iterable objects
+// syntax:
+/* 
+
+for (variable of iterable) {
+    statement
+}
+
+the variable inside the for statement will store each individual element of the array or of the string(the iterable)
+
+
+*/
+
+let subreddits = [ 'soccer', 'popheads', 'cringe', 'books', ];
+for (i = 0; i < subreddits.length; i++) {
+console.log(subreddits[i]); // soccer popheads cringe books
+// when we use i to access each element it can be a lot of work and is honestly a litte confusing at least at first
+};
+
+// this is the same as the for loop above
+// sub is the new variable that is going to hold the elements of the array
+//   let sub of subreddits (the array or iterable)
+for (let sub of subreddits) {
+    console.log(sub); // soccer popheads cringe books
+};
+// the above result is the same as the first for loop just much easier to write, read, and its a lot less lines of code.
+
+let facebookStatus = [ 'happy', 'sad', 'mad', 'glad', 'gloom' ]
+for (let fbStatus of facebookStatus) {
+    console.log(fbStatus); // happy sad mad glad gloom
+}
+// fbStatus is the variable that we stored the extracted array information in
+
+for (let char of "hello everyone") {
+    console.log(char.toUpperCase()); // H E L L O  E V E R Y O N E
+};
+// the above code iterates over the string 'hello everyone' by displaying each letter of the string
+
+
+const magicSquare = [
+    [ 2, 7, 6 ],
+    [ 9, 5, 1 ],
+    [ 4, 3, 8 ]
+];
+
+for (i = 0; i < magicSquare.length; i++) {
+    let row = magicSquare[i];
+    let sum = 0;
+    for (j = 0; j < row.length; j++) {
+    console.log(row[j]); // 2 9 4 
+    sum += row[j];  
+}
+console.log(`${row} summed to ${sum}`);
+};
+/*
+
+2
+7
+6
+2,7,6 summed to 15
+9
+5
+1
+9,5,1 summed to 15
+4
+3
+8
+4,3,8 summed to 15
+
+
+*/ 
+
+// rewrote as a for of loop 
+for (row of magicSquare) {
+    let sum = 0;
+    for (let num of row) {
+        sum += num;
+    }
+    console.log(`${row} summed to ${sum}`);
+}
+/*
+
+4,3,8 summed to 15
+2,7,6 summed to 15
+9,5,1 summed to 15
+4,3,8 summed to 15
+
+*/
+
+// here is where a for loop is better
+const words1 = [ 'mail', 'milk', 'bath', 'black' ];
+const words2 = [ 'box', 'shake', 'tub', 'berry' ];
+
+for (i = 0; i < words1.length; i++) {
+    // console.log(words1[i], words2[i]);
+    console.log(`${words1[i]}${words2[i]}`); // mailbox milkshake bathtub blackberry
+};
+
 
 
 
