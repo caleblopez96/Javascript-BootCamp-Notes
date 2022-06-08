@@ -3593,6 +3593,23 @@ for (let k in [ 88, 99, 77, 66]) {
 // things like .toUpperCase() is a great example of a function. its a bunch of code wrapped into 'toUpperCase' that tells javascript that when the function is ran, to upper case all letters. toUpperCase is a built in method/function in javascript
 // since .toUpperCase is an already defined function, when we use it, we are only executing step 2 of the process for functions which is running it.
 
+// parameters vs arguments:
+// parameters are the names listed in the functions definition
+// arguments are the real value passed to the function
+
+/* 
+'num' is the parameter
+
+    function square(num) {
+    console.log(num * num);
+}
+
+console.log(square(4, 4) // 16 
+4 and 4 are the arguments because they are the values being passed to the function
+
+
+*/
+
 
 // step 1:
 // function declaration (function statement)
@@ -3732,6 +3749,7 @@ function throwDice2(numRolls) {
     }
 };
 
+
 // calling the function throwDice2 and giving it the parameter 2 meaning the code will execute twice
 throwDice2(2); // rolled randomnumber 
 //                rolled randomnumber
@@ -3745,6 +3763,88 @@ throwDice2(3); // rolled randomnumber
 // we get 3 rolled numbers returned to the console because 3 was the parameter passed into the function.
 
 
+// declare our function with an argument. the argument is the input of the number and is currently blank
+// tell javascript that the variable n = n + '' to turn it into a string
+// return the inputted number aka n, split it, reverse it, and join the array into 1 string of numbers
+function reverseNum (n) {
+    n = n + '';
+    return n.split('').reverse().join('')
+    console.log(Number(reverseNum(n)));
+};
+// the parameter 'n' can take in any input
+console.log(reverseNum(321)); // 123
+console.log(reverseNum(934543)); // 345439
+
+
+function numLessThan(n) {
+    let inputNum = n
+    if (inputNum <= 0) {
+        console.log(`your number ${n} is equal to 0`)
+    } 
+    else
+        console.log('not less than 0')
+    };
+
+console.log(numLessThan(5)); // not less than 0
+console.log(numLessThan(0)); // your number 0 is equal to 0
+
+
+
+
+// functions with multiple arguments
+
+// parameters vs arguments:
+// parameters - are the names listed in the functions definition
+// arguments - are the real value passed to the function
+
+// the order in which parameters are defined dictates the order that they are filled in from left to right. the left value will always evaluate first
+
+
+// in the example below, num inside parenthesis is the parameter and the values 4 and 4 being passed to the function of square(), are the arguments
+function square(num) {
+    console.log(num * num);
+};
+square(3) // 9
+
+// defining a function that expects multiple arguments to be passed in
+
+function sum(x, y) {   // use comma to seperate multiple parameters
+    console.log(x + y);
+};
+sum(5, 10); // 15 use commas to seperate multiple arguments
+
+// as long as we place a valid identifier aka a valid variable name (here we use x, y) inside of the functions parenthsis as a parameter, it will act as the place holder inside of the function waiting for actual arguments to be passed in
+
+// the parameters a and b are placeholders for future arguments. in this case the arguments are values to be divided
+function divide(a, b) {
+    console.log(a / b); 
+};
+
+divide(10, 2);
+// divide(10, 2); // 5
+// the values above were values that replaced the a, b placeholders in the function
+
+// if we declare that the function takes in two parameters, and it doesn't receive the correct amount of arguments, it can display something like this:
+
+console.log(divide(5)); // undefined
+// the divide function has been set two have two arguments and only one is passed to the function as an argumment aka 5 was passed to the placeholders as arguments. since 5 / undefined = undefined, we get undefined printed to the console
+
+// a function with three parameters
+function divideAndAdd(i, j, k) {
+    console.log(i / j + k);
+}
+//           i   j  k
+divideAndAdd(10, 5, 2); // 4
+// 10 / 5 = 2 
+// 2 + 2 = 4
+
+// function that accepts four parameters
+
+function addFourNumbersTogether(a, b, c, d) {
+console.log(a + b + c + d);
+};
+addFourNumbersTogether( 4, 3, 2, 1 ) // 10
+// 4 + 3 + 2 + 1
 
 
 
@@ -3755,9 +3855,38 @@ throwDice2(3); // rolled randomnumber
 
 
 
+// return()
+// a built-in method that 'returns' values when we call them. This is great for storing results or the 'return' into a variable
+
+// printing to the console and returning a value may seem similair, but theyre very different
+// console.log is used for testing something or debugging.
 
 
+const meanYell = 'i will end you'.toUpperCase();
+console.log(meanYell); // I WILL END YOU
+
+const idx = [ 'a', 'b', 'c' ].indexOf('c');
+console.log(idx); // 2
+// 'c' is at index 2 in the array idx
+
+function subtractNums(x, y) {
+    console.log(x - y);
+}
+// by typing subtractNums (some argument, some argument) into the console we get an answer like this // 
+/* 
+
+function subtractNumx(x, y); {
+    console.log(x - y);
+}
+subtractNum(10 - 4) we get 
+
+if we tried to store subtractNum in a variable it would look like subtractNum = (10 - 4) THIS WILL RETURN UNDEFINED
 
 
+*/
 
-
+// capturing and storing a return in a variable
+function addXY (x, y) {
+    return x + y;
+}
+addXY(5, 5);
