@@ -3859,7 +3859,19 @@ addFourNumbersTogether( 4, 3, 2, 1 ) // 10
 // a built-in method that 'returns' values when we call them. This is great for storing results or the 'return' into a variable
 
 // printing to the console and returning a value may seem similair, but theyre very different
+
 // console.log is used for testing something or debugging.
+
+// return statements end execution
+
+/*
+syntax:
+
+function funcName() {
+    return 
+}
+
+*/
 
 
 const meanYell = 'i will end you'.toUpperCase();
@@ -3886,7 +3898,239 @@ if we tried to store subtractNum in a variable it would look like subtractNum = 
 */
 
 // capturing and storing a return in a variable
+// defining the function of addXY
+// it will take in two parameters (the placeholders of 'x' and 'y')
+// return x + y
 function addXY (x, y) {
     return x + y;
 }
-addXY(5, 5);
+
+//storing the return in a variable
+// declaring new const sum1 
+// making it equal to
+// the function addXY(x, y) which takes two parameters
+// passing 2 arguments to the function. argument 1: 5, and argument 2: 10
+const sum1 = addXY(5, 10); // 15
+// typing sum1 in the console gives you 15
+
+//the function 'squared' takes a parameter ('x' is just being used as a placeholder)
+// we are returning the  parameter * the parameter
+function squared (x) {
+    return x * x;
+};
+// if you type in the console: squared() and pass in an argument like 5
+//                             squared(5) the console will show 25
+
+function isPurple(color) {
+    if (color.toLowerCase() === 'purple') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+// the reason we added toLowerCase is so we dont have to code a rule for if the string was in caps.
+// what this does is it takes the argument and lowercases it before checking to see if its equal to our specific string which is 'purple' in all lower case
+// this helps because no matter what color you enter, it wont be case senstitve.
+// the function has a rule coded in the if() statement that takes every argument and lower cases it no matter what
+
+/* in the console:
+
+isPurple('blue') returns false
+isPurple('purple') returns true
+isPurple('PURPLE') returns true
+
+because before the argument was checked against the string we passed in the .toLowerCase() so make the string all lowercase so it can be checked against our all lowercase string
+
+*/
+
+// the function of isPurple can be written better and heres how:
+function isRed(color) {
+    if (color.toLowerCase() === 'red') {
+        return true;
+    }
+    return false;
+}
+
+// we took out the else statement because returns end function exection
+// the only way to get to the next line is if the 'if' statement is false
+
+// the function isPurple() and isRed can be written BETTER and heres how:
+function isGreen(color) {
+    return color.toLowerCase() === 'green';
+}
+// since the expression color.toLowerCase() === 'green' is a boolean expression
+// we dont have to code in the true and false return statements. 
+//javascript knows its a boolean expression and can only have two answers: 'yes' or 'no'.
+// so we simply just use 'return' and then the boolean expression
+
+
+function containsPurple(arr) {
+    for (let color of arr) {
+        if (color === 'purple' || color === 'magenta') {
+            return true;
+        }
+    }
+    return false; // this has to be removed from the 'for' and 'if' statments
+}
+    // if we dont return the false boolean outside of the for and if statments 
+    // then it wont be able to check both values 
+    // one of the returns will be true / false and halt the function entirely
+    // it doesnt matter if the return is inside of a loop, nested 10 times
+    // once javascript finds a true return statement anywhere inside of the function
+    // the function stops execution
+
+
+
+
+
+// function practice
+// password validator
+
+function isValidPassword(username, password) {
+    if (password.length < 8) {
+        return false;
+    }
+    if (password.indexOf(' ') !== -1) { 
+        return false;
+    }
+    if (password.indexOf(username) !== -1) {
+        return false;
+    }
+    return true;
+}
+
+/* 
+Step 1: define function isValidPassword and give it two parameters
+step 2: if password.length is less than 8
+step 3: return false
+
+step 4: if password.indexOf(' ') !== -1 meaning if we search the string and find a space inside then. the reason we set it to !== -1 is because if javascript searches for a character in a string in indexOf() and cannot find it, it returns the value of -1
+step 5: return false
+
+The logic behind this one was to reverse the order of thought. Instead of checking to see if all three conditions are met on one line, we try to see if all three conditons are not met, then return true
+
+we can get away with this because in this specific example, if any of the return statements actually return false, the code stops and thats good, thats what we want. if any of the above statemenets are actually false, then they dont meet the password requirements. it doesnt need to keep executing because it already found a return statement that was true (in the scenario the ' true' statement was just false)
+
+in the console:
+
+isValidPassword('meat', 'meatball') // false (password contains username)
+meat is in the parameter of username and is being passed as the username argument.
+meatball is in the parameter of password and is being passed as the password argument.
+
+isValidPassword('meat', 'ginger5') // false (password is not 8 characters)
+
+isValidPassword('meat', 'RandomPassword1') // true
+
+*/
+
+// another way to write the isValidPassword function
+// the one liner 
+
+function isValidPassword2(username, password) {
+    if (password.length < 8 ||
+        password.indexOf(' ') !== -1 ||
+        password.indexOf(username) !== -1) {
+        return false;
+    }
+    return true;
+    }
+
+/* 
+the above method is the way i approached it at first. It kinda gets jumbled all being on one line, and with multiple || going on it can kinda be hard to write
+
+*/
+
+// another way to write isValidPassword
+// this time we're just assigning variables to the values of:
+// password.length, password.indexOf(' ') and password.indexOf(username)
+
+function isValidPassword3(username, password) {
+    const tooShort = password.length < 8;
+    const hasSpace = password.indexOf(' ') !== -1;
+    const tooSimilar = password.indexOf(username) !== -1;
+    if (tooShort || hasSpace || tooSimilar) return false;
+    return true;
+}
+
+
+
+
+
+// a function that finds the average of items in an array
+// using a for of loop because its the easiest and basically made for looping iterables
+
+function avg2 (arr) {
+    let total = 0
+    // loop over each value
+    for (let value of arr) {
+    // add them together
+    total += value
+    }
+    let results = total / arr.length;
+    return results;
+}
+/* 
+in the console:
+avg2([0, 50, 25, 79, 56]) // 42
+whatver arguments are given to the function is whats averaged
+
+*/
+
+
+
+
+
+// pangram function 
+// pangram is a sentence that contains every letter of the alphabet
+
+function isPangram(sentence) {
+    let lowerCased = sentence.toLowerCase();
+    for (let char of 'abcdefghijklmnopqrstuvwxyz') {
+        if (lowerCased.indexOf(char) === -1) {
+            return false;
+        }
+    }
+    return true;
+}
+
+/* 
+
+in console:
+
+isPangram('the five boxing wizards jump quickly') // true
+
+isPangram('five boxing wizards jump quickly') // false
+
+*/
+
+
+
+
+// get playing card
+
+function getCard() {
+    const values = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A' ]
+    const idx = Math.floor(Math.random() * values.length);
+    return idx;
+}
+
+// getCard() in the console picks a random number from the list of values
+
+function countVowels(string) {
+    count = 0
+    str = str.toLowerCase();
+    for (i = 0; i < string.length; i++) {
+        if (str.charAt(i)=='a' || str.charAt(i)=='e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i)=='u') {
+            count++;   
+        }
+    }
+return count;
+}
+
+
+
+
+
+
