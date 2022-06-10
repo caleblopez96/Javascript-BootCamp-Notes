@@ -4118,9 +4118,18 @@ function getCard() {
 
 // getCard() in the console picks a random number from the list of values
 
+
+// finding count of vowels in string:
+// step 1: define function 
+// step 2: declare variable to keep track of count (or redfine like we did here)
+// step 3: make sure that the string is lowercased after its received 
+// step 4: loop the the string.length starting at 0 and adding 1 each iteration
+// step 5: if the string contains a value at any of the index numbers
+// step 6: add 1 to the count
+// step 7: return count(of vowels);
 function countVowels(string) {
     count = 0
-    str = str.toLowerCase();
+    string = str.toLowerCase();
     for (i = 0; i < string.length; i++) {
         if (str.charAt(i)=='a' || str.charAt(i)=='e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i)=='u') {
             count++;   
@@ -4129,8 +4138,50 @@ function countVowels(string) {
 return count;
 }
 
+function isCussWord(string) {
+    count = 0;
+    for(i = 0; i < string.length; i++) {
+        if (string.includes('shit') || string.includes('fuck')) {
+        return true
+    }
+    return false
+    }
+}
 
+console.log(isCussWord('fuck')); // true
+console.log(isCussWord('hello')); // false
 
+let num
+function isOddNum(num) {
+    num = num % 2;
+    if(num > 0) {
+        if(num === 1) {
+        console.log(`your number is odd`)
+    }
+        return true
+    } else {
+        console.log(`your number was even`)
+    }
+    return false
+}
+
+console.log(isOddNum(7)); // true
+console.log(isOddNum(16)); //  false
+
+function genderIs(string) {
+    gender1 = string.toLowerCase();
+    gender2 = string.toLowerCase();
+    if (!(string.includes('male') || string.includes('female'))) {
+        return `Please enter gender`
+    }
+    if (string.includes('fe')) {
+        return `Gender: ${gender2.charAt(0).toUpperCase() + gender2.slice(1)}`
+        }
+    return `Gender: ${gender1.charAt(0).toUpperCase() + gender1.slice(1)}`
+}
+
+console.log(genderIs('male')); // Gender: Male
+console.log(genderIs('female')); // Gender: Female
 
 
 
