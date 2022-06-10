@@ -4168,6 +4168,9 @@ function isOddNum(num) {
 console.log(isOddNum(7)); // true
 console.log(isOddNum(16)); //  false
 
+
+// function that takes a string and checks if its male or female 
+
 function genderIs(string) {
     gender1 = string.toLowerCase();
     gender2 = string.toLowerCase();
@@ -4185,3 +4188,12 @@ console.log(genderIs('female')); // Gender: Female
 
 
 
+// 50/50 coin flip
+
+function headsOrTails() {
+    randomCoinSide = Math.floor(Math.random() * 10) +1;
+    if (randomCoinSide <= 5) {
+        return `heads`
+    }
+    return 'tails'
+}
