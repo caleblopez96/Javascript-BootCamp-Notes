@@ -4170,6 +4170,8 @@ console.log(isOddNum(16)); //  false
 
 
 // function that takes a string and checks if its male or female 
+// based off the string thats recevied
+// expected input: 'Male', 'male', 'Female', 'female'
 
 function genderIs(string) {
     gender1 = string.toLowerCase();
@@ -4183,6 +4185,7 @@ function genderIs(string) {
     return `Gender: ${gender1.charAt(0).toUpperCase() + gender1.slice(1)}`
 }
 
+// user must input string 
 console.log(genderIs('male')); // Gender: Male
 console.log(genderIs('female')); // Gender: Female
 
@@ -4197,3 +4200,271 @@ function headsOrTails() {
     }
     return 'tails'
 }
+
+
+
+
+
+// function scope
+// is like variable visibility
+// depending on where you define a variable depends on where it can be used
+// the location of where the variable is define dictates where we have access to it
+
+function helpMe() {
+    let helpMeMsg = 'im on fire!';
+    return helpMeMsg
+}
+
+// console.log(helpMeMsg) Reference Error: helpMeMsg is not defined
+// the variable help me is not defined outside of the function
+// the variable can only be used inside the function as its scoped to the function
+
+
+let birdie = 'cardinal'
+
+function birdWatch() {
+    let birdie = 'duck'
+    console.log(birdie)
+}
+birdWatch(); // duck
+console.log(birdie);// cardinal
+
+// above we have two variables with the same name, but different values
+// the variable birdie inside of the function exist only inside that function
+// when birdWatch() is called, birdie is logged to the console and we see duck
+// when we log the variable birdie outside of the scope of the function
+// it has the value of 'cardinal' the globally scoped variable
+
+
+
+
+// block scope 
+
+let radius = 8;
+
+if (radius > 0) {
+    const PI = 3.14;
+    let circ = 2 * PI * radius
+}
+
+// console.log(radius); // 8 (defined outside of the block) 
+// console.log(PI); // not defined
+// console.log(circ); // not defined
+// circ and PI are scoped to the block
+
+if(true) {
+    let animal = 'eel'
+    // console.log(animal) inside of the block logs eel
+}
+// console.log(animal) outside of the block returns undefined
+
+// the variable animal is scoped to the block
+// since it was declared inside of the curly braces with let
+
+if(true) {
+    var animal = 'eel'
+    console.log(animal); // eel
+}
+console.log(animal); // eel
+// eel prints to the console even though animal was declared in the scope of the block
+// var has a different scope of let and const
+// a variable declared with var is not scoped to the block, or conditional, for loop etc...
+// this can be problematic :
+let animalArray = ['grizzly bear', 'panda bear', 'spectacled bear'];
+for(var i = 0; i < animalArray.length; i++) {
+    console.log(i, animalArray[i]); // how to access array items without getting entire array
+}
+console.log(i) // 3: our counter variable is now 3 because we iterated the array 3 times
+// even though our counter variable i was declared inside of the for loop
+// var isnt block scoped, so it doesnt automatically scope to the for loop
+
+// function that doubles the array indexs and stores them in a new array 
+
+function doubleArray(arr) {
+    const result = []; // const only exist inside of the function
+    for (let num of arr) {
+        let double = num * 2 // double only exist inside of the for loop and can not
+        // be accessed outside of the for loop
+        result.push(double);
+    }
+    return result;
+}
+
+console.log(doubleArray([1, 2, 3])) // [2, 4, 6]
+
+
+
+
+// lexical scope
+// nested functions are lexically bound to the scope of the parent or 'outer' function
+// when we have nested functions like innerFunction() below
+// the variable in outerFunction is defined in the function and theres no access to it outside of the function
+// however, the nested function innerFunction() has access to the variable hero 
+
+
+function outerFunction() {
+    let hero = 'spiderman';
+    
+    function innerFunction() {
+        let cryForHelp = `${hero} please save me!`;
+        console.log(cryForHelp);
+        // console.log(hero) // spiderman (hero variable can be accessed here)
+    }
+    innerFunction(); // undefined
+}
+
+// if you try to use the inner function outside of the scope its undefined
+// due to it being in the scope of the variable
+// the innerFunction can only be accessed by the outerFunction
+
+function outerFunction2() {
+    let movie = 'airbud';
+
+    function innerFunction2() {
+        let movie ='matilda';
+
+        function moreInner() {
+            console.log(movie); // the matilda
+        }
+        moreInner();
+    }
+    innerFunction2();
+}
+// since the moreInner function did not have a variable movie declared inside of it
+// its able to access the parent functions variable of movie and log it to the console
+// if the innerFunction2 did NOT have a movie variable declared inside of it
+// it would move up to the next parent function of outerFunction2 and look for a variable called movie
+
+
+
+
+
+// function expressions 
+// a different syntax for writing functions
+
+// ANONYMOUS FUNCTIONS: function is declared without a name: 'function (num)'
+// the name is being taken from the variable that the function was defined in
+
+// since functions are objects in javascript
+// the can be declared inside of a variable much like a string or an array
+
+// TLDR: just storing the function inside a variable
+// the important thing to remember is the syntax changes as you declare the function
+// name with the variable that its stored in
+// these are called anonymous functions
+
+// storing a function inside a variable helps passing functions to other functions as arguments
+// you dont to include all of the function syntax, you can just use the variable name
+
+// function expression (anonymous expression)
+const square2 = function(num) {
+    return num * num;
+}
+// call the variable and pass in an argument
+square2(4); // 16
+
+
+// normal function 
+function square3(num) {
+    return num * num;
+}
+// call the function and pass in an argument
+square3(4); // 16
+
+
+
+
+
+// function expressions (anonymous function)
+const sumExpression = function(x,y) {
+    return x + y;
+}
+sumExpression(5, 3); // 8
+
+// normal function
+function add2Nums(x,y) {
+    return x + y;
+}
+add2Nums(5, 3); // 8
+
+
+// you can add a name to the function even if its been declared inside of a variable
+
+// NAMED FUNCTION EXPRESSION
+const product = function multiply(x,y) {
+    return x * y
+}
+product(5, 2); // 10
+// cant call the named function by the function name
+// multiply(5, 2) // undefined
+
+
+
+
+// higher order functions 
+
+function addition(x,y) {
+    return x + y;
+}
+
+const subtraction = function(x,y) {
+    return x - y;
+}
+
+const multiplication2 = function(x,y) {
+    return x * y;
+}
+
+function division(x,y) {
+    return x / y;
+}
+
+// storing the above 4 functions inside of an array 
+
+const operations = [addition, subtraction, multiplication2, division];
+
+// accessing a function from an array of functions
+// in order to access a function inside of an array, use the index of the function
+// accessing the subtraction function from inside of the array 
+
+//syntax:
+//           variableNameHoldingTheArray[array index of function](arguments)
+
+//                           variable[index](arguments)
+
+// accessing just the function 
+operations[1]; // returns the function (does not call it or execute it) 
+
+// accessing the function and passing arguments to execute the function
+operations[1](100, 50); // 50
+
+// accessing the addition function inside of the array of operations
+operations[0](30, 50); // 80 
+
+// accessing the multiplication2 function inside of the array of operations
+operations[2](5, 4); // 20
+
+// accessing the division function from inside of the array of operations
+operations[3](40, 4); // 10
+
+
+
+// looping over each function inside of the array and executing the function 
+// this is done by calling the placeholder func which represents each function in the array
+// then we pass arguments to the placeholder so it can then give those arguments to each of the functions it encounters inside of the loop
+for (let func of operations) {
+    let result = func(30, 5);
+    console.log(result); // 35, 25, 150, 6 (the results of the arguments given to the placeholder that were then passed to each function throughout the iteration of the array)
+}
+
+
+
+// by adding a function to an Object, we create our very own method 
+// like toUpperCase(), .length(), indexOf etc..
+const thing1 = {
+    doSomething: multiplication2, // sets the function multiply as a value inside of the object
+    doSomethingElse: division // sets the function division as a value inside of object
+}
+thing1.doSomething(50, 2); // 100
+thing1.doSomethingElse(50, 2) // 25
+
