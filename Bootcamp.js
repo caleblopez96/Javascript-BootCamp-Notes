@@ -4460,11 +4460,26 @@ for (let func of operations) {
 
 
 // by adding a function to an Object, we create our very own method 
-// like toUpperCase(), .length(), indexOf etc..
+// like toUpperCase(), .length(), .indexOf() etc..
 const thing1 = {
     doSomething: multiplication2, // sets the function multiply as a value inside of the object
     doSomethingElse: division // sets the function division as a value inside of object
 }
 thing1.doSomething(50, 2); // 100
 thing1.doSomethingElse(50, 2) // 25
+
+
+function checkEven (n) {
+    let num = n
+    if (num % 2 !== 1) {
+        return 'even'
+    }
+    return 'odd'
+}
+
+function celsiusToFarenheit (n) {
+    n = n * 9 / 5 + 32
+    return n
+}
+console.log(celsiusToFarenheit(0));
 
