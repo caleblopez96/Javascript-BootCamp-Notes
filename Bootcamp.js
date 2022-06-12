@@ -4574,9 +4574,10 @@ callThreeTimes(rage); // im angry
 
 // this function repeatNTimes takes two arguments in the placeholder of func and num
 // in this example its going to take a function and a number thats why i used those placeholders
-function repeatNTimes(func, num) {
-    for (let i = 0; i < num; i++) {
-        func();
+// we are repeating the action by the num times input
+function repeatNTimes(action, num) {
+    for (let i = 0; i < num; i++) { // this makes it where we can input any number and have the function repeat that many times
+        action();
     }
 }
 
@@ -4597,6 +4598,7 @@ repeatNTimes(rage, 2); // im angry (*2)
 // then we say:
 // if random number is less than .5 to do func1 
 // else call func2
+// we basically just want one of the functions above to run 
 function pickOne(func1, func2) {
     let rand = Math.random();
     console.log(rand)
@@ -4607,3 +4609,103 @@ function pickOne(func1, func2) {
     }
 }
 console.log(pickOne(cry, rage));
+
+//the parameters 'func1' and 'func2' were replaced with the arguments 'cry' and 'rage'
+//since the arguments 'cry' and 'rage' are both functions,
+//when one is picked, it will execute the function inside
+//in the example above only 'cry' or 'rage' will execute due to the 'if' statement
+
+
+
+
+
+// functions as return values
+// you basically give it a permanent argument 
+// and the function returns a value of the function executed inside
+
+
+// the first function 'multiplyBy' takes 1 parameter
+// what the function does is returns another function
+
+// the return function with the parameter 'x' is an anonymous function 
+// since its inside the outer function and only gonna be used in there
+// it can remain without a name (anonymous function)
+// what this function does is returns the value of 'x' * 'num'
+
+function multiplyBy(num) {
+    return function(x){
+        return x * num;
+    }
+}
+
+// to make it easier to work with, we store the function multiplyBy in a variable
+// notice here we stored the function in the variable triple
+// notice that the function was stored with an argument
+// this is possible because the function has a return function inside. 
+// so what it does is it calls multiply by which takes a parameter 'num' 
+// and then due to the return function 'x * num'
+// it takes the argument given to the parameter num and multiplies it by 3
+const triple = multiplyBy(3);
+console.log(triple(9)); // 27
+
+
+// storing the same function in a new variable 'double'
+// and giving it the argument of 2
+// to be ran against whatever is called with the variable
+const double = multiplyBy(2);
+console.log(double(4)); // 8
+
+const halve = multiplyBy(0.5)
+console.log(halve(10)); // 5
+
+
+// this function checks to see if a number is within a range
+// step 1: define our function with 2 parameters
+// step 2: define a return function with 1 parameter
+// step 3: 'if' param1 is <
+function makeBetweenFunc(param1,param2) {
+    return function(num) {
+        if (num >= param1 && num <= param2) {
+            return true 
+    } 
+            return false
+    }
+} 
+
+// now we need to assign it to a variable
+// once we assign it to a variable we can pass in the permanent parameters 
+// and then pass in our num parameter into the variable 
+// like this:
+
+const isChildRange = makeBetweenFunc(0,18); // 0 and 18 are the arguments used to check
+// the value given to the variable:
+console.log(isChildRange(15)); // true
+console.log(isChildRange(99)); // false
+
+// we passed in our permamnent arguments to the param1 and param2 when we assigned it to the isChildRange variable
+// and we check it against the value passed to the variable holding the function
+// above we passed in 15. since 15 is between 0 and 18
+// it meets the function rule to return true
+
+const isAdultRange = makeBetweenFunc(21,99);
+console.log(isAdultRange(45)); // true
+console.log(isAdultRange(11)); // false
+
+
+const isNiceWeather = makeBetweenFunc(65,85);
+console.log(isNiceWeather(50)); // false
+console.log(isNiceWeather(74)); // true
+
+
+
+
+
+
+
+// callbacks
+// a callback is a function passed as an argument to a parameter
+// anytime we pass a function to another fucntion and its executed in that function,
+// its a callback
+
+// you can write your own function that accepts callbacks,
+// and also built in methods
