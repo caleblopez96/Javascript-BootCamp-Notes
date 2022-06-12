@@ -4433,7 +4433,7 @@ const operations = [addition, subtraction, multiplication2, division];
 //                           variable[index](arguments)
 
 // accessing just the function 
-operations[1]; // returns the function (does not call it or execute it) 
+operations[1]; // returns the function (does not call it or execute it or pass arguments) 
 
 // accessing the function and passing arguments to execute the function
 operations[1](100, 50); // 50
@@ -4459,14 +4459,17 @@ for (let func of operations) {
 
 
 
+
 // by adding a function to an Object, we create our very own method 
 // like toUpperCase(), .length(), .indexOf() etc..
 const thing1 = {
     doSomething: multiplication2, // sets the function multiply as a value inside of the object
     doSomethingElse: division // sets the function division as a value inside of object
 }
+
 thing1.doSomething(50, 2); // 100
 thing1.doSomethingElse(50, 2) // 25
+//object.key(arguments)
 
 
 function checkEven (n) {
@@ -4481,5 +4484,126 @@ function celsiusToFarenheit (n) {
     n = n * 9 / 5 + 32
     return n
 }
-console.log(celsiusToFarenheit(0));
+console.log(celsiusToFarenheit(0)); // 32
 
+const objectMethodPractice =  {
+    operation1: multiplication2,
+    operation2: addition,
+    operation3: subtraction,
+    operation4: division
+}
+
+// use object.theKey associated with the function, the pass in your arguments (if any)
+// the arguments are passed to the key because they key is holding the function as its value
+
+console.log(objectMethodPractice.operation1(5, 2)); // 10
+
+console.log(objectMethodPractice.operation2(40, 5)); // 45
+
+console.log(objectMethodPractice.operation3(100, 50)); // 50
+
+console.log(objectMethodPractice.operation4(25, 5)) // 5
+
+
+
+
+
+// higher order functions -
+// functions that operate on/with other functions
+// they can accept other functions are arguments 
+// a function that returns a function
+
+
+// function that accepts a function as an argument
+// the placeholder here is 'func'
+// the placeholder is going to accept a function as an argument, 
+// so we leave the placeholder 'func' with nothing in parthenthesis
+// the func() inside of the function is left blank because its just going to call it twice
+// the other function will define what it does after its been called twice by the 
+// callTwice function
+
+// this function will call our next function twice
+function callTwice(func) {
+    func(); // calling, but leaving 'func' placeholder blank
+    func(); // calling, but leaving 'func' placeholder blank
+}
+
+// defining another function to be used with the callTwice function
+
+function laugh() {
+    console.log('hahahahahahahahahahahahahaha')
+}
+
+// here it executes the callTwice function with the laugh function 
+// the callTwice function just set the rules for the call to happen twice
+// anytime the callTwice function is called,
+// its going to process whatever function was passed to it, twice
+callTwice(laugh); // hahahahahahahahahahahahahaha
+//                   hahahahahahahahahahahahahaha
+
+// here the function callThreeTimes accepts an argument 
+// the placeholder argument is called 'f'
+// we call the placeholder 3 times because we want this function to call another function 3 times
+function callThreeTimes(f) {
+    f();
+    f();
+    f();
+}
+
+function cry() {
+    console.log('boohoo im sad')
+}
+
+function rage() {
+    console.log('im angry')
+}
+
+// call three times is called and passed in the argument cry which is another function
+// since callThreeTimes was made to call the function passed to it three times,
+// we get three logs of boohoo im sad below 
+// the first function defined how many times something would be called
+// the second function defined the function that was going to be called 
+
+callThreeTimes(cry); // boohoo im sad 
+//                      boohoo im sad 
+//                      boohoo im sad
+
+callThreeTimes(rage); // im angry
+//                       im angry 
+//                       im angry
+
+// this function repeatNTimes takes two arguments in the placeholder of func and num
+// in this example its going to take a function and a number thats why i used those placeholders
+function repeatNTimes(func, num) {
+    for (let i = 0; i < num; i++) {
+        func();
+    }
+}
+
+// here we pass in the argument 'cry' to the parameter 'func'
+// then we pass in how many times to the 'num' parameter
+// this function repeats the cry function 5 times when called
+repeatNTimes(cry, 5); // boohoo im sad (*5)
+
+// here we pass in the argument 'rage' which is a function, to the parameter of func
+// then we pass in a number of how many times to loop in the second parameter 'n'
+// this function repeats the rage function 2 times when called
+repeatNTimes(rage, 2); // im angry (*2)
+
+
+// the function pickOne accepts two arguments 
+// here the arguments are functions 
+// we define rand to be a random number
+// then we say:
+// if random number is less than .5 to do func1 
+// else call func2
+function pickOne(func1, func2) {
+    let rand = Math.random();
+    console.log(rand)
+    if (rand < 0.5) {
+        func1();
+    } else {
+        func2();
+    }
+}
+console.log(pickOne(cry, rage));
