@@ -4572,7 +4572,7 @@ callThreeTimes(rage); // im angry
 //                       im angry 
 //                       im angry
 
-// this function repeatNTimes takes two arguments in the placeholder of func and num
+// this function repeatNTimes takes two arguments in the placeholder of action and num
 // in this example its going to take a function and a number thats why i used those placeholders
 // we are repeating the action by the num times input
 function repeatNTimes(action, num) {
@@ -4610,10 +4610,10 @@ function pickOne(func1, func2) {
 }
 console.log(pickOne(cry, rage));
 
-//the parameters 'func1' and 'func2' were replaced with the arguments 'cry' and 'rage'
-//since the arguments 'cry' and 'rage' are both functions,
-//when one is picked, it will execute the function inside
-//in the example above only 'cry' or 'rage' will execute due to the 'if' statement
+// the parameters 'func1' and 'func2' were replaced with the arguments 'cry' and 'rage'
+// since the arguments 'cry' and 'rage' are both functions,
+// when one is picked, it will execute the function inside
+// in the example above only 'cry' or 'rage' will execute due to the 'if' statement
 
 
 
@@ -4698,14 +4698,277 @@ console.log(isNiceWeather(74)); // true
 
 
 
+// the arguments passed to the function thats being assigned to the variable 
+// has their parameters "baked in". 
+// meaning the next parameter, the one given to the return function is the only value that will change
+// in the example above the ranges in the functions are "baked in", 
+// and the parameter given to the return function is the value that changes
+
+
+
+
 
 
 
 
 // callbacks
-// a callback is a function passed as an argument to a parameter
+// a callback is a function passed as an argument to a parameter in another function
 // anytime we pass a function to another fucntion and its executed in that function,
 // its a callback
 
 // you can write your own function that accepts callbacks,
 // and also built in methods
+
+// tons of useful javascript methods require callback functions
+
+
+// setTimeout()
+// sets a timer which executes a function or specified piece of code once the time expires
+// syntax:
+//                         setTimeout(function, miliseconds)
+
+function grumpus2() {
+    console.log('go away! but with a callback');
+}
+
+/*       callback    ms
+setTimeout(grumpus2, 1000); // 'go away! 
+- recevies the argument which is the grumpus2 function
+- alerts to the browser 5 seconds after the page loads
+
+- you can use setTime() with an anonymous function:
+setTimeout(function() {
+    console.log('welcome')
+}, 1000)
+*/ 
+
+// declaring variable btn 
+// setting btn to equal html element button
+// adding an event listener to listen for a 'click'
+// when clicked:
+// callback function of grumpus 2 is executed
+// which alerts 'go away'
+const btn = document.querySelector('button');
+btn.addEventListener('click', grumpus2)
+
+// declaring variable btn2
+// setting btn 2 to equal html element button
+// adding event listener to listen for a 'click'
+// then we pass an anoymous call back function to the event listener
+// which just logs, 'they clicked a button'
+const btn2 = document.querySelector('button');
+btn.addEventListener('click', function(){
+        console.log('they clicked a button')
+})
+
+// the reason to use an anonymous function:
+// when you dont plan to reuse the function anywhere else
+// theres no point in naming it and storing it in memory in a variable
+// if you only want to use it once
+
+
+
+
+
+
+// hoisting
+// declaring variables with var can be hoisted, which means it can be accessed as long 
+// as the code is available somewhere in the file
+// let/const is the better declaration because it doesnt get hoisted
+
+howl();
+
+function howl() {
+    console.log('rawr')
+}
+
+// the code above still works because functions are hoisted 
+// you would think calling the function howl(); before it was declared would give us
+// an error.
+// since functions are hoisted its able to be called before declaration due to how JS
+// interprets things
+
+
+// function expressions are NOT hoisted
+
+// console.log(hoot); throws error: unlike above example, the function is not hoisted
+// due to declaration being a function expression (storing a func inside a variable)
+console.log(hoot)
+var hoot = function() {
+    console.log('hoot hoot')
+}
+// with var, the function is not hoisted, but the variable is.
+// javascript knows the variable exist, but it doesnt know its a function
+// let and const are not hoisted
+// if you define a function expression with let and const, it wont be hoisted
+// let and const exist to bypass some of the quirkness of hoisting
+// use let and const to avoid unexpected hoisting
+
+
+
+
+
+
+
+
+
+// ----------------------------------------------------------------------------------
+
+// array callback methods
+// arrays come with many built-in methods that expect callback functions to be passed to them
+
+// all these methods have to do with arrays
+// and expect you to pass in a callback (function passed to a parameter as an argument)
+
+// general pattern is that the function will once per every element in an array
+
+/*               built in methods for arrays that EXPECT callbacks:
+
+forEach()
+map()
+filter()
+find()
+reduce()
+some()
+every()
+
+*/
+
+
+
+
+// forEach()
+// accepts a callback function 
+// calls the function ONCE per element in the array 
+// used to apply a function to each element inside an array 
+// by passing that function to the forEach as an argument
+
+// syntax:
+/*   
+            arrayName.forEach(function () {
+                    code to be run here
+            })
+
+*/
+
+// a lot of the times forEach() is given an anonymous function 
+// because the function being use is normally only made to be run in that specific instance
+// so, since it only needs to be used in that specific instance and wont be reused throught the file
+// you can use an anoymous function 
+
+
+// forEach value inside of the array, the function of multiply the array value
+// times the array value, will be logged to the console
+// function expression with anonymous function
+const exampleArray2 = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+exampleArray2.forEach(function (n) {
+    console.log(n * n); // 81, 64, 49, 36, 25, 16, 9, 4, 1
+})
+
+// forEach value inside of the array, 
+// the 'if' statement will check if each value in the array is equal to modulo 2 === 0
+// if the number given to the parameter is modulo 2 === 0 (an even number)
+// console.log() the value
+exampleArray2.forEach(function (element) {
+    if (element % 2 === 0) {
+        console.log(element); // 8, 6, 4, 2
+    }
+})
+// only the even numbers printed to the console
+// because if a number is not even it will NOT be equal to modulo zero 
+
+// forEach value inside of the array 
+// run the function and take a parameter(if one is needed)
+// if() odd modulo 2 is greater than 0 (an odd number)
+// console.log() the values
+exampleArray2.forEach(function (odd) {
+    if (odd % 2 > 0) {
+        console.log(odd) // 9, 7, 5, 3, 1
+    }
+})
+
+
+const moreNumbers = [20, 21, 22, 23, 24, 25, 26, 27];
+moreNumbers.forEach(function (n) {
+    console.log(n * 2); // 40, 42, 44, 46, 48, 40, 52, 54
+})
+
+// passing a named function as a callback
+
+const printsTriple = function printTriple(n) {
+    console.log(n * 3); // 60, 63, 66, 69, 72, 75, 78, 81
+}
+
+
+
+// printing the array and then the index using forEach()
+// its always passed in, its just not always visible, 
+// to make the index visible, pass in a parameter for it
+// when the parameter is given the array value as the argument
+// it will print the array value and the index of the value
+moreNumbers.forEach(function (num, index) {
+    console.log(index, num) // 0 20
+    //                         1 21
+    //                         2 22
+    //                         3 23
+    //                         4 24
+    //                         5 25
+    //                         6 26
+    //                         7 27
+})
+
+// a lot of the times forEach() is given an anonymous function 
+// because the function being use is normally only made to be run in that specific instance
+// so, since it only needs to be used in that specific instance and wont be reused throught the file
+// you can use an anoymous function 
+
+
+const bookShelf = [{
+    title: 'good omen',
+    authors: ['terry pratchett', 'neil gaiman'],
+    rating: 4.25
+},
+{
+    title: 'bone: the complete edition',
+    authors: ['jeff smith'],
+    rating: 4.42
+},
+{
+    title: 'american gods',
+    author: ['neil gaiman'],
+    rating: 4.11
+},
+{
+    title: 'a gentleman in moscow',
+    author: ['amor towles'],
+    ratings: 4.36
+}
+]
+
+
+
+// printing each title using forEach()
+bookShelf.forEach(function(book){
+    console.log(book.title.toUpperCase()); // GOOD OMEN, BONE THE COMPLETE EDITION,
+    //                                        AMERICAN GODS, A GENTLEMAN IN MOSCOW
+})
+// the above can be achieved with a 'for of' loop
+for (let book of bookShelf) {
+    console.log(book.title.toLowerCase()) // good omen, bone: the complete edition,
+    //                                       american gods, a gentleman in moscow
+}
+// the 2 above can be achieved with a for loop
+// using the arrays index to access each element
+for (i = 0; i < bookShelf.length; i++) {
+    console.log(bookShelf[i].title.toUpperCase()) // GOOD OMEN, BONE THE COMPLETE EDITION,
+    //                                        AMERICAN GODS, A GENTLEMAN IN MOSCOW
+}
+
+// the two examples above are the same thing, but one is just a block of code and cant be called
+// the other is a function which can be called and used as a function
+
+
+
+
+
+
