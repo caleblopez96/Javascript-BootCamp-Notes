@@ -5053,7 +5053,7 @@ console.log(upperCasedWords)
 // calling the array we want to .push() the change to 
 // define the change inside of the push()
 const doubles2 = [];
-for (let num of numbers) {
+for (let num of doubles2) {
     doubles2.push(num * 2);
 }
 
