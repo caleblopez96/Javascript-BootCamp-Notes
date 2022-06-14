@@ -4812,7 +4812,7 @@ var hoot = function() {
 
 
 
-// ----------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 // array callback methods
 // arrays come with many built-in methods that expect callback functions to be passed to them
@@ -4820,7 +4820,7 @@ var hoot = function() {
 // all these methods have to do with arrays
 // and expect you to pass in a callback (function passed to a parameter as an argument)
 
-// general pattern is that the function will once per every element in an array
+// general pattern is that the function will execute once per every element in an array
 
 /*               built in methods for arrays that EXPECT callbacks:
 
@@ -4918,9 +4918,9 @@ moreNumbers.forEach(function (num, index) {
 })
 
 // a lot of the times forEach() is given an anonymous function 
-// because the function being use is normally only made to be run in that specific instance
+// because the function being used is normally only made to be run in that specific instance
 // so, since it only needs to be used in that specific instance and wont be reused throught the file
-// you can use an anoymous function 
+// you can use an anonymous function 
 
 
 const bookShelf = [{
@@ -4947,7 +4947,7 @@ const bookShelf = [{
 
 
 
-// printing each title using forEach()
+// printing each title using forEach() and function
 bookShelf.forEach(function(book){
     console.log(book.title.toUpperCase()); // GOOD OMEN, BONE THE COMPLETE EDITION,
     //                                        AMERICAN GODS, A GENTLEMAN IN MOSCOW
@@ -4967,8 +4967,149 @@ for (i = 0; i < bookShelf.length; i++) {
 // the two examples above are the same thing, but one is just a block of code and cant be called
 // the other is a function which can be called and used as a function
 
+// printing the index and title
+// passing in call back function 
+// second parameter is the index (idx)
+// in forEach() the second parameter is alwauys the index
+bookShelf.forEach(function(book, idx) {
+    console.log(idx, book.title,)
+})
+
+/* 
+the console log:
+0 'good omen'
+1 'bone: the complete edition'
+2 'american gods'
+3 'a gentleman in moscow'
+*/
+
+// for of loops dont allow access to index numbers as easy as forEach()
 
 
 
+
+
+
+// map()
+// creates a new array from exisiting array
+// with the results of calling a callback on every element in the array
+// can be made to duplicate array, extract portions, transform array values into new array
+
+// syntax:
+/*                   
+
+                        const varName = arrayName.map(function(){
+
+                        })
+
+
+
+*/
+// using map() to create a new array from an existing array
+// but returning the new array with .toUpperCase()
+
+// step 1: define the array
+// step 2: define the function to take place on the array and store in variable:
+// create anonymous function: caps = arrayName.map(function (){})
+// the parameter 't' represents each value inside of the array
+// step 2: return the parameter 't' which is every element in the array 
+// with .toUpperCase()
+const texts = ['rofl', 'lol', 'omg', 'ttyl'];
+const caps = texts.map(function(t) {
+    return t.toUpperCase();
+})
+
+// the original array remains the same
+console.log(texts); // ['rofl', 'lol', 'omg', 'ttyl']
+// a new array is created and the new values are stored in it
+console.log(caps); // ['ROFL', 'LOL', 'OMG', 'TTYL']
+
+
+const numberList = [10, 20, 30, 40, 50];
+const doubleValues = numberList.map(function(num){
+    return num * 2
+})
+
+console.log(numberList); // [10, 20, 30, 40, 50]
+console.log(doubleValues); // [20, 40, 60, 80, 100]
+
+
+const words = ['asap', 'byob', 'rsvp', 'diy'];
+const upperCasedWords = words.map(function(word){
+    return word.toUpperCase();
+})
+
+console.log(upperCasedWords)
+
+const studentNames = ['jonny', 'jenny', 'vinny', 'henney']
+const studentNamesNew = studentNames.map(function(name, idx){
+    return idx + ': ' + name.toUpperCase()
+})
+
+console.log(studentNamesNew); // ['0: JONNY', '1: JENNY', '2: VINNY', '3: HENNEY']
+
+const userNames = ['user123', 'anon1', 'yankeefan', 'cubfan', 'user']
+const userNameList = userNames.map(function(name){
+    if (name.length >= 5) {
+        console.log(`${name} is greater than 4 characters`)
+    } else {
+        console.log(`${name} is not greater than 4 characters`)
+    }
+})
+
+
+
+
+
+let time = [
+    0000, 
+    0100, 
+    0200, 
+    0300, 
+    0400, 
+    0500, 
+    0600, 
+    0700, 
+    0800, 
+    0900,
+    1000,
+    1100,
+    1200,
+    1300,
+    1400,
+    1500,
+    1500,
+    1700,
+    1800,
+    1900,
+    2000,
+    2100,
+    2200,
+    2300,
+    2400
+]
+function isItLate(num) {
+    for (let hour of time) {
+        if(num >= 2000) {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+console.log(isItLate(2100)); // true
+console.log(isItLate(0900)); // false
+
+
+
+function checkInBetween(param1, param2) {
+    return function(num) {
+        if(num >= param1 && num <= param2) {
+            return true
+        }
+        return false
+    }
+}
 
 
