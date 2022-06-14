@@ -5030,6 +5030,13 @@ const doubleValues = numberList.map(function(num){
     return num * 2
 })
 
+const numDetail = numberList.map(function(n){
+    return {
+        value: n,
+        isEven: n % 2 === 0
+    }
+})
+
 console.log(numberList); // [10, 20, 30, 40, 50]
 console.log(doubleValues); // [20, 40, 60, 80, 100]
 
@@ -5038,8 +5045,23 @@ const words = ['asap', 'byob', 'rsvp', 'diy'];
 const upperCasedWords = words.map(function(word){
     return word.toUpperCase();
 })
-
 console.log(upperCasedWords)
+
+// no function, but same results below:
+// step 1 defining a new variable to be an empty array
+// for(let num of numbers) num represents each item in the array  
+// calling the array we want to .push() the change to 
+// define the change inside of the push()
+const doubles2 = [];
+for (let num of numbers) {
+    doubles2.push(num * 2);
+}
+
+
+
+
+
+
 
 const studentNames = ['jonny', 'jenny', 'vinny', 'henney']
 const studentNamesNew = studentNames.map(function(name, idx){
