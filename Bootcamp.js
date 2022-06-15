@@ -3344,6 +3344,10 @@ console.log(words3[i], words4[i]);
 
 
 
+
+
+
+
 // for of with objects
 // for of's dont work with objects because in Javascript objects not iterable like arrays or strings. 
 // instead javascript has Object.keys() and Object.values() which can help you loop over keys inside an object because they are iterable 
@@ -4696,6 +4700,21 @@ const isNiceWeather = makeBetweenFunc(65,85);
 console.log(isNiceWeather(50)); // false
 console.log(isNiceWeather(74)); // true
 
+function checkInBetween(param1, param2) {
+    return function(num) {
+        if(num >= param1 && num <= param2) {
+            return true
+        }
+        return false
+    }
+}
+
+const checkInBetweenVariable = checkInBetween(21, 100)
+
+console.log(checkInBetweenVariable(50)); // true 
+
+console.log(checkInBetweenVariable(15)); // false
+
 
 
 // the arguments passed to the function thats being assigned to the variable 
@@ -4967,6 +4986,7 @@ for (i = 0; i < bookShelf.length; i++) {
 // the two examples above are the same thing, but one is just a block of code and cant be called
 // the other is a function which can be called and used as a function
 
+
 // printing the index and title
 // passing in call back function 
 // second parameter is the index (idx)
@@ -4990,21 +5010,63 @@ the console log:
 
 
 
+
+
+
+
+
+
+
+
+
 // map()
 // creates a new array from exisiting array
 // with the results of calling a callback on every element in the array
 // can be made to duplicate array, extract portions, transform array values into new array
+// the callback function will accept 1 parameter minimum
+// !the second parameter given to the function is always the index
+
 
 // syntax:
 /*                   
 
                         const varName = arrayName.map(function(){
-
+                                code the function here
+                                'return' statment
                         })
 
 
 
 */
+
+// since map always creates a new array, the function thats used to create it 
+// must be stored in a NEW variable,. SO THAT when map() creates the new array
+// we have a name and a way to call/ work with that array
+// in order to get the new array returned inside of the function
+// you must have a return statement: example below:
+/* 
+
+Below is a valid function on our bookshelf example below. 
+Its a valid, working function, but theres no way to call the new mapped array.
+
+bookShelf2.map(function(book) {
+    return book.title
+})
+
+We would need to just assign it to a variable
+
+const bookTitles = bookShelf2.map(function(book) {
+    return book.title
+})
+
+
+without our variable we have no way to work with our newly mapped array.
+without a return statement, javascript will just return a newly created array with its values as undefined: [undefined, undefined, undefined, undefined].
+this is because it doesnt know what you want to return based off of your function unless you tell it what to return
+
+*/
+
+
 // using map() to create a new array from an existing array
 // but returning the new array with .toUpperCase()
 
@@ -5021,14 +5083,23 @@ const caps = texts.map(function(t) {
 
 // the original array remains the same
 console.log(texts); // ['rofl', 'lol', 'omg', 'ttyl']
+
 // a new array is created and the new values are stored in it
 console.log(caps); // ['ROFL', 'LOL', 'OMG', 'TTYL']
 
 
 const numberList = [10, 20, 30, 40, 50];
+// the new array will need somewhere to go: YOU HAVE TO STORE IT IN A NEW VARIABLE below we stored it in doubleValues
+// if you dont store it in an array, you wont be able to call it because YOU didnt
+// give it something to be called by
 const doubleValues = numberList.map(function(num){
     return num * 2
 })
+
+console.log(numberList); // [10, 20, 30, 40, 50]
+
+console.log(doubleValues); // [20, 40, 60, 80, 100]
+
 
 const numDetail = numberList.map(function(n){
     return {
@@ -5037,19 +5108,27 @@ const numDetail = numberList.map(function(n){
     }
 })
 
-console.log(numberList); // [10, 20, 30, 40, 50]
-console.log(doubleValues); // [20, 40, 60, 80, 100]
+// returns an object containing the objects
+// with the keys as 'value', and 'isEven' because we defined those above 
+
+console.log(numDetail); // [{…}, {…}, {…}, {…}, {…}]
+// 0: {value: 10, isEven: true}
+// 1: {value: 20, isEven: true}
+// 2: {value: 30, isEven: true}
+// 3: {value: 40, isEven: true}
+// 4: {value: 50, isEven: true}
+
 
 
 const words = ['asap', 'byob', 'rsvp', 'diy'];
+
 const upperCasedWords = words.map(function(word){
     return word.toUpperCase();
 })
 console.log(upperCasedWords)
 
-// no function, but same results below:
-// step 1 defining a new variable to be an empty array
-// for(let num of numbers) num represents each item in the array  
+// same results as above, just an block of code, not a function:
+// defining a new variable to be an empty array for(let num of numbers) num represents each item in the array  
 // calling the array we want to .push() the change to 
 // define the change inside of the push()
 const doubles2 = [];
@@ -5057,8 +5136,56 @@ for (let num of doubles2) {
     doubles2.push(num * 2);
 }
 
+// step 1: define variable that will hold our new array
+// arrayName.map(function (parameter))
+// step 2: return parameter.toUpperCase().split('').join('.')
+const abbreviations = words.map(function(word){
+    return word.toUpperCase().split('').join('.')
+})
+
+console.log(words)
+
+console.log(abbreviations)
+
+// what the above does is:
+// takes the parameter word which represents every individual element in the array
+// it toUpperCase() each element 
+// then split('') with an empty string, split each character into its own array
+// we then join('.') with a period to receveive our results ex: A.S.A.P
 
 
+const bookShelf2 = [{
+    title: 'good omen',
+    authors: ['terry pratchett', 'neil gaiman'],
+    rating: 4.25
+},
+{
+    title: 'bone: the complete edition',
+    authors: ['jeff smith'],
+    rating: 4.42
+},
+{
+    title: 'american gods',
+    author: ['neil gaiman'],
+    rating: 4.11
+},
+{
+    title: 'a gentleman in moscow',
+    author: ['amor towles'],
+    ratings: 4.36
+}
+]
+
+// storing the book titles in a variable called bookShelf2Titles
+// using .map to create a new array,
+// the function accepts a parameter 'book' which represents each element in the array
+// return the element with the key
+// in the case below its the title of the books in the array BookShelf2
+const bookShelf2Titles = bookShelf2.map(function(book) {
+    return book.title
+})
+
+console.log(bookShelf2Titles); /* ['good omen', 'bone: the complete edition', 'american gods', 'a gentleman in moscow'] */
 
 
 
@@ -5070,17 +5197,21 @@ const studentNamesNew = studentNames.map(function(name, idx){
 
 console.log(studentNamesNew); // ['0: JONNY', '1: JENNY', '2: VINNY', '3: HENNEY']
 
+// creating a function that maps all the elements of the userNames array 
+// into a new array
+// if the name length is greater or equal to 5 characters
+// it returns the first return statement
+// if its not it returns the return statement in the else
 const userNames = ['user123', 'anon1', 'yankeefan', 'cubfan', 'user']
 const userNameList = userNames.map(function(name){
     if (name.length >= 5) {
-        console.log(`${name} is greater than 4 characters`)
+        return `${name} is greater than 4 characters`
     } else {
-        console.log(`${name} is not greater than 4 characters`)
+        return `${name} is not greater than 4 characters`
     }
 })
 
-
-
+console.log(userNameList) /* ['user123 is greater than 4 characters', 'anon1 is greater than 4 characters', 'yankeefan is greater than 4 characters', 'cubfan is greater than 4 characters', 'user is not greater than 4 characters'] */
 
 
 let time = [
@@ -5110,6 +5241,11 @@ let time = [
     2300,
     2400
 ]
+
+// creating function that uses the array time 
+// using a for of loop it checks to see if the hour is greater than 2000
+// return true if it is
+// else return false
 function isItLate(num) {
     for (let hour of time) {
         if(num >= 2000) {
@@ -5121,17 +5257,94 @@ function isItLate(num) {
 }
 
 console.log(isItLate(2100)); // true
+
 console.log(isItLate(0900)); // false
 
 
 
-function checkInBetween(param1, param2) {
-    return function(num) {
-        if(num >= param1 && num <= param2) {
-            return true
-        }
-        return false
-    }
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------
+
+// arrow functions
+// syntactically compact alternative to a regular function expression
+// creates an anonymous function with an arrow 
+
+//!                         variableName = () => {}
+//!                         variableName = (parameterName) => {}
+
+//! parenthesis around the parameter are OPTIONAL if theres only ONE parameter
+//                         const square = x => {
+//                         return x * x;
+
+//                         }
+//! if there are no parameters, leave the parenthesis with nothing inside of them
+//                            const singASong() => {
+//                            return "la la la la la"
+//                            }
+
+
+/* 
+
+syntax:
+
+                    variableName = () => {}
+
+const variableName = (parameterName) => {
+    code goes here 
+    return statement
 }
 
+*/ 
+
+//       varName    = (parameterName) => {}
+const arrowFunction = (x) => {
+    return x * x;
+}
+console.log(arrowFunction(5)); // 25
+
+
+const sumArrowFunction = (x, y) => {
+    return x + y;
+}
+console.log(sumArrowFunction(5, 5)); // 10
+
+
+
+const isNumEven = (x) => {
+    if( x % 2 === 0) {
+        return true
+    }
+    return false
+}
+console.log(isNumEven(5)) // false
+console.log(isNumEven(6)) // true 
+
+// same as above: same code just less to write
+// since there is ONLY 1 parameter, it does not have to be in parenthesis
+// the parameter 'x' is NOT inside parenthesis because of the arrow function and there only being one parameter
+const isNumEven2 = x => {
+    return x % 2 === 0;
+}
+console.log(isNumEven2(5)) // false
+console.log(isNumEven2(6)) // true 
+
+
+
+// since we have one or more parameters, we need the parenthesis
+const divideNum = (x, y) => {
+    return x / y
+}
+console.log(divideNum(20, 5)) // 4
+
+// since there are no parameters, we leave the parenthesis empty
+const singASong = () => {
+    return 'la la la la'
+}
 
