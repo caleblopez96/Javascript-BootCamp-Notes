@@ -5332,19 +5332,360 @@ console.log(isNumEven(6)) // true
 const isNumEven2 = x => {
     return x % 2 === 0;
 }
-console.log(isNumEven2(5)) // false
-console.log(isNumEven2(6)) // true 
+console.log(isNumEven2(5)); // false
+console.log(isNumEven2(6)); // true 
 
 
 
 // since we have one or more parameters, we need the parenthesis
 const divideNum = (x, y) => {
-    return x / y
-}
-console.log(divideNum(20, 5)) // 4
+    return x / y;
+};
+console.log(divideNum(20, 5)); // 4
 
 // since there are no parameters, we leave the parenthesis empty
 const singASong = () => {
-    return 'la la la la'
+    return 'la la la la';
+};
+
+
+
+
+
+
+
+// arrow functions: implicit returns
+// makes it where you dont have to write the return keyword
+//! only works when theres ONLY 1 EXPRESSION TO BE RETURNED
+
+/* 
+syntax: 
+        const varName = param1 => (
+            single expression here
+        )
+*/
+
+// the below functions are all the same function,
+// just written different ways and with a new variable name 
+
+//! regular function expression 
+const isEven2 = function(num) {
+    return num % 2 === 0;
+};
+
+//! arrow function with parenthesis around parameter
+const isEven3 = (num) => {
+    return num % 2 === 0;
+};
+
+// arrow function without parenthesis around parameter
+//! when you have 1 parameter, the parenthesis around the parameter are OPTIONAL
+const isEven4 = num => {
+    return num % 2 === 0;
+};
+
+//! arrow functions with 2 or more parameters must have parenthesis
+const isEven5 = (param1, param2) => {
+    return num % 2 === 0;
+};
+
+//! arrow function with implicit return:
+//! instead of curly braces, you use parenthesis
+const isEven6 = num => (
+    num % 2 === 0
+);
+
+// arrow function with an implict return written on one line
+// only do this when the expression is small and can fit on one line
+// its not a big deal to use parenthesis and can even make the code more readable
+const isEven7 = n => n % 2 === 0;
+console.log(isEven7(5)); // false 
+console.log(isEven7(10)); // true
+
+
+
+const numArray2 = [1, 2, 3, 4, 5, 6, 7, 8];
+
+// regular function expression
+const numArrayDoubled = numArray2.map(function (num){
+    return num * 2;
+});
+console.log(numArrayDoubled); // [2, 4, 6, 8, 10, 12, 14, 16]
+
+// with arrow function 
+const numArrayDoubled2 = numArray2.map(num => {
+    return num * 2;
+});
+console.log(numArrayDoubled2); // [2, 4, 6, 8, 10, 12, 14, 16]
+
+// with arrow function and implict return syntax
+const numArrayDoubled3 = numArray2.map(num => num * 2); 
+console.log(numArrayDoubled3) // [2, 4, 6, 8, 10, 12, 14, 16]
+
+
+// taking numArray2 and turning into an array of strings that say even or odd
+
+// regular function expression
+const parityList = numArray2.map(function(n){
+    if (n % 2 === 0) return 'even';
+        return 'odd';
+});
+console.log(parityList); 
+// ['odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even']
+
+// arrow function
+const parityList2 = numArray2.map(n => {
+    if (n % 2 === 0) return 'even';
+    return 'odd';
+});
+console.log(parityList2);
+// ['odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even']
+
+
+// in parityList2 we cannot use an implicit return function
+// since we return two different values based off the parameter n,
+// an implicit function would not work here because we arent returning 1 value
+//! however, you can write this same expression with a ternary operator
+//! acheiving the expression on one line and using the function syntax,
+//! for an implicit return function
+
+// implicit return arrow key function with ternary operator
+const parityList3 = numArray2.map(n => (
+    n % 2 === 0 ? 'even' : 'odd'
+));
+
+console.log(parityList3); // ['odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even']
+
+
+
+
+
+
+
+
+
+// array method .find()
+
+// finds the first instance of the given argument
+// after it finds the first match, it stops running and will only return the first match
+
+let movies = [
+    'The Fantastic Mr. Fox',
+    'Mr. and Mrs. Smith',
+    'Mrs. Doubtfire',
+    'Mr. Deeds'
+];
+
+// using .find() finds the first instance of Mrs and returns it
+const movie = movies.find(movie => {
+    return movie.includes('Mrs');
+});
+console.log(movie); // Mr. and Mrs. Smith
+
+// it returned the first element inside of the array that includes 'mrs' 
+// so we get mr and mrs smith
+
+// if we wanted to access mrs doubtfire we'd have to put some logic in 
+// using find to create a function that looks at the movies in the array 
+// using indexOf('Mrs') === 0 to find the movie with "Mrs" at index 0
+const movie2= movies.find(movie => {
+    return movie.indexOf('Mrs') === 0; 
+});
+console.log(movie2); // Mrs. Doubtfire
+
+
+
+
+
+
+// filter()
+
+// filters out subsets of an array 
+// if a number passes the given function, it will added to the return array
+// expects a callback function
+// filter() just creates a new array with  specified elements
+// it doesnt mutate or update the original, you just store the new array in a new variable
+
+// returns true or false for the given function and element.
+// if true, it adds the true value to the array
+
+
+// filtering out the odd numbers into a new array called odds
+
+const bunchOfNumbers = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+// filtering out the odd numbers
+const odds = bunchOfNumbers.filter(x => {
+    return x % 2 === 1;
+});
+console.log(odds); // [9, 7, 5, 3, 1]
+
+
+// filtering out the numbers smaller than 5
+// using syntax for implicit returns 
+const smallNums = bunchOfNumbers.filter(x => x < 5);
+console.log(smallNums); // [4, 3, 2, 1]
+
+// filtering out the even numbers 
+// using syntax for implicit return functions
+
+const evenNumbers = bunchOfNumbers.filter(x => x % 2 === 0);
+console.log(evenNumbers); // [8, 6, 4, 2]
+
+// filtering out the numbers greater than 5 from the array
+// using syntax for implicit returns AND using parenthesis around the parameter
+// just to mix it up
+// if the function returns a true value. so if x less greater than 5,
+// it will add it to the new array
+const bigNums = bunchOfNumbers.filter((x) => {
+    return x > 5 === true;
+});
+
+console.log(bigNums); // [9, 8, 7, 6]
+
+
+const book = [{
+    title: 'Good Omen',
+    authors: ['terry pratchett', 'neil gaiman'],
+    rating: 4.25,
+    genre: ['fiction', 'fantasy']
+},
+{
+    title: 'changing my mind', 
+    authors: ['zadie smith'],
+    rating: 3.83,
+    genre: ['nonfiction', 'essay']
+},
+{
+    title: 'bone the complete edition',
+    authors: ['jeff smith'],
+    rating: 4.42,
+    genre: ['fiction', 'graphic novel', 'fantasy']
+},
+{
+    title: 'american gods',
+    authors: ['neil gaiman'],
+    rating: 4.11,
+    genre: ['fiction', 'fantasy']
+},
+{
+    title: 'a gentleman in moscow',
+    authors: ['amor towles'],
+    rating: 4.54,
+    genre: ['fiction', 'historical fiction']
+},
+{
+    title: 'the name of the wind',
+    authors: ['patrick rothfuss'],
+    rating: 4.54,
+    genre: ['fiction', 'fantasy']
+},
+{
+    title: 'the overstory',
+    authors: ['richard powers'],
+    rating: 4.19,
+    genre: ['fiction', 'short stories']
+},
+{
+    title: 'the way of kings',
+    authors: ['brandon sanderson'],
+    rating: 4.65,
+    genre: ['fantasy', 'epic']
 }
+];
+
+// filtering out the books with a rating greater than 4.3
+// with implicit return function syntax
+
+const highBookRating = book.filter(b => b.rating > 4.3); //js takes this as a boolean
+// if true, it adds the true value to the new array
+console.log(highBookRating); // [{…}, {…}, {…}, {…}]
+
+// {title: 'bone the complete edition', authors: Array(1), rating: 4.42, genre: Array(3)}
+// 1: {title: 'a gentleman in moscow', authors: Array(1), rating: 4.54, genre: Array(2)}
+// 2: {title: 'the name of the wind', authors: Array(1), rating: 4.54, genre: Array(2)}
+// 3: {title: 'the way of kings', authors: Array(1), rating: 4.65, genre: Array(2)}
+
+
+// filtering out the fantasy books from the book array
+// with implicit return function syntax
+
+const fantasyBooks = book.filter(book => (
+    book.genre.includes('fantasy')
+));
+console.log(fantasyBooks); // [{…}, {…}, {…}, {…}, {…}]
+// 0: {title: 'Good Omen', authors: Array(2), rating: 4.25, genre: Array(2)}
+// 1: {title: 'bone the complete edition', authors: Array(1), rating: 4.42, genre: Array(3)}
+// 2: {title: 'american gods', authors: Array(1), rating: 4.11, genre: Array(2)}
+// 3: {title: 'the name of the wind', authors: Array(1), rating: 4.54, genre: Array(2)}
+// 4: {title: 'the way of kings', authors: Array(1), rating: 4.65, genre: Array(2)}
+
+
+//filtering out the mystery books from the book array using the parameter 'book'
+// with implicit return function syntax
+
+const mysteryBooks = book.filter(book => (
+    book.genre.includes('mystery')
+));
+console.log(mysteryBooks); // []
+// returns empty array because there is no genre that includes 'mystery'
+
+
+// filtering out the nonfiction books from the array 'book'
+// with implicit return function syntax
+
+const nonFictionBooks = book.filter(book => (
+    book.genre.includes('nonfiction')
+));
+console.log(nonFictionBooks); // [{…}]
+// 0: {title: 'changing my mind', authors: Array(1), rating: 3.83, genre: Array(2)}
+
+
+// filtering out genres that include 'essay' || 'short stories'
+// with implicit return function syntax
+// since we used a logical NOT operator, the expression is one line,
+// so it can be written as a implicit return statement
+const shortForm = book.filter(book => (
+    book.genre.includes('essay') ||
+    book.genre.includes('short stories')
+));
+console.log(shortForm); // (2) [{…}, {…}]
+// 0: {title: 'changing my mind', authors: Array(1), rating: 3.83, genre: Array(2)}
+// 1: {title: 'the overstory', authors: Array(1), rating: 4.19, genre: Array(2)}
+
+
+
+// seaching a title and finding books that contain '' blank string 
+// its blank simulating user input
+// written as an implicit return function 
+
+const query = '';
+const results = book.filter(book => (
+    book.title.toLowerCase().includes(query.toLowerCase())
+))
+console.log(results); // since the query is blank, and a value has not been specified
+// the results are the entire array, all 8 elements
+
+
+// same as above, just not an implicit return
+// so we need the curly braces
+// and a return statement
+const query2 = '';
+const results2 = book.filter(book => {
+    const title = book.title.toLowerCase();
+    return title.includes(query.toLowerCase());
+});
+console.log(results2); // [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}] 
+// since the query is blank, and a value has not been specified
+// the results are the entire array, all 8 elements:
+// 0: {title: 'Good Omen', authors: Array(2), rating: 4.25, genre: Array(2)}
+// 1: {title: 'changing my mind', authors: Array(1), rating: 3.83, genre: Array(2)}
+// 2: {title: 'bone the complete edition', authors: Array(1), rating: 4.42, genre: Array(3)}
+// 3: {title: 'american gods', authors: Array(1), rating: 4.11, genre: Array(2)}
+// 4: {title: 'a gentleman in moscow', authors: Array(1), rating: 4.54, genre: Array(2)}
+// 5: {title: 'the name of the wind', authors: Array(1), rating: 4.54, genre: Array(2)}
+// 6: {title: 'the overstory', authors: Array(1), rating: 4.19, genre: Array(2)}
+// 7: {title: 'the way of kings', authors: Array(1), rating: 4.65, genre: Array(2)}
+
+
 
