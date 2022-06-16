@@ -4678,7 +4678,7 @@ function makeBetweenFunc(param1,param2) {
     } 
             return false
     }
-} 
+};
 
 // now we need to assign it to a variable
 // once we assign it to a variable we can pass in the permanent parameters 
@@ -4711,9 +4711,9 @@ function checkInBetween(param1, param2) {
         }
         return false
     }
-}
+};
 
-const checkInBetweenVariable = checkInBetween(21, 100)
+const checkInBetweenVariable = checkInBetween(21, 100);
 
 console.log(checkInBetweenVariable(50)); // true 
 
@@ -4803,7 +4803,7 @@ howl();
 
 function howl() {
     console.log('rawr')
-}
+};
 
 // the code above still works because functions are hoisted 
 // you would think calling the function howl(); before it was declared would give us
@@ -4819,7 +4819,7 @@ function howl() {
 console.log(hoot)
 var hoot = function() {
     console.log('hoot hoot')
-}
+};
 // with var, the function is not hoisted, but the variable is.
 // javascript knows the variable exist, but it doesnt know its a function
 // let and const are not hoisted
@@ -4884,9 +4884,17 @@ every()
 // times the array value, will be logged to the console
 // function expression with anonymous function
 const exampleArray2 = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+
+
+// squaring the number forEach() element in the array 
+// where 'n' represents each element in the array 
 exampleArray2.forEach(function (n) {
     console.log(n * n); // 81, 64, 49, 36, 25, 16, 9, 4, 1
-})
+});
+
+
+
 
 // forEach value inside of the array, 
 // the 'if' statement will check if each value in the array is equal to modulo 2 === 0
@@ -4896,9 +4904,11 @@ exampleArray2.forEach(function (element) {
     if (element % 2 === 0) {
         console.log(element); // 8, 6, 4, 2
     }
-})
+});
 // only the even numbers printed to the console
 // because if a number is not even it will NOT be equal to modulo zero 
+
+
 
 // forEach value inside of the array 
 // run the function and take a parameter(if one is needed)
