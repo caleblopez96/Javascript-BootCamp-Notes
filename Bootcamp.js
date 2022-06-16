@@ -1567,9 +1567,13 @@ else {
     console.log('unlucky');
 }
 
-// above expression with ternary operator
 
-num9 === 9 ? console.log('lucky') :console.log('unlucky'); // lucky
+
+
+// above expression with ternary operator
+// if num9 === 9 ? console.log(lucky) : else console.log(unlucky)
+
+num9 === 9 ? console.log('lucky') : console.log('unlucky'); // lucky
 // condition  ?  expressionIfTrue : expressionIfFalse
 // condition  ?  expression       : expression
 // logs lucky to the console
@@ -5689,3 +5693,198 @@ console.log(results2); // [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…
 
 
 
+
+
+
+
+
+
+// every()
+// test whether ALL elements in the array pass the provided function.
+// returns a boolean value  
+//! the function passed as a callback must be a boolean function
+//! if 1 value is false after the expression is run the entire result is false
+//! if ALL values are true after the expression is run the entire result is true
+
+//! syntax:     arrayName.every(x => {
+//!             boolean function here
+//!             return statement
+//!             })
+
+
+
+const wordList = ['dog', 'dig', 'log', 'bag', 'wag']
+
+
+// checking if every() 'word' (which represents each string in the array)
+// has a length of 3 characters
+const lengthThree = wordList.every(word => {
+    return word.length === 3
+});
+
+console.log(lengthThree); // true - every word's length is === 3
+
+
+
+// checking if every() 'word' has a length of 2 characters
+// using implicit return function since every() only returns booleans
+const lengthTwo = wordList.every(word =>(
+    word.length === 2
+));
+
+console.log(lengthTwo); // false
+
+
+// checking if every 'word' has an index[0] of the letter 'd'
+//! since its using the every() method it checks every element inside of array
+//! and only accepts booleans, so you can use the implicit return function syntax 
+const doesWordInclude = wordList.every(word => (
+    wordList.indexOf[0] === 'd'
+))
+
+console.log(doesWordInclude); // false:
+// not every() 'word' included the letter 'd' at index[0]
+// so it returns false
+
+
+// checking to see if every() 'word' has a last letter of 'g'
+//! no implicit function here as theres more than just one return statement
+//! happening inside of the function
+const lastLetterG = wordList.every(char => {
+    let lastLetter = char[char.length - 1];
+    return lastLetter === 'g'
+});
+
+console.log(lastLetterG); // true - every word in the array ends with letter g
+
+// checking to see if every 'word' last letter is 'j'
+/// define function variable 
+// represent the last letter of the array elements in variable: 
+// arrayName.length - 1
+// return: arrayName[variable that stored the last letter of the array] - 1 === 'j'
+const lastLetterJ = wordList.every(word => {
+    const lastLetter = wordList.length - 1;
+    return wordList[lastLetter] - 1 === 'j'
+    //     arrayName[variable holding length of each word in array] - 1 === j
+});
+
+console.log(lastLetterJ); // false:
+
+
+
+
+
+
+
+
+
+// some()
+// similar to every() except it checks if any element, if not all pass the function 
+//! returns true if ANY of the array elements pass the function test
+//! if none of the array elements pass the function test it returns false
+//! the function passed as a callback must be a boolean function
+
+
+
+
+
+const wordList2 = ['dog', 'jello', 'cupcake', 'bag', 'wag'];
+
+// checking to see if any elements are longer than 4 characters
+const longerThan4 = wordList2.some(word => {
+    return wordList2.length > 4
+});
+
+console.log(longerThan4); // true
+// since just ONE of the values have to be true, the entire expression returns true
+
+const longerThan10 = wordList2.some(word => {
+    return wordList2.length > 9
+});
+
+console.log(longerThan10); // false
+
+
+//checking to see if any words start with the letter z
+const startWithZ = wordList2.some(word => {
+    return wordList2.indexOf[0] === 'z'
+});
+
+console.log(startWithZ) // false
+
+
+//checking to see if any words start with the letter c
+const startWithC = wordList2.some(word => {
+    return word[0] === 'c'
+    // return: 'word' which represents every element in the array 
+    // and [0]. so word[indexOf 0] === 'c'
+});
+
+console.log(startWithC); // true
+
+
+// checking to see if any elements contain a certain word
+const containsCake = wordList2.some(word => {
+    return wordList2.includes('cake')
+})
+
+console.log(containsCake); // true
+// the array element 'cupcake' contains the string 'cake'
+
+
+
+
+
+
+// some() vs every():
+// checking to see if any words start with 'd'
+
+
+// by checking if index 0 of each element: word[0] is === 'd'
+/* if at LEAST 1 element passes the function it returns true
+    else it returns false */
+const someStartWithD = wordList2.some(word =>{
+    return word[0] === 'd'
+});
+console.log(someStartWithD); // true 
+// some() checks if ANY value passes the function
+// since one passed we get true
+
+
+
+/* if ALL elements pass the function return true. all elements in array (represented by ('word'), didnt pass the function, so result is false) */ 
+const everyStartWithD = wordList2.every(word => {
+    return word[0] === 'd'
+})
+console.log(everyStartWithD); // false
+// every() checks to see if ALL elements pass the function 
+// else return false: since some and every are boolean methods,
+// theres no need to write boolean logic
+
+const booksRating = book.every(book => {
+    return book.rating > 3.5
+});
+
+console.log(booksRating); // true
+// every rating is greater than 3.5 so we get true
+
+
+
+// checking to see if book title contains 'the'
+const bookTitles2 = book.every(word =>{
+    return word.title.includes('the')
+});
+console.log(bookTitles2); // false
+// not every 'word' which is word.title.includes() includes 'the'
+// making the entire expression false
+
+
+const bookTitles3 = book.every(element =>{
+    return element.title.includes('map')
+});
+// in the above, 'element' represents the parameter place holder
+// since its an array method, it knows that its expecting a boolean callback
+
+console.log(bookTitles3); // false
+// not EVERY array element contains the word 'map'
+// therefore the entire expression returns false
