@@ -5894,7 +5894,145 @@ const bookTitles3 = book.every(element =>{
 });
 // in the above, 'element' represents the parameter place holder
 // since its an array method, it knows that its expecting a boolean callback
+// meaning we'll get either true or false returned back to us
 
 console.log(bookTitles3); // false
 // not EVERY array element contains the word 'map'
 // therefore the entire expression returns false
+
+
+
+
+
+
+
+
+
+// sort()
+// default sort() sorts by ASCII characters
+// sort() takes two parameters
+//! sort() needs two parameters to perform a sorting calculation
+// it compares the parameters and sorts off that comparison
+// arrayName.sort(compareFunction(param1, param2) => param1 - param2)
+//! 'compareFunction' is just a name for what its doing
+// once you sort() the array in any way it changes the original array
+
+
+// syntax:
+
+//! normal function expression
+/* const variableName = function arrayName.sort((param1, param2){
+    return param1 - param2
+});
+*/
+
+//! arrow function syntax
+/* const variableName = arrayName.sort((param1, param2) => {
+    return param1 - param2
+}); */
+
+//! one line arrow function syntax
+/* const variableName = arrayName.sort((param1, param2) => param1 - param2) */
+
+
+
+/* 
+! how sort works behind the scenes
+
+If compareFunction(param1, param2) returns LESS THAN 0: sort param1 before param2
+
+If compareFunction(param1, param2) returns 0:
+leave param1 and param2 unchanged with respect to each other
+
+If compareFunction(param1, param2) returns greater than 0:
+sort param2 before param1
+
+! to sort from lowest to smallest we do param1 - param2
+! to sort from highest to lowest we do param2 - param1
+*/
+
+const prices = [400.50, 3000, 99.99, 35.99, 12.00, 9500];
+console.log(prices.sort()); // [12, 3000, 35.99, 400.5, 9500, 99.99]
+// normal sort() returns sort by ASCII characters
+
+
+
+
+
+//! sorting numbers from low to high
+// the function is passed 2 parameters 'a', 'b'.
+const pricesLowToBig = prices.sort((a, b) => {
+    return a - b
+});
+
+//! notice the original array 'prices' has been changed to what the sort() did
+console.log(pricesLowToBig); // [12, 35.99, 99.99, 400.5, 3000, 9500]
+console.log(prices) // [12, 35.99, 99.99, 400.5, 3000, 9500]
+
+
+
+
+
+//! sorting from highest to lowest price using 'prices' array
+// sort function gets two parameters: in this example 'a', 'b'
+const pricesHighToLow = prices.sort((a, b) => {
+    return b - a
+});
+
+console.log(pricesHighToLow); // [9500, 3000, 400.5, 99.99, 35.99, 12]
+console.log(prices); // [9500, 3000, 400.5, 99.99, 35.99, 12]
+// the 'prices' array has changed permanently again based off the sort() method
+
+
+
+
+//! if you want to bypass the fact that it saves the sorted value into the original array
+//! store it in a new variable
+//! use slice()
+//! when you slice() it gives the sliced value to a new array 
+const prices2 = [400.50, 3000, 99.99, 35.99, 12.00, 9500];
+const badSort = prices2.slice().sort((a, b) => {
+    return a - b
+});
+console.log(badSort); // [12, 35.99, 99.99, 400.5, 3000, 9500]
+console.log(prices2); // [400.5, 3000, 99.99, 35.99, 12, 9500]
+// 'prices2' array remains unchanged even after the sort()
+
+
+
+
+
+//! using the 'book' array line 5561
+// sorting by rating of books
+// since you the array consist of objects, we cant sort it normally
+// .sort(param1.key - param2.key) key is the key inside the obj u want
+// accessing the ratings of 'book' array and sorting by low to small
+const sortByRating = book.sort((a, b) => {
+    return a.rating - b. rating
+});
+
+// sorts ratings from lower rating to higher rating
+console.log(sortByRating);
+// {title: 'changing my mind', authors: Array(1), rating: 3.83, genre: Array(2)}
+// {title: 'american gods', authors: Array(1), rating: 4.11, genre: Array(2)}
+// {title: 'the overstory', authors: Array(1), rating: 4.19, genre: Array(2)}
+// {title: 'Good Omen', authors: Array(2), rating: 4.25, genre: Array(2)}
+// {title: 'bone the complete edition', authors: Array(1), rating: 4.42, genre: Array(3)}
+// {title: 'a gentleman in moscow', authors: Array(1), rating: 4.54, genre: Array(2)}
+// {title: 'the name of the wind', authors: Array(1), rating: 4.54, genre: Array(2)}
+// {title: 'the way of kings', authors: Array(1), rating: 4.65, genre: Array(2)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
