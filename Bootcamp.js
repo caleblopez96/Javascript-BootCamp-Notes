@@ -5512,10 +5512,10 @@ console.log(movie2); // Mrs. Doubtfire
 
 
 
-// filter()
+// .filter()
 
 // filters out subsets of an array 
-// if a number passes the given function, it will added to the return array
+// if a number passes the given function, it will add it to the return array
 // expects a callback function
 // filter() just creates a new array with  specified elements
 // it doesnt mutate or update the original, you just store the new array in a new variable
@@ -5709,7 +5709,7 @@ console.log(results2); // [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…
 
 
 
-// every()
+// .every()
 // test whether ALL elements in the array pass the provided function.
 // returns a boolean value  
 //! the function passed as a callback must be a boolean function
@@ -5788,7 +5788,7 @@ console.log(lastLetterJ); // false:
 
 
 
-// some()
+// .some()
 // similar to every() except it checks if any element, if not all pass the function 
 //! returns true if ANY of the array elements pass the function test
 //! if none of the array elements pass the function test it returns false
@@ -5846,7 +5846,7 @@ console.log(containsCake); // true
 
 
 
-// some() vs every():
+// .some() vs .every():
 // checking to see if any words start with 'd'
 
 
@@ -5908,7 +5908,7 @@ console.log(bookTitles3); // false
 
 
 
-// sort()
+// .sort()
 // default sort() sorts by ASCII characters
 // sort() takes two parameters
 //! sort() needs two parameters to perform a sorting calculation
@@ -6021,6 +6021,196 @@ console.log(sortByRating);
 // {title: 'a gentleman in moscow', authors: Array(1), rating: 4.54, genre: Array(2)}
 // {title: 'the name of the wind', authors: Array(1), rating: 4.54, genre: Array(2)}
 // {title: 'the way of kings', authors: Array(1), rating: 4.65, genre: Array(2)}
+
+
+
+
+
+
+
+
+
+
+// .reduce()
+// built in array method that takes a callback
+// takes an array of values and reduces each element of the array to return a single value
+// .reduce() is useful for things such as: 
+// adding every element in an array together
+// finding the min/maximum value of an array
+// tallying data/votes or things in an object
+
+
+// think of it as youre reducing all the elements in the array into 1 element
+
+//! .reduce() must have at least two parameters
+//! the first parameter is the accumulator
+//! the second parameter is the current value
+
+/* 
+
+* syntax:
+
+* arrayName.reduce((accumulator, currentValue) => {
+*    return statement
+* });
+
+
+* syntax with a starting value:
+
+* arrayName.reduce((accumulator, currentValue) => {
+*    return statement
+* }, 100);
+? the starting value is 100 instead of 0 because we specified it after the callback function
+
+
+! how it works:
+const addAllNumsArray = [3, 5, 7, 9, 11] 
+const reduceExample = addAllNumsArray.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+});
+
+? Callback    accumulator     currentValue        return value
+first call          3               5                   8
+second call         8               7                   15
+third call          15              9                   24
+fourth call         24              11                  35
+
+
+! the first parameter 'accumulator' is the parameter storing the return value of each callback iteration
+
+! the second parameter currentValue  represents each element in the array
+
+? explanation: 
+
+? the first parameter is the accumulator and its value starts as the first element in the array.
+
+
+? the second parameter is the currentValue and its value starts at the second element in the array. 
+
+
+? your return statement should specify what calculation to return.
+
+
+? in the above example, we just added parameter 1(accumulator) + parameter 2(currentValue).
+? since the parameter 1 value was 3 and the paramater 2 value was 5, the return value is 8.
+? 8 now becomes the new parameter 1 value and 7 becomes the value of parameter 2.
+? the returned value of 15 becomes the new value of parameter 1.
+? the value of parameter 2 is now 9, the third element in the array.
+? since parameter 1 value was 15 and the parameter 2 value was 9, the return value is 24.
+? the returned value of 24 becomes the new value of parameter 1.
+? the value of parameter 2 is now 11, the last element in the array.
+? since parameter 1 value is 24 and parameter 2 value is 11, the return value is 35.
+
+
+? the array 'addAllNumsArray' now has one value stored inside of it. 
+? the value stored inside is 35. 
+? the last returned value of 35 after the array has been iterated becomes the value
+
+
+*/
+
+
+// .reduce() an array by adding every element
+// the array is reduced to one value 
+// after each element has been iterated and added together
+// we get a final return value
+// which becomes the new 'reduced' value of the variable that has the .reduce method in it
+const moreNums = [3, 4, 5, 6, 7];
+
+const reduceByAdd = moreNums.reduce((accumulator, currentValue)=>{
+    return accumulator + currentValue;
+}); 
+
+console.log(reduceByAdd); // 25 
+// 3 + 4 + 5 + 6 + 7 = 25
+//? how it actually works
+//? 3+4 = 7
+//? 7+5 = 12
+//? 12+6 = 18
+//? 18+7 = 25
+
+
+
+
+//! .reduce() an array by subtracting every element
+// using the moreNums array (line: 6108)
+
+const reduceBySubtract = moreNums.reduce((accumulator, currentValue)=>{
+    return accumulator - currentValue;
+});
+
+console.log(reduceBySubtract); // -19
+
+
+
+
+
+
+//! .reduce() an array by multiplying every element
+// using the moreNums array (line: 6108)
+
+const reduceByMultiply = moreNums.reduce((accumulator, currentValue)=>{
+    return accumulator * currentValue;
+});
+
+console.log(reduceByMultiply); // 2520 
+
+
+
+
+
+
+//! .reduce() an array to find the max value
+
+let studentGrades = [89, 96, 58, 77, 62, 93, 81, 99, 73];
+
+const topGrade = studentGrades.reduce((accumulator, currentValue)=>{
+    if (currentValue > accumulator) return currentValue;
+    return accumulator; 
+});
+
+console.log(topGrade); // 99
+
+
+// another way to find max value using Math.max and implicit return 
+// using 'max' as the name of parameter 1 instead of accumulator
+const maxScore = studentGrades.reduce((max, currentValue)=>(
+    Math.max(max, currentValue)
+));
+
+console.log(maxScore); // 99
+
+
+
+
+
+
+//! .reduce() an array to find min value
+const lowScore = studentGrades.reduce((accumulator, currentValue)=>{
+    if (accumulator > currentValue) {
+        return currentValue
+    }
+    return accumulator
+});
+
+console.log(lowScore); // 58
+
+
+// another way to use .reduce() to find the min value using Math.min
+// using 'min' as the name of parameter 1 instead of accumulator
+const minGrade = studentGrades.reduce((min, currentValue)=>(
+    Math.min(min, currentValue)
+));
+
+console.log(minGrade); // 58
+
+
+
+
+
+
+
+
 
 
 
