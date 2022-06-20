@@ -6634,7 +6634,7 @@ console.log(sampleGreeting('caleb', 'YOOOOOOO')); // YOOOOOOOOO, caleb!
 
 
 
-//! spread for function calls
+//! spread in function calls
 /* spread syntax allows an iterable such as an array to be 'expanded'
 in places where zero or more arguments (for function calls)
 or elements (for array literals) are expected, or an object expression
@@ -6715,4 +6715,319 @@ console.log(giveMeFour(...stringy));
 
 
 
+
+
+
+
+
+//! spread in array literals
+// spread in array literals create a new array using an existing array.
+// spread 'spreads' the elements from one array into another array.
+// it can be used to make a copy of an array 
+
+// spread in arrays in kinda like .concat()
+// but it gives you the option of a shorter, easier syntax.
+// it also allows you to specify how the arrays being combined.
+// the order you put the arrays to be spread inside of the parenthesis,
+// is the order in which the new array will organize them.
+
+const nums1 = [1, 2, 3];
+const nums2 = [4, 5, 6];
+// combining the arrays above:
+// when this function is called, it will spread nums1 and nums2
+// and give you the values of both arrays.
+const spreadArrays = () => {
+    console.log(...nums1, ...nums2); // 1 2 3 4 5 6
+};
+
+
+
+
+
+const cephalopods = ['dumbo octopus', 'humboldt squid', 'flamboyant cuttlefish'];
+
+const gastropods = ['giant african snail', 'banana slug', 'variable neon slug'];
+
+const cnidaria = ['fire coral', 'moon jelly'];
+
+
+// combining cephalopods and gastropods
+// and adding a value into the array that wasnt there before
+const mollusca = ['garden slug', ...cephalopods, ...gastropods];
+console.log(mollusca);
+/* ['garden slug', 'dumbo octopus', 'humboldt squid', 'flamboyant cuttlefish', 'giant african snail', 'banana slug', 'variable neon slug'] */
+
+
+const inverts = [...cephalopods, ...gastropods, ...cnidaria];
+console.log(inverts); /* ['dumbo octopus', 'humboldt squid', 'flamboyant cuttlefish', 'giant african snail', 'banana slug', 'variable neon slug', 'fire coral', 'moon jelly'] */
+
+
+
+// making a copy of existing array
+const cephCopy = [...cephalopods];
+console.log(cephalopods); // ['dumbo octopus', 'humboldt squid', 'flamboyant cuttlefish']
+console.log(cephCopy); // ['dumbo octopus', 'humboldt squid', 'flamboyant cuttlefish']
+
+
+
+
+
+
+
+
+
+//! spread in object literals 
+// copies properties from one object into another object literal
+// an object can only be spread to another object
+
+const feline = { legs: 4, family: 'felidae' };
+const canine = { family: 'caninae', furry: true };
+
+// spreading feline and canine objects together 
+const felineAndCanine = {...feline, ...canine};
+console.log(felineAndCanine); // {legs: 4, family: 'caninae', furry: true}
+// since we have two conflicting key value pairs
+// it overrides the values and will give you the last one
+// for instance in the consolelog above
+// we have two family keys. it overrides one
+
+
+
+// spread canine object into new object: const doggies.
+// adding a key-value pair of 'isPet: true'
+const doggies = {...canine, isPet: true};
+console.log(doggies); // {family: 'caninae', furry: true, isPet: true}
+
+
+
+// spreading the object feline, with its key-value pairs
+// and adding a key-value pair - genus: 'panthera
+const lions = {...feline, genus: 'panthera'};
+console.log(lions); // {legs: 4, family: 'felidae', genus: 'panthera'}
+
+
+// creating a copy of the lions object 
+const lionsClone = {...lions};
+console.log(lionsClone);
+
+
+// spreading an array into an object
+const nums3 = [3, 4, 5];
+console.log(...nums3, {...lionsClone});
+// if an array is spread into a new object
+// and the object has no key value pairs
+// it will create key value pairs based off the array
+// and the indices of the values 
+// ex: {0: 3, 1: 4, 2: 5}
+
+const randomish = [...'hello', {
+    ...doggies
+}];
+// 0: h
+// 1: e
+// 2: l
+// 3: l
+// 4: o
+// 5: {family: 'caninae', furry: true, isPet: true}
+
+
+
+
+
+
+
+
+
+//! rest 
+// looks like spread, but its not
+// used when we want to make functions that accept multiple arguments
+// collects all remaining arguments into an array 
+// the parameter given the rest must be the last parameter
+// in the functions arguments
+// its like a net and catches all arguments that werent
+// specified by a parameter
+
+
+
+// before rest we had to use the arguments object
+// using the arguments object which is the old way
+// the arguments object does NOT work in arrow functions
+function sumOf(){
+    console.log(arguments);
+}
+sumOf(1, 3, 5); // in the console returns 3 arguments 
+sumOf(5, 4, 6, 8, 9, 10, 30); // 7 arguments
+
+
+//! rest params
+// this function will accept any number of arguments
+// because we used the three periods with the param nums
+
+// collecting all arguments 
+// reducer function to get it to be reduced into 1 number
+function sumAll(...nums){
+    return nums.reduce((accumulator, currentVal)=>{
+        return accumulator + currentVal
+    })
+};
+
+
+// collecting the remaining arguments
+// that have not been matched to a parameter
+function sumAll1(...nums){
+    let total = 0;
+    for(let n of nums) total += n;
+    return total;
+};
+console.log(sumAll1(1,2)) // 3
+console.log(sumAll1(1, 2, 3, 4, 5)) // 15
+
+// collectiong the 'unclaimed' arguments
+// combine every argument that doesnt fit a predefined 
+// parameter like first, last,
+// and store them in an array
+function fullName(first, last, ...titles) {
+    console.log('first:', first)
+    console.log('last:', last)
+    console.log('titles:', titles);
+}
+
+
+console.log(fullName('caleb', 'lopez', 'mr', 'jr', 'III'));
+// first: caleb
+// last: lopez
+// titles: (3) ['mr', 'jr', 'III']
+
+
+const multiplyEx = (...nums) => (
+    nums.reduce((total, currentVal) => total * currentVal
+));
+
+
+
+
+
+
+
+
+
+//! destructuring
+// a short, clean syntax to 'unpack':
+// values from arrays
+// properties from objects
+// and putting those values into distinct variables.
+
+// when destructuring an array we 'unpack' based off of index position
+
+
+
+//* syntax 
+//* const [newVarName, newVarName] = arrayToDestructure 
+
+
+
+//* syntax to skip over values
+//* const [newVarName, , , newVarName] = arrayToDestructure
+// the above 2 commas would skip the next two elements in the array 
+// so we would get a new variable name for the first element 
+// skip the second and third
+// and another variable name for the fourth element
+
+
+
+//* syntax to skip collect variables, skip over some, then collect 'rest'
+//* const [newVarName, , , ...newVarName] = arrayToDestructure
+// the above collects first element into the first declared variable,
+// we then skipped the next two elements
+// then collected the rest of the elements after the 2 we skipped
+// into a new variable that will hold the 'rest' of the elements
+
+
+// when destructuring an array we 'unpack' based off of index position
+
+const raceResults = [
+    'eliud kipchoge',
+    'feyisa lelisa',
+    'galen rupp',
+    'girmay ghebreslassie',
+    'alphonce simbu',
+    'jared ward'
+];
+// prior to destructuring, the below method was the only way 
+// to 'destructure' certain parts of an array into variables
+// const gold = raceResults[0]
+// const silver = raceResults[1]
+// const bronze = raceResults[2]
+
+const [gold, silver, bronze] = raceResults
+// what the above does is:
+// it creates three new variables: gold, silver, bronze
+// since we specified three new variables
+// to be equal to receResults
+// javascript will assign the gold variable to index 0
+// silver will be assigned to element at index 1
+// bronze will be assigned to the element at index 3
+
+console.log(gold); // eliud kipchoge
+console.log(silver); // feyisa lelisa
+console.log(bronze); // galen rupp
+
+
+
+// skipping elements in the array
+const [first, , , fourth] = raceResults;
+console.log(first); // eliud kipchoge 
+console.log(fourth); // girmay ghebreslassie 
+
+
+
+const [firstPlace, secondPlace, thirdPLace, ...others] = raceResults;
+console.log(firstPlace); // eliud kipchoge
+console.log(secondPlace); // feyisa lelisa
+console.log(thirdPLace); // galen rupp
+console.log(others); // ['girmay ghebreslassie', 'alphonce simbu', 'jared ward']
+// the variable 'others' becomes an array with the rest of the values
+// that did not fit into the first three variables we created.
+
+
+
+
+
+
+
+
+//! destructuring objects 
+// make the variables based off the name of the property 
+// just like destructuring array, but we use object brackets
+// and we specifiy the property to destructure by using the key name
+
+
+const runner = {
+    runnerFirstName: 'eliud',
+    last: 'kipchoge',
+    country: 'kenya',
+    title: 'Winner'
+}
+
+
+const {runnerFirstName, country} = runner;
+console.log(runnerFirstName); // eliud
+console.log(country); // kenya
+console.log(`${runnerFirstName} from ${country}`); // eliud from kenya
+
+
+// if we want to destructure an object and we want to change the key name
+// after we destructure we do this:
+//* syntax:
+//* const {keyName: newVarToStoreIn} 
+
+// changing the key 'country' to 'nation'
+// changing the key 'title' to 'placement'
+const {country: nation, title: placement} = runner;
+console.log(nation); // kenya
+// the above key of country is whats used to store the value of kenya
+// but if we wanted to change the name after the destruture we would just 
+// the keyName colon: newName
+
+console.log(placement); // winner
 
