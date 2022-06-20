@@ -1,4 +1,4 @@
-//REMEMBER THE PRIMITIVE DATE TYPES IN JAVASRCRIPT
+//REMEMBER THE PRIMITIVE DATE TYPES IN JAVASRCRIPT:
 //Number
 //String
 //Boolean
@@ -6,14 +6,14 @@
 //Undefined
 //Symbol
 //bigInt
-//-------------------------------------------------------------
+//-------------------------------------------------------------//
 
-//Numbers
-//Javascript has ONE number type
-//Positive numbers
-//negative numbers
-//whole numbers(integers)
-//decimal numbers(floats)
+//! Numbers
+// Javascript has ONE number type
+// Positive numbers
+// negative numbers
+// whole numbers(integers)
+// decimal numbers(floats)
 
 //REMEMBER TO FOLLOW PEMDAS
 
@@ -50,7 +50,7 @@ let pemdasExample = 3 - 9 * 2; // -15
 
 //numbers cont:
 
-//NaN and Infinity 
+//! NaN and Infinity 
 
 //NaN stands for NotaNumber, but indeed a 'number'
 //its a numeric value that represents something that is not... a number
@@ -86,27 +86,36 @@ let question3 = 200 + 0/0; // NaN
 // 0/0 = NaN + 200 (NaN + a number is still not a number) = NaN
 
 
+
+
+
+
+
+
+
+
+
 //------------------------------------------------------------
 
-//Variables
-//are like "labeled jars" for a value in javascript
-//variables can be initialized with:
+//! Variables
+// are like "labeled jars" for a value in javascript
+// variables can be initialized with:
 // let (general usage for a variable that may or may not change)
 // const (general usage for a variable that will NEVER change)
 // var (out dated replaced by let)
-//variables are useful to store data in a name so that we can 
+// variables are useful to store data in a name so that we can 
 // recall it later
 // use it 
 // change it
 
-//                             syntax
+//* syntax
 
-//                  let variableNameHere = value;
-//                  const variableNameHere = value;
-//                  var variableNameHere = value;
+//*                 let variableNameHere = value;
+//*                  const variableNameHere = value;
+//*                  var variableNameHere = value;
 
 //for variable naming remember the reserved words, rules and naming practices
-//                      hint: useCamelCase 
+//hint: useCamelCase 
 
 //ive declared numerous varibles up top already using let and const
 //remember you can not declare variables with the same name
@@ -148,7 +157,17 @@ console.log(numExample3); // 18
 
 //----------------------------------------------------------------------------
 
-//Unary Operators
+
+
+
+
+
+
+
+
+
+
+//! Unary Operators
 
 // += operator: adds the given value to the variable (here we used 1)
 let newScore = 0;
@@ -183,7 +202,16 @@ console.log(incrementedNumber);
 
 //----------------------------------------------------------------------------
 
-//Boolean
+
+
+
+
+
+
+
+
+
+//! Boolean
 
 // true or false values. thats it
 // boolean comes in handy when we use logic and write logic in Javascript
@@ -217,7 +245,15 @@ let numOfDouts = 12; // 12 (number type)
 
 //-----------------------------------------------------------------------------
 
-//Strings
+
+
+
+
+
+
+
+
+//! Strings
 
 //Strings are pieces of text, or strings of characters
 //strings are always wrapped in quotes i.e: 'imAString'
@@ -284,7 +320,16 @@ console.log(gibberish[gibberish.length - 1]); // 4
 
 //----------------------------------------------------------------------------
 
-//String Methods 
+
+
+
+
+
+
+
+
+
+//! String Methods 
 //Strings come with a set of built-in methods, which are actions that can be
 //performed on or with that particular string
 //we can do things like 
@@ -292,8 +337,8 @@ console.log(gibberish[gibberish.length - 1]); // 4
 // replacing parts of a string
 // changing case (upper/lowercase)
 
-//syntax for string methods
-//                          string.method();
+//* syntax:
+//* string.method();
 
 //toUpperCase() / toLowerCase()
 
@@ -316,7 +361,15 @@ console.log(yell); // WELCOME TO MY WEBSITE
 // DONT FORGET THE PARENTHESIS AFTER .toUpperCase/.toLowerCase
 
 
-// .trim()
+
+
+
+
+
+
+
+
+//! .trim()
 // trims the extra white space preceeding and following the string
 // trim will NOT remove white space between words, no matter how much 
 // space is present. it only removes the white space before and 
@@ -337,10 +390,19 @@ console.log(trimToUpper); //GET RID OF THE WHITE SPACE PLEASE//
 // extra values needed to complete the method
 // these arguments are passed into the method via the parenthesis
 
-// syntax
-//                      thing.method(arguments)
+//* syntax
+//* thing.method(arguments)
 
-//.indexOf
+
+
+
+
+
+
+
+
+
+//! .indexOf()
 // basically gives you the index of something
 // in the examples below we're finding the index of a string within in a string
 // aka a substring
@@ -357,9 +419,17 @@ console.log(sport.indexOf('ball')); // 4 (ball starts at indec 4)
 // when writing logic to see if the thing youre looking for is there
 
 
-//.slice()
+
+
+
+
+
+
+
+
+//! .slice()
 // slice takes 'slices' of an exisiting string and gives you pieces 
-//                       thing.slice(start, end)
+//* thing.slice(start, end)
 //first value passed to slice is where it starts and the last value is where it
 // ends. note if no ending value is given
 
@@ -394,7 +464,14 @@ console.log(savings.slice(1)); // 50.60 (slices the dollar sign)
 //youre trying to isolate a certain protion of it
 
 
-// .replace()
+
+
+
+
+
+
+
+//! .replace()
 // replaces a value with another value 
 
 //if the values passed in are not found, it just wont replace anything.
@@ -443,7 +520,16 @@ console.log(trash.toLowerCase().slice(2).replace('b', '')); // rage
 // original variable of GARBAGE had a capital B.
 
 
-// String Escapes (aka escape characters, escape notation, escape sequence etc)
+
+
+
+
+
+
+
+
+
+//! String Escapes (aka escape characters, escape notation, escape sequence etc)
 // they allow you to use other wise illegal or functional (/,-) characters
 // so javascript wont recognize them
 
@@ -481,12 +567,21 @@ console.log(sayingFour);
 
 //-----------------------------------------------------------------------------
 
-//string template literals `${}`
+
+
+
+
+
+
+
+
+
+//! string template literals `${}`
 //template literals are strings that allow embedded expressions, which will be evaluated and then turned into a resulting string
 //special strings that take in information expressions, other variables, data etc, and spit out one value at the end
 //data is being interpolated inside the string
-// syntax:
-//                              `${}` 
+//* syntax:
+//* `${}` 
 //(back ticks, dollar sign, open/close curly braces)
 // `i am a template literal` (cuz the backticks) 
 
@@ -520,10 +615,21 @@ let yourAge = 19;
 console.log(`you must be ${minAge} to enter. Please come back in ${minAge - yourAge} years`);
 
 
-// Null and Undefined
+
+
+
+
+
+
+
+
+
+
+//! Null and Undefined
 // both represent the idea of nothingness, or the lack of a value, but 
 // theyre different
-// one of the main differences is we dont normally set values to undefined. // you can, but we dont usually do it. normally undefined is a line we get 
+// one of the main differences is we dont normally set values to undefined. 
+// you can, but we dont usually do it. normally undefined is a line we get 
 // back from Javascript telling us a that the var refrenced is undefined
 
 //null - "intentional absence of any value"
@@ -550,17 +656,24 @@ console.log(unLaugh[5]); // undefined (there is no character at index 5)
 
 
 
-//Math Object
+
+
+
+
+
+
+
+//! Math Object
 //just a collection of math functionality
 //contains properties and methods for mathematical constants and fucntions
 //most the time you use the math object it will be for its methods like
 //rounding or finding absolute value or generating a random number
 
-//syntax
-//                          Math.method()
+//* syntax:
+//* Math.method()
 // the M is capital ALWAYS
 
-//Math.PI
+// Math.PI
 //representation of pi
 let pi = Math.PI; 
 console.log(pi); // 3.141592653589793
@@ -568,7 +681,7 @@ console.log(pi); // 3.141592653589793
 let pi3 = 3 + Math.PI; // ads the value of 3 to pi
 console.log(pi3); // 6.141592653589793
 
-//Math.round()
+// Math.round()
 //rounds your number up or down to the nearest whole number
 let floatNumber = 4.5;
 console.log(Math.round(floatNumber)); // 5
@@ -576,14 +689,14 @@ console.log(Math.round(floatNumber)); // 5
 let floatNumber2 = 3.2;
 console.log(Math.round(floatNumber2)); // 3
 
-//Math.abs()
+// Math.abs()
 //gives you absolute value of number
 //always returns a positive number
 //good way to turn a negative number positive
 let absNum = -456;
 console.log(Math.abs(absNum)); // 456
 
-//Math.pow()
+// Math.pow()
 //raises to the power of 
 //aka exponent
 //the two values passed in are seperated by a comma
@@ -633,7 +746,15 @@ let diceRoll = Math.floor(Math.random() *6) +1;
 console.log(diceRoll); // random number between 1-6
 
 
-//typeof !not camelCase! and does not require parthensis with values
+
+
+
+
+
+
+
+
+//! typeof !not camelCase! and does not require parthensis with values
 //its an operator like the + or - or / sign.
 //typeof operator is used to determine the type of a given value ie. number,
 //string, boolean etc
@@ -653,7 +774,14 @@ console.log(typeof boolean2); // boolean
 
 
 
-//parseInt & parseFloat
+
+
+
+
+
+
+
+//! parseInt & parseFloat
 //extracts a number from a string and turns it into a number as long as the first character of the string is a valid digit
 
 //form data comes as a string. this is one way to extract the numbers to use
@@ -694,7 +822,17 @@ console.log(parseFloat(sayingFive)); // NaN
 
 
 //---------------------------------------------------------------------------
-//Making decisions with logic
+
+
+
+
+
+
+
+
+
+
+//! Making decisions with logic
 
 
 //Comparison Operators
@@ -802,7 +940,14 @@ console.log(logInStatus === true); // false
 console.log(logInStatus === false); // true
 
 
-// non equality vs strict non equality
+
+
+
+
+
+
+
+//! non equality vs strict non equality
 
 // != vs !==
 // These are the exact same as the examples above, they just are checking
@@ -838,7 +983,16 @@ console.log(num10 !== '10'); // true
 
 //----------------------------------------------------------------------------
 
-//conditional statement - making decisions with code
+
+
+
+
+
+
+
+
+
+//! conditional statement - making decisions with code
 // conditional statments can have an:
 
 
@@ -850,7 +1004,7 @@ console.log(num10 !== '10'); // true
 
 
 
-//if statements
+// if statements
 // run certain code 'if' a given condition is true
 //syntax:
 /*              
@@ -978,7 +1132,13 @@ else if (newRating1 === 0) {
 
 
 
-// else 
+
+
+
+
+
+
+//! else 
 
 // think of it as 'otherwise'
 // runs if nothing else before it is true.
@@ -991,7 +1151,7 @@ else if (newRating1 === 0) {
 // you can only have one 'else' per 'if' statement
 // else is used as kind of like an escape from the expression
 
-// syntax:
+//* syntax:
 
 /*  
 
@@ -1055,7 +1215,13 @@ else {
 
 
 
-// nesting conditonals
+
+
+
+
+
+
+//! nesting conditonals
 
 // nesting is essentially putting conditional statements within 
 // other conditional statements
@@ -1087,11 +1253,17 @@ else {
     console.log('Password is too short.');
 };
 
-
-
 //----------------------------------------------------------------------------
 
-// truthy and falsy values
+
+
+
+
+
+
+
+
+//! truthy and falsy values
 
 // all values have an inherent truthy or falsy boolean value
 /* falsy values:
@@ -1156,16 +1328,25 @@ else {
 
 //----------------------------------------------------------------------------
 
-/* logical operators: 
-Allow you to add more than one condition inside parenthesis
 
-&& - AND
 
-|| - OR
 
-! - NOT
 
-*/
+
+
+
+
+
+//! logical operators: 
+// Allow you to add more than one condition inside parenthesis
+
+//* && - AND
+
+//* || - OR
+
+//* ! - NOT
+
+
 
 
 
@@ -1379,7 +1560,12 @@ if (flavor2 !== 'grape' && flavor2 !== 'cherry') {
 
 
 
-// Operator precedence 
+
+
+
+
+
+//! Operator precedence 
 // operator precedence will run in the order below unless there are parenthesis. expressions inside the parenthesis will evaluate first regardless of operator precedence. you can use this to your advantage by using parenthesis to dictates what runs first.
 // precedence order :
 // NOT (!) has higher precendence than 
@@ -1401,12 +1587,19 @@ console.log(num7 == 7 || num7 === 3 && num7 > 10); // true
 
 
 
-
-
 //----------------------------------------------------------------------------
 
-// switch statements
-// syntax:
+
+
+
+
+
+
+
+
+
+//! switch statements
+//* syntax:
 /*
 
         switch (variableToBeSwitched) {
@@ -1549,10 +1742,19 @@ switch (emoji) {
 
 //----------------------------------------------------------------------------
 
-//ternary operator (three pieces 'ternary')
+
+
+
+
+
+
+
+
+
+//! ternary operator (three pieces 'ternary')
 // if this condition is true this code runs, if not this other code runs
 
-// condition ? expressionIfTrue: expressionIfFalse
+//* condition ? expressionIfTrue: expressionIfFalse
 
 //takes an 'if' and 'else' statement and combines them to one line of code
 // this only works with simple yes or no (so 'if' and 'else')
@@ -1601,7 +1803,16 @@ console.log(color2); // green
 
 //-----------------------------------------------------------------------
 
-// arrays & objects - collections of data
+
+
+
+
+
+
+
+
+
+//! arrays & objects - collections of data
 
 
 // arrays - ordered colletions of values
@@ -1614,9 +1825,9 @@ console.log(color2); // green
 
 //creating arrays
 
-// syntax:
-//                            const arrayName = [];
-//                            new Array(value, value, value);            
+//* syntax:
+//* const arrayName = [];
+// new Array(value, value, value);            
 // the new Array() is not used often. its better to use []
 
 // to make an empty array
@@ -1646,7 +1857,13 @@ console.log(lottoNumbers.length); // 5
 
 
 
-// array indices
+
+
+
+
+
+
+//! array indices
 // arrays are index'd meaning they start counting the corresponding num at 0
 
 //                      let array = [5, 10, 15, 20]
@@ -1693,7 +1910,7 @@ console.log(shoppingList2); // [cheese, whole milk, water, candy, eggs]
 
 
 
-// common array methods
+//! common array methods
 
 // push() - adds to end (specify what to add in parenthesis)
 
@@ -1758,7 +1975,7 @@ console.log(dishesToDo); // ['knife', 'spoon', 'large plate', 'baking pan', 'coo
 
 
 
-// more array methods 
+//! more array methods 
 
 // concat() - merges array (concatnates arrays)
 
@@ -1817,10 +2034,10 @@ console.log(allFood); // ['steak', 'chicken', 'apples', 'bananas', 'asparagus', 
 // includes()
 // searches the array for a value and returns boolean value
 // if multiple values are received, it only needs to find one in order for it to return true 
-//syntax:
-//             array.includes(value youre looking for)
-//             array.includes(value youre looking for, fromIndex)
-//             from index allows you to specify where your search starts from in terms of index position
+//* syntax:
+//* array.includes(value youre looking for)
+//* array.includes(value youre looking for, fromIndex)
+// from index allows you to specify where your search starts from in terms of index position
 
 // searches the array allFood and looks for the string 'steak'
 console.log(allFood.includes('steak')); // true
@@ -2006,12 +2223,21 @@ console.log(numArray.sort()); // [0, 12, 17, 5, 73, 81]
 
 //----------------------------------------------------------------------
 
-//Refrence types 
 
-// primitive types are value type vaiables
+
+
+
+
+
+
+
+//! Refrence types 
+
+// primitive types are value type variables
 // javascript stores the actual value  
 
-// non primitive data types like arrays and objects are stored as refrences. the variable doesnt actually hold the array, it just holds the 'label' of the array as reference to its place in memory 
+// non primitive data types like arrays and objects are stored as refrences. the variable doesnt actually hold the array,
+// it just holds the 'label' of the array as reference to its place in memory 
 // think of it like this 
 // let array = [1, 2, 3]  #refrence ID :129966
 // the variable "array" points to the refrence and the reference is where the actual array is stored
@@ -2126,10 +2352,10 @@ const ticTacToeBoard = [
 
 
 
-// Javascript Objects
+//! Javascript Objects
 // curly braces signify an object
-//syntax:
-//                         let myObject = {}
+//* syntax:
+//* let myObject = {}
 
 // objects allow us to store data that we can assciate in groups of things by specifying labels (properties)
 // objects are collections of properties
@@ -2383,7 +2609,13 @@ console.log(userReviews); // {dableb: 7, username: 'your username'}
 
 
 
-// nested arrays & objects
+
+
+
+
+
+
+//! nested arrays & objects
 
 // you can nest objects inside of an array
 // you can nest an array inside an object 
@@ -2429,8 +2661,8 @@ const student = {
 };
 
 //accessing values inside the object student using keys
-// syntax:
-//           object.object.key       object.object.key
+//* syntax:
+//* object.object.key       object.object.key
 console.log(student.exams.midterm + student.exams.final); // 180
 console.log((student.exams.midterm + student.exams.final) / 2); // 90
 
@@ -2536,9 +2768,18 @@ walkoutSong: "final countdown"
 
 
 
-//objects and reference types 
 
-//the reason arrays and objects are stored as 'refrences' is because normally the value's put inside of them are too much for the computer memory. a variable is stored straight to the computers memory because its usually not any where near the size of some arrays or objects and that particular place in memory can hold a value such as a string or a number. this is why objects and array's are normally declared with const. since javascript points to the refrence of the actual array/object, the values inside of the objects and arrays are mutable regardless of being declared by const.
+
+
+
+
+//! objects and reference types 
+
+//the reason arrays and objects are stored as 'refrences' is because normally the value's put inside of them are too much for the computer memory.
+// a variable is stored straight to the computers memory because its usually not any where near the size of some arrays or objects,
+// and that particular place in memory can hold a value such as a string or a number. 
+// this is why objects and array's are normally declared with const. since javascript points to the refrence of the actual array/object, 
+// the values inside of the objects and arrays are mutable regardless of being declared by const.
 
 //making two objects with the same data inside of them. when you compare them to see if theyre equal, although they have the exact same keys and pairs, THEY ARE NOT EQUAL. Javascript is not checking the keys and value pairs when it compares the two objects. its looking at the reference of the object. since each object has its own reference, javascript says they are not equal
 
@@ -2619,7 +2860,7 @@ if (user.notifications === []) {
 
 // instead use this:
 if (user.notifications.length === 0) {
-    console.log('this is how you do it')
+    console.log('this is how you do it') // this is how you do it 
 };
 // here we are checking if user.notifications length is === to 0 and since its an empty array, its currently === to 0 which is why the above code logs to the console
 
@@ -2632,7 +2873,14 @@ console.log(user.notifications.length); // 0
 
 
 
-// Javascript looping 
+
+
+
+
+
+
+
+//! Javascript looping 
 // its how you repeat code. allows logic to be ran over and over.
 // loops are essentially reapeted logic
 // they allow us to do things like print hello 10 times, or add all numbers in an array
@@ -2651,26 +2899,29 @@ console.log(user.notifications.length); // 0
 
 
 // for loops
-//syntax*
+//* syntax:
 //similair to if statements
 
 /* 
 
 
-for (initialExpression; conditon; incrementExpression) {
+*for (initialExpression; conditon; incrementExpression) {
     code to be run goes here,
     code to be run goes here,
     code to be run goes here
 };
 
 
-initial expression is what number youre staring at. think of it as a counter. if we are trying to run a for loop on an array, and we wanted to start at the first item in the array, our initial expression would be: 
+initial expression is what number youre staring at. think of it as a counter. 
+if we are trying to run a for loop on an array, and we wanted to start at the first item in the array, our initial expression would be: 
 let i = 0;
 for an object we would most likely do this:
 let i = 1;
 
-condition is the condition of the for loop. what condition do we want to meet? do we need to print 'hello' to the console 5 times?
+condition is the condition of the for loop. 
+what condition do we want to meet? do we need to print 'hello' to the console 5 times?
 if we wanted to print 'hello' to the console 5 times it would look like this:
+
 for(let i = 1; i <= 5;)
 
 increment expression is how much we want to increment by each iteration of the loop. if i needed 5 hellos to the console i would start my counter at 1. go until its less than or equal to 5, then increment the count by 1 each time. that would look like this:
@@ -2813,7 +3064,12 @@ console.log('after the loop');
 
 
 
-// infinite loops 
+
+
+
+
+
+//! infinite loops 
 // run forever...
 // infinite loops are something you want to avoid
 // an infinite loops is a loop where the second condition is never met
@@ -2840,10 +3096,16 @@ the !not operator makes it where the code wont run if it hits 20. its better to 
 
 
 
-// for loops & arrays
-// to loop over an array, start at 0 (because arrays are indexed) and continue to the last index (.length - 1) is an easy way to specifiy the end of the array
-// ! array.length - 1 = the way to find the last index of an array !
-// ! array.length - 1 allows you to loop through the entire array.
+
+
+
+
+
+//! for loops & arrays
+// to loop over an array, start at 0 (because arrays are indexed) and continue to the last index.
+// (.length - 1) is an easy way to specifiy the end of the array
+// array.length - 1 = the way to find the last index of an array.
+// array.length - 1 allows you to loop through the entire array.
 const animalList = [
     'lions',
     'tigers',
@@ -3017,11 +3279,15 @@ for (i = 0; i < myStudents.length; i++) {
     */
 };
 
-// we stored the objects of the array inside the variable studentTestSCore because we need a way to access the objects of the array. And since we're going to be referring to just the objects multiple times we stored it in the variable. We still have to access the key value pairs with dot notation, but getting the index of each object is key to getting the actual object to display and not the word 'object'
+// we stored the objects of the array inside the variable studentTestSCore because we need a way to access the objects of the array. 
+// And since we're going to be referring to just the objects multiple times we stored it in the variable. 
+// We still have to access the key value pairs with dot notation, but getting the index of each object is key to getting the actual object to display and not the word 'object'
 
 
 
-// looping through a string letter by letter starting from the end of the string. which is why we set i to be word5.length - 1 because .length gives us the amount of characters and we need the index so we just minus one from the .length of the variable
+// looping through a string letter by letter starting from the end of the string. 
+// which is why we set i to be word5.length - 1.
+// because .length gives us the amount of characters and we need the index so we just minus one from the .length of the variable
 
 const word5 = 'stressed';
 let reversedWord5 = '';
@@ -3068,7 +3334,12 @@ console.log(total / myStudents.length); // 86.25
 
 
 
-// nested loops
+
+
+
+
+
+//! nested loops
 
 
 
@@ -3093,25 +3364,25 @@ for (i = 0; i <= 4; i++) {
 /* 
 the console log:
 outer: 0
- inner: [0]
- inner: [1]
- inner: [2]
+inner: [0]
+inner: [1]
+inner: [2]
 outer: 1
- inner: [0]
- inner: [1]
- inner: [2]
+inner: [0]
+inner: [1]
+inner: [2]
 outer: 2
- inner: [0]
- inner: [1]
- inner: [2]
+inner: [0]
+inner: [1]
+inner: [2]
 outer: 3
- inner: [0]
- inner: [1]
- inner: [2]
-outer: 4
- inner: [0]
- inner: [1]
- inner: [2]
+inner: [0]
+inner: [1]
+inner: [2]
+uter: 4
+inner: [0]
+inner: [1]
+inner: [2]
 
 */
 
@@ -3352,11 +3623,12 @@ console.log(words3[i], words4[i]);
 
 
 
-// for of with objects
-// for of's dont work with objects because in Javascript objects not iterable like arrays or strings. 
+//! for of with objects
+// for of's dont work with objects because in Javascript objects are not iterable like arrays or strings. 
 // instead javascript has Object.keys() and Object.values() which can help you loop over keys inside an object because they are iterable 
-/* syntax:
-                                Object.keys()
+/* 
+* syntax:
+* Object.keys()
 inside partenthesis goes the name of the object you want to get the keys from 
 
 to get the values use:
@@ -3585,7 +3857,8 @@ for (let k in [ 88, 99, 77, 66]) {
 
 
 
-// functions 
+
+//! functions 
 
 // a function is a resuable procedure 
 // it allows us to write reusable, modular code
@@ -3623,7 +3896,7 @@ console.log(square(4, 4) // 16
 // function declaration (function statement)
 /*  
 
-syntax:
+* syntax:
 
 function functionName() {
     defining what the function does
@@ -3637,7 +3910,7 @@ whatever code that is inside of the function is what is ran when we call the fun
 step 2: 
 calling the function:
 
-syntax:
+* syntax:
 
                 functionName(); // run once
                 functionName(); // run again
@@ -3696,7 +3969,11 @@ console.log(throwDice());
 
 
 
-// function arguments
+
+
+
+
+//! function arguments
 // 'arguements' is a fancy term for inputs to a function
 
 function greet () {
@@ -3799,7 +4076,13 @@ console.log(numLessThan(0)); // your number 0 is equal to 0
 
 
 
-// functions with multiple arguments
+
+
+
+
+
+
+//! functions with multiple arguments
 
 // parameters vs arguments:
 // parameters - are the names listed in the functions definition
@@ -3863,7 +4146,7 @@ addFourNumbersTogether( 4, 3, 2, 1 ) // 10
 
 
 
-// return()
+//! return()
 // a built-in method that 'returns' values when we call them. This is great for storing results or the 'return' into a variable
 
 // printing to the console and returning a value may seem similair, but theyre very different
@@ -3873,9 +4156,9 @@ addFourNumbersTogether( 4, 3, 2, 1 ) // 10
 // return statements end execution
 
 /*
-syntax:
+* syntax:
 
-function funcName() {
+* function funcName() {
     return 
 }
 
@@ -3891,7 +4174,7 @@ console.log(idx); // 2
 
 function subtractNums(x, y) {
     console.log(x - y);
-}
+};
 // by typing subtractNums (some argument, some argument) into the console we get an answer like this // 
 /* 
 
@@ -3911,7 +4194,7 @@ if we tried to store subtractNum in a variable it would look like subtractNum = 
 // return x + y
 function addXY (x, y) {
     return x + y;
-}
+};
 
 //storing the return in a variable
 // declaring new const sum1 
@@ -3936,7 +4219,7 @@ function isPurple(color) {
     else {
         return false;
     }
-}
+};
 
 // the reason we added toLowerCase is so we dont have to code a rule for if the string was in caps.
 // what this does is it takes the argument and lowercases it before checking to see if its equal to our specific string which is 'purple' in all lower case
@@ -4213,7 +4496,12 @@ function headsOrTails() {
 
 
 
-// function scope
+
+
+
+
+
+//! function scope
 // is like variable visibility
 // depending on where you define a variable depends on where it can be used
 // the location of where the variable is define dictates where we have access to it
@@ -4347,7 +4635,12 @@ function outerFunction2() {
 
 
 
-// function expressions 
+
+
+
+
+
+//! function expressions 
 // a different syntax for writing functions
 
 // ANONYMOUS FUNCTIONS: function is declared without a name: 'function (num)'
@@ -4435,10 +4728,10 @@ const operations = [addition, subtraction, multiplication2, division];
 // in order to access a function inside of an array, use the index of the function
 // accessing the subtraction function from inside of the array 
 
-//syntax:
-//           variableNameHoldingTheArray[array index of function](arguments)
+//* syntax:
+//* variableNameHoldingTheArray[array index of function](arguments)
 
-//                           variable[index](arguments)
+//*  variable[index](arguments)
 
 // accessing just the function 
 operations[1]; // returns the function (does not call it or execute it or pass arguments) 
@@ -4463,7 +4756,7 @@ operations[3](40, 4); // 10
 for (let func of operations) {
     let result = func(30, 5);
     console.log(result); // 35, 25, 150, 6 (the results of the arguments given to the placeholder that were then passed to each function throughout the iteration of the array)
-}
+};
 
 
 
@@ -4516,7 +4809,12 @@ console.log(objectMethodPractice.operation4(25, 5)) // 5
 
 
 
-// higher order functions -
+
+
+
+
+
+//! higher order functions -
 // functions that operate on/with other functions
 // they can accept other functions are arguments 
 // a function that returns a function
@@ -4627,7 +4925,12 @@ console.log(pickOne(cry, rage));
 
 
 
-// functions as return values
+
+
+
+
+
+//! functions as return values
 // you basically give it a permanent argument 
 // and the function returns a value of the function executed inside
 
@@ -4734,7 +5037,12 @@ console.log(checkInBetweenVariable(15)); // false
 
 
 
-// callbacks
+
+
+
+
+
+//! callbacks
 // a callback is a function passed as an argument to a parameter in another function
 // anytime we pass a function to another fucntion and its executed in that function,
 // its a callback
@@ -4794,7 +5102,13 @@ btn.addEventListener('click', function(){
 
 
 
-// hoisting
+
+
+
+
+
+
+//! hoisting
 // declaring variables with var can be hoisted, which means it can be accessed as long 
 // as the code is available somewhere in the file
 // let/const is the better declaration because it doesnt get hoisted
@@ -4828,16 +5142,18 @@ var hoot = function() {
 // use let and const to avoid unexpected hoisting
 
 
-
-
-
-
-
-
-
 //-----------------------------------------------------------------------------
 
-// array callback methods
+
+
+
+
+
+
+
+
+
+//! array callback methods
 // arrays come with many built-in methods that expect callback functions to be passed to them
 
 // all these methods have to do with arrays
@@ -5023,16 +5339,6 @@ the console log:
 
 
 
-
-
-
-
-
-
-
-
-
-
 // map()
 // creates a new array from exisiting array
 // with the results of calling a callback on every element in the array
@@ -5041,15 +5347,13 @@ the console log:
 // !the second parameter given to the function is always the index
 
 
-// syntax:
+//* syntax:
 /*                   
 
-                        const varName = arrayName.map(function(){
-                                code the function here
-                                'return' statment
-                        })
-
-
+*const varName = arrayName.map(function(){
+code the function here
+'return' statment
+})
 
 */
 
@@ -5093,7 +5397,7 @@ this is because it doesnt know what you want to return based off of your functio
 const texts = ['rofl', 'lol', 'omg', 'ttyl'];
 const caps = texts.map(function(t) {
     return t.toUpperCase();
-})
+});
 
 // the original array remains the same
 console.log(texts); // ['rofl', 'lol', 'omg', 'ttyl']
@@ -5108,7 +5412,7 @@ const numberList = [10, 20, 30, 40, 50];
 // give it something to be called by
 const doubleValues = numberList.map(function(num){
     return num * 2
-})
+});
 
 console.log(numberList); // [10, 20, 30, 40, 50]
 
@@ -5120,7 +5424,7 @@ const numDetail = numberList.map(function(n){
         value: n,
         isEven: n % 2 === 0
     }
-})
+});
 
 // returns an object containing the objects
 // with the keys as 'value', and 'isEven' because we defined those above 
@@ -5138,8 +5442,8 @@ const words = ['asap', 'byob', 'rsvp', 'diy'];
 
 const upperCasedWords = words.map(function(word){
     return word.toUpperCase();
-})
-console.log(upperCasedWords)
+});
+console.log(upperCasedWords);
 
 // same results as above, just an block of code, not a function:
 // defining a new variable to be an empty array for(let num of numbers) num represents each item in the array  
@@ -5148,18 +5452,18 @@ console.log(upperCasedWords)
 const doubles2 = [];
 for (let num of doubles2) {
     doubles2.push(num * 2);
-}
+};
 
 // step 1: define variable that will hold our new array
 // arrayName.map(function (parameter))
 // step 2: return parameter.toUpperCase().split('').join('.')
 const abbreviations = words.map(function(word){
     return word.toUpperCase().split('').join('.')
-})
+});
 
-console.log(words)
+console.log(words);
 
-console.log(abbreviations)
+console.log(abbreviations);
 
 // what the above does is:
 // takes the parameter word which represents every individual element in the array
@@ -5188,7 +5492,7 @@ const bookShelf2 = [{
     author: ['amor towles'],
     ratings: 4.36
 }
-]
+];
 
 // storing the book titles in a variable called bookShelf2Titles
 // using .map to create a new array,
@@ -5197,7 +5501,7 @@ const bookShelf2 = [{
 // in the case below its the title of the books in the array BookShelf2
 const bookShelf2Titles = bookShelf2.map(function(book) {
     return book.title
-})
+});
 
 console.log(bookShelf2Titles); /* ['good omen', 'bone: the complete edition', 'american gods', 'a gentleman in moscow'] */
 
@@ -5207,7 +5511,7 @@ console.log(bookShelf2Titles); /* ['good omen', 'bone: the complete edition', 'a
 const studentNames = ['jonny', 'jenny', 'vinny', 'henney']
 const studentNamesNew = studentNames.map(function(name, idx){
     return idx + ': ' + name.toUpperCase()
-})
+});
 
 console.log(studentNamesNew); // ['0: JONNY', '1: JENNY', '2: VINNY', '3: HENNEY']
 
@@ -5223,7 +5527,7 @@ const userNameList = userNames.map(function(name){
     } else {
         return `${name} is not greater than 4 characters`
     }
-})
+});
 
 console.log(userNameList) /* ['user123 is greater than 4 characters', 'anon1 is greater than 4 characters', 'yankeefan is greater than 4 characters', 'cubfan is greater than 4 characters', 'user is not greater than 4 characters'] */
 
@@ -5254,7 +5558,7 @@ let time = [
     2200,
     2300,
     2400
-]
+];
 
 // creating function that uses the array time 
 // using a for of loop it checks to see if the hour is greater than 2000
@@ -5268,7 +5572,7 @@ function isItLate(num) {
             return false
         }
     }
-}
+};
 
 console.log(isItLate(2100)); // true
 
@@ -5284,35 +5588,40 @@ console.log(isItLate(0900)); // false
 
 
 
+
+
+
+
+
 //---------------------------------------------------------------------------------
 
-// arrow functions
+//! arrow functions
 // syntactically compact alternative to a regular function expression
 // creates an anonymous function with an arrow 
 
-//!                         variableName = () => {}
-//!                         variableName = (parameterName) => {}
+//* variableName = () => {}
+//* ariableName = (parameterName) => {}
 
-//! parenthesis around the parameter are OPTIONAL if theres only ONE parameter
+// parenthesis around the parameter are OPTIONAL if theres only ONE parameter
 //                         const square = x => {
 //                         return x * x;
+//                         };
 
-//                         }
-//! if there are no parameters, leave the parenthesis with nothing inside of them
-//                            const singASong() => {
+// if there are no parameters, leave the parenthesis with nothing inside of them
+//                            const singASong = () => {
 //                            return "la la la la la"
 //                            }
 
 
 /* 
 
-syntax:
+* syntax:
 
-                    variableName = () => {}
+* variableName = () => {}
 
-const variableName = (parameterName) => {
-    code goes here 
-    return statement
+* const variableName = (parameterName) => {
+*    code goes here 
+*    return statement
 }
 
 */ 
@@ -5368,43 +5677,45 @@ const singASong = () => {
 
 
 
-// arrow functions: implicit returns
+
+
+//! arrow functions: implicit returns
 // makes it where you dont have to write the return keyword
-//! only works when theres ONLY 1 EXPRESSION TO BE RETURNED
+// only works when theres ONLY 1 EXPRESSION TO BE RETURNED
 
 /* 
-syntax: 
-        const varName = param1 => (
-            single expression here
-        )
+* syntax: 
+* const varName = param1 => (
+* single expression here
+* )
 */
 
 // the below functions are all the same function,
 // just written different ways and with a new variable name 
 
-//! regular function expression 
+// regular function expression 
 const isEven2 = function(num) {
     return num % 2 === 0;
 };
 
-//! arrow function with parenthesis around parameter
+// arrow function with parenthesis around parameter
 const isEven3 = (num) => {
     return num % 2 === 0;
 };
 
 // arrow function without parenthesis around parameter
-//! when you have 1 parameter, the parenthesis around the parameter are OPTIONAL
+// when you have 1 parameter, the parenthesis around the parameter are OPTIONAL
 const isEven4 = num => {
     return num % 2 === 0;
 };
 
-//! arrow functions with 2 or more parameters must have parenthesis
+// arrow functions with 2 or more parameters must have parenthesis
 const isEven5 = (param1, param2) => {
     return num % 2 === 0;
 };
 
-//! arrow function with implicit return:
-//! instead of curly braces, you use parenthesis
+// arrow function with implicit return:
+// instead of curly braces, you use parenthesis
 const isEven6 = num => (
     num % 2 === 0
 );
@@ -5434,7 +5745,7 @@ console.log(numArrayDoubled2); // [2, 4, 6, 8, 10, 12, 14, 16]
 
 // with arrow function and implict return syntax
 const numArrayDoubled3 = numArray2.map(num => num * 2); 
-console.log(numArrayDoubled3) // [2, 4, 6, 8, 10, 12, 14, 16]
+console.log(numArrayDoubled3); // [2, 4, 6, 8, 10, 12, 14, 16]
 
 
 // taking numArray2 and turning into an array of strings that say even or odd
@@ -5459,9 +5770,9 @@ console.log(parityList2);
 // in parityList2 we cannot use an implicit return function
 // since we return two different values based off the parameter n,
 // an implicit function would not work here because we arent returning 1 value
-//! however, you can write this same expression with a ternary operator
-//! acheiving the expression on one line and using the function syntax,
-//! for an implicit return function
+// however, you can write this same expression with a ternary operator
+// acheiving the expression on one line and using the function syntax,
+// for an implicit return function
 
 // implicit return arrow key function with ternary operator
 const parityList3 = numArray2.map(n => (
@@ -5478,7 +5789,13 @@ console.log(parityList3); // ['odd', 'even', 'odd', 'even', 'odd', 'even', 'odd'
 
 
 
-// array method .find()
+
+
+
+
+
+
+//! array method .find()
 
 // finds the first instance of the given argument
 // after it finds the first match, it stops running and will only return the first match
@@ -5512,7 +5829,14 @@ console.log(movie2); // Mrs. Doubtfire
 
 
 
-// .filter()
+
+
+
+
+
+
+
+//! .filter()
 
 // filters out subsets of an array 
 // if a number passes the given function, it will add it to the return array
@@ -5676,7 +6000,7 @@ console.log(shortForm); // (2) [{…}, {…}]
 const query = '';
 const results = book.filter(book => (
     book.title.toLowerCase().includes(query.toLowerCase())
-))
+));
 console.log(results); // since the query is blank, and a value has not been specified
 // the results are the entire array, all 8 elements
 
@@ -5709,17 +6033,21 @@ console.log(results2); // [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…
 
 
 
-// .every()
+
+
+
+
+//! .every()
 // test whether ALL elements in the array pass the provided function.
 // returns a boolean value  
-//! the function passed as a callback must be a boolean function
-//! if 1 value is false after the expression is run the entire result is false
-//! if ALL values are true after the expression is run the entire result is true
+// the function passed as a callback must be a boolean function
+// if 1 value is false after the expression is run the entire result is false
+// if ALL values are true after the expression is run the entire result is true
 
-//! syntax:     arrayName.every(x => {
-//!             boolean function here
-//!             return statement
-//!             })
+//* syntax: arrayName.every(x => {
+//*             boolean function here
+//*             return statement
+//*             })
 
 
 
@@ -5788,13 +6116,17 @@ console.log(lastLetterJ); // false:
 
 
 
-// .some()
+
+
+
+
+
+
+//! .some()
 // similar to every() except it checks if any element, if not all pass the function 
-//! returns true if ANY of the array elements pass the function test
-//! if none of the array elements pass the function test it returns false
-//! the function passed as a callback must be a boolean function
-
-
+// returns true if ANY of the array elements pass the function test
+// if none of the array elements pass the function test it returns false
+// the function passed as a callback must be a boolean function
 
 
 
@@ -5846,7 +6178,14 @@ console.log(containsCake); // true
 
 
 
-// .some() vs .every():
+
+
+
+
+
+
+
+//! .some() vs .every():
 // checking to see if any words start with 'd'
 
 
@@ -5908,36 +6247,43 @@ console.log(bookTitles3); // false
 
 
 
-// .sort()
+
+
+
+
+
+//! .sort()
 // default sort() sorts by ASCII characters
 // sort() takes two parameters
-//! sort() needs two parameters to perform a sorting calculation
+// sort() needs two parameters to perform a sorting calculation
 // it compares the parameters and sorts off that comparison
 // arrayName.sort(compareFunction(param1, param2) => param1 - param2)
-//! 'compareFunction' is just a name for what its doing
+// 'compareFunction' is just a name for what its doing
 // once you sort() the array in any way it changes the original array
 
 
-// syntax:
+//* syntax:
 
-//! normal function expression
-/* const variableName = function arrayName.sort((param1, param2){
-    return param1 - param2
-});
+//* normal function expression
+/* 
+* const variableName = function arrayName.sort((param1, param2){
+* return param1 - param2
+* });
 */
 
-//! arrow function syntax
-/* const variableName = arrayName.sort((param1, param2) => {
-    return param1 - param2
-}); */
-
-//! one line arrow function syntax
-/* const variableName = arrayName.sort((param1, param2) => param1 - param2) */
-
-
-
+//* arrow function syntax:
 /* 
-! how sort works behind the scenes
+* const variableName = arrayName.sort((param1, param2) => {
+* return param1 - param2
+* }); 
+*/
+
+//* one line arrow function syntax
+/* 
+* const variableName = arrayName.sort((param1, param2) => param1 - param2) */
+/* 
+
+how sort works behind the scenes:
 
 If compareFunction(param1, param2) returns LESS THAN 0: sort param1 before param2
 
@@ -5947,8 +6293,9 @@ leave param1 and param2 unchanged with respect to each other
 If compareFunction(param1, param2) returns greater than 0:
 sort param2 before param1
 
-! to sort from lowest to smallest we do param1 - param2
-! to sort from highest to lowest we do param2 - param1
+to sort from lowest to smallest we do param1 - param2
+to sort from highest to lowest we do param2 - param1
+
 */
 
 const prices = [400.50, 3000, 99.99, 35.99, 12.00, 9500];
@@ -5959,13 +6306,13 @@ console.log(prices.sort()); // [12, 3000, 35.99, 400.5, 9500, 99.99]
 
 
 
-//! sorting numbers from low to high
+// sorting numbers from low to high
 // the function is passed 2 parameters 'a', 'b'.
 const pricesLowToBig = prices.sort((a, b) => {
     return a - b
 });
 
-//! notice the original array 'prices' has been changed to what the sort() did
+// notice the original array 'prices' has been changed to what the sort() did
 console.log(pricesLowToBig); // [12, 35.99, 99.99, 400.5, 3000, 9500]
 console.log(prices) // [12, 35.99, 99.99, 400.5, 3000, 9500]
 
@@ -5973,7 +6320,7 @@ console.log(prices) // [12, 35.99, 99.99, 400.5, 3000, 9500]
 
 
 
-//! sorting from highest to lowest price using 'prices' array
+// sorting from highest to lowest price using 'prices' array
 // sort function gets two parameters: in this example 'a', 'b'
 const pricesHighToLow = prices.sort((a, b) => {
     return b - a
@@ -5986,10 +6333,10 @@ console.log(prices); // [9500, 3000, 400.5, 99.99, 35.99, 12]
 
 
 
-//! if you want to bypass the fact that it saves the sorted value into the original array
-//! store it in a new variable
-//! use slice()
-//! when you slice() it gives the sliced value to a new array 
+// if you want to bypass the fact that it saves the sorted value into the original array
+// store it in a new variable
+// use slice()
+// when you slice() it gives the sliced value to a new array 
 const prices2 = [400.50, 3000, 99.99, 35.99, 12.00, 9500];
 const badSort = prices2.slice().sort((a, b) => {
     return a - b
@@ -6002,7 +6349,7 @@ console.log(prices2); // [400.5, 3000, 99.99, 35.99, 12, 9500]
 
 
 
-//! using the 'book' array line 5561
+// using the 'book' array line 5561
 // sorting by rating of books
 // since you the array consist of objects, we cant sort it normally
 // .sort(param1.key - param2.key) key is the key inside the obj u want
@@ -6031,7 +6378,12 @@ console.log(sortByRating);
 
 
 
-// .reduce()
+
+
+
+
+
+//! .reduce()
 // built in array method that takes a callback
 // takes an array of values and reduces each element of the array to return a single value
 // .reduce() is useful for things such as: 
@@ -6042,9 +6394,9 @@ console.log(sortByRating);
 
 // think of it as youre reducing all the elements in the array into 1 element
 
-//! .reduce() must have at least two parameters
-//! the first parameter is the accumulator
-//! the second parameter is the current value
+// .reduce() must have at least two parameters
+// the first parameter is the accumulator
+// the second parameter is the current value
 
 /* 
 
@@ -6063,7 +6415,7 @@ console.log(sortByRating);
 ? the starting value is 100 instead of 0 because we specified it after the callback function
 
 
-! how it works:
+how it works:
 const addAllNumsArray = [3, 5, 7, 9, 11] 
 const reduceExample = addAllNumsArray.reduce((accumulator, currentValue) => {
     return accumulator + currentValue;
@@ -6076,9 +6428,9 @@ third call          15              9                   24
 fourth call         24              11                  35
 
 
-! the first parameter 'accumulator' is the parameter storing the return value of each callback iteration
+the first parameter 'accumulator' is the parameter storing the return value of each callback iteration
 
-! the second parameter currentValue  represents each element in the array
+the second parameter currentValue  represents each element in the array
 
 ? explanation: 
 
@@ -6132,7 +6484,7 @@ console.log(reduceByAdd); // 25
 
 
 
-//! .reduce() an array by subtracting every element
+// .reduce() an array by subtracting every element
 // using the moreNums array (line: 6108)
 
 const reduceBySubtract = moreNums.reduce((accumulator, currentValue)=>{
@@ -6146,7 +6498,7 @@ console.log(reduceBySubtract); // -19
 
 
 
-//! .reduce() an array by multiplying every element
+// .reduce() an array by multiplying every element
 // using the moreNums array (line: 6108)
 
 const reduceByMultiply = moreNums.reduce((accumulator, currentValue)=>{
@@ -6160,7 +6512,7 @@ console.log(reduceByMultiply); // 2520
 
 
 
-//! .reduce() an array to find the max value
+// .reduce() an array to find the max value
 
 let studentGrades = [89, 96, 58, 77, 62, 93, 81, 99, 73];
 
@@ -6185,7 +6537,7 @@ console.log(maxScore); // 99
 
 
 
-//! .reduce() an array to find min value
+// .reduce() an array to find min value
 const lowScore = studentGrades.reduce((accumulator, currentValue)=>{
     if (accumulator > currentValue) {
         return currentValue
@@ -6197,7 +6549,7 @@ console.log(lowScore); // 58
 
 
 // another way to use .reduce() to find the min value using Math.min
-// using 'min' as the name of parameter 1 instead of accumulator
+// using 'min' as the name of parameter 1 instead of 'accumulator'
 const minGrade = studentGrades.reduce((min, currentValue)=>(
     Math.min(min, currentValue)
 ));
@@ -6206,6 +6558,71 @@ console.log(minGrade); // 58
 
 
 
+const numLessZero1 = (num) =>{
+    num <= 0 ? true : false
+};
+console.log(numLessZero(15))
+
+
+
+
+
+
+
+
+
+
+//! default function parameters
+// a way to to give your functions parameters a default value
+// define the default parameter value(s) inside the function parameters 
+// if the parameter that is given a default value does NOT receive
+// the expected argument, it will default to the value in the expression
+// you can make the default values practically anything:
+// it can be a number, a string, an array, an object, a boolean, etc...
+
+
+
+
+
+const multiplyMe = (x, y = 5)=>{
+    return x * y;
+};
+// although the function was set to accept two parameters
+// we only pass in one argument below
+console.log(multiplyMe(3)); // 15
+// y was given the default value of 5. 
+// the function multiplyMe() will multiply the given parameters
+// if only one argument is given, it will default the second argument
+// to the default value defined in the function expression
+// in this example its 15
+
+console.log(multiplyMe(4, 7)); // 28
+// multiplyMe was given the expected 2 parameters
+// therefore, the default value of y is ignored in the function expression
+
+
+
+
+
+// if the parameter of 'greeting' is not given an argument
+// it will default to 'hi' because it was defined as a default value
+// in the intial declaration of the function
+const sampleGreeting = (person, greeting = 'hi') => {
+    console.log(`${greeting}, ${person}!`)
+};
+// calling the function sampleGreeting 
+// and providing only 1 argument
+console.log(sampleGreeting('caleb')); // hi, caleb!
+// calling the function sampleGreeting
+// and providing both expected arguments
+console.log(sampleGreeting('caleb', 'YOOOOOOO')); // YOOOOOOOOO, caleb!
+
+// its imporant to know that the order matters:
+// if you have 3 parameters and give parameter 3 a default value
+// and the function is called with only 2 arguments
+// and those two arguments were supposed to go in parameter 1 and parameter 3
+// javascript has no way of knowing that
+// and you WILL NOT get the expected default value
 
 
 
@@ -6217,9 +6634,82 @@ console.log(minGrade); // 58
 
 
 
+//! spread for function calls
+/* spread syntax allows an iterable such as an array to be 'expanded'
+in places where zero or more arguments (for function calls)
+or elements (for array literals) are expected, or an object expression
+to be expanded in places where zero or more key-value pairs (for object literals) are expected */
+// tldr: expanding some iterable into some other place or destination
+//* syntax: three periods
+//* ...
+//* console.log(...numArray3);
+
+
+// spread for function calls
+// takes the iterable and breaks them up into multiple arguments
+
+const numArray3 = [9, 3, 2, 8];
+console.log(...numArray3); // 9 3 2 8
+
+
+// wrong way to do it using Math.max
+console.log(Math.max(numArray3)); // NaN
+// Math.max tries to find the max of the array
+// and uses numbers as the arguments
+// since numArray3 is an array and not a number 
+// NaN is logged to the console
+
+// right way to do it using Math.max
+console.log(Math.max(...numArray3)); // 9
 
 
 
+const giveMeFour = (a, b, c, d) => {
+    console.log('a:', a);
+    console.log('b:', b);
+    console.log('c:', c);
+    console.log('d:', d);
+};
+
+// wrong (no arguments are passed)
+
+// console.log(giveMeFour());
+// a undefined
+// b undefined
+// c undefined
+// d undefined
+
+
+// console.log(giveMeFour(2, 4, 6, 8)) // undefined
+// wrong (each value can not be spread) because this is a function
+// not an iterable object
+
+
+console.log(giveMeFour(...numArray3));
+// a: 2
+// b: 4
+// c: 6
+// d: 8
+
+const colorArray4 = ['red', 'orange', 'yellow', 'green'];
+
+console.log(giveMeFour(...colorArray4));
+// a: red
+// b: orange
+// c: yellow
+// d: green
+
+// each color in the colorArray4 is 'split' into individual arguments
+
+
+// since a string is iterable, when we use split on a string
+// it splits each individual character of the string into an argument
+const stringy = 'GOAT';
+console.log(giveMeFour(...stringy));
+// a: G
+// b: O
+// c: A
+// d: T
 
 
 
