@@ -7031,3 +7031,154 @@ console.log(nation); // kenya
 
 console.log(placement); // winner
 
+
+
+
+
+
+
+
+
+
+//! nested destructuring 
+
+const marathonResults2 = [
+{
+    runnerFirstName: 'eliud',
+    runnerLastName: 'kipochoge',
+    origin: 'kenya'
+},
+{
+    runnerFirstName: 'feyisa',
+    runnerLastName: 'lilesa',
+    origin: 'ethiopia'
+},
+{
+    runnerFirstName: 'galen',
+    runnerLastName: 'rupp',
+    origin: 'united states'
+}
+]
+
+//extracting origin of second element
+// using a comma to skip the first object
+// then using object literal to specify that we want the origin key
+// that is inside the second object
+const [,{origin}] = marathonResults2;
+// origin in the console returns 'ethiopia'
+// we set the const = marathonResults2 so it knows what to destructure
+
+
+
+
+
+
+
+
+//! destructuring parameters
+// since we are expecting the first and last parameter value's
+// to be extracted from an object, we use the curly braces inside the func defintion.
+
+const fullName1 = ({first, last}) => {
+    return `${first} ${last}`
+};
+
+const bestRunner = {
+    first: 'eliud',
+    last: 'kipchoge',
+    country: 'kenya'
+}
+
+console.log(fullName1(bestRunner)); // eliud kipchoge
+
+const print = (person) => {
+    const {first, last, country} = bestRunner;
+    console.log(`${first} ${last} ${country}`);
+}
+// calling the function 'print'
+// and passing in bestRunner into the person parameter
+print(bestRunner); // eliud kipchoge kenya
+
+
+const response = [
+    'http/1.1',
+    '200 OK',
+    'application/json'
+]
+
+// destructuring response to get the second element '200 OK'
+// remember the paramater names can be ANYTHING
+// and they represent the elements inside of the objects
+// protocol represents the first element: 'http/1.1
+// statusCode represents the second element: '200 OK'
+// contentType represents the third element in the array: 'application/json'
+function parseResponse([protocol, statusCode, contentType]) {
+    console.log(`status: ${statusCode}`)
+}
+
+const parseResponse2 = (protocol, statusCode, contentType) =>{
+    console.log(`protocol: ${protocol}`)
+}
+// calling the function parseResponse2 in the console returns 
+// the protocol: first element in the 'response' array represented by param
+// the statusCode which is the second param representing second element in array
+// the contentType which is the third param representing third element in array
+parseResponse2(response); 
+console.log(parseResponse(response)); // status: 200 OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! shorthand object properties 
+// you can use variables inside of your function to set keys and values:
+
+const reviews = [4.5, 3.7, 4.9, 4.7, 2.5, 5];
+
+const getStats = (argument) => {
+    const max = Math.max(...reviews);
+    const min = Math.min(...reviews);
+    const sum = argument.reduce((accumulator, currVal) => accumulator + currVal);
+    const avg = sum / reviews.length;
+    return {
+        max,
+        min,
+        sum,
+        avg
+    }
+};
+// in the return statement we used max, min, sum, avg
+// what javascript will do is save the variable const max as a key
+// with its value being set to its variable value
+// because of the new shorthand where we set a key 
+// and the first key will be equal to the first variable 
+// and the second key 'min' will be equal to our second variable
+
+const stats = getStats(reviews); 
+console.log(stats);
+// {max: 5, min: 2.5, sum: 25.3, avg: 4.216666666666667}
+// avg: 4.216666666666667
+// max: 5
+// min: 2.5
+// sum: 25.3
+
+// so the key avg: is set equal to sum / reviews.length 
+
+
+
+
+
+
+
+
+
+//! computed properties
