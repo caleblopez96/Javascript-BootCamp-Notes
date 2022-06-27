@@ -591,7 +591,7 @@ console.log(sayingFour);
 let numSheep = 3 + 4;
 console.log(`I counted ${numSheep} sheep`); // I counted 7 sheep 
 
-let username = 'dableb';
+let username = 'dableb'
 console.log(`Welcome back, ${username}!`);
 
 let endGameMsg = `GAME OVER ${username.toUpperCase()}.\nTRY AGAIN?`;
@@ -3131,7 +3131,7 @@ console.log(user.notifications.length); // 0
 //? do we need to print 'hello' to the console 5 times?
 //? if we wanted to print 'hello' to the console 5 times it would look like this:
 
-for(let i = 1; i <= 5;)
+//? for(let i = 1; i <= 5;)
 
 //? increment expression is how much we want to increment by each iteration of the loop. 
 //? if i needed 5 hellos to the console i would start my counter at 1. 
@@ -3186,9 +3186,15 @@ We went over each item in the array 1 time and added 1 to the value each time. w
 // initial value; iterations; what to add to the iteration     
 // i = 1 ; while 1 is less than 10; add 1 to 'i'
 // start at 1; stop at 10; add 1 each time 
+
+
 for (let i = 1; i <= 10; i++) {
-    console.log('hello:', i); // hello: 1, hello: 2, hello: 3, hello: 4, hello: 5, hello: 6, hello: 7, hello: 8, hello: 9, hello: 10
-};
+    console.log('hello:', i);
+}; 
+
+
+// hello: 1, hello: 2, hello: 3, hello: 4, hello: 5, hello: 6, hello: 7, hello: 8, hello: 9, hello: 10
+
 //console logs 'hello' every time 1 is less than 10. 
 // after it prints hello, it adds 1 to i increasing the variable of i's value by 1 each iteration. 
 // after 10 iterations of adding 1, i will equal 10 and the code will no longer execute
@@ -5096,7 +5102,7 @@ console.log(animal); // eel
 
 
 let animalArray = ['grizzly bear', 'panda bear', 'spectacled bear'];
-for(var i = 0; i < animalArray.length; i++) {
+for(i = 0; i < animalArray.length; i++) {
     console.log(i, animalArray[i]); // how to access array items without getting entire array
 }
 
@@ -5518,7 +5524,7 @@ callThreeTimes(rage); // im angry
 // and a number thats why i used those placeholders.
 // we are repeating the action by the num times input
 function repeatNTimes(action, num) {
-    for (let i = 0; i < num; i++) { // this makes it where we can input any number and have the function repeat that many times
+    for (i = 0; i < num; i++) { // this makes it where we can input any number and have the function repeat that many times
         action();
     }
 }
@@ -6959,6 +6965,8 @@ console.log(containsCake); // true
 
 
 
+
+
 //! .some() vs .every():
 //? checking to see if any words start with 'd'
 
@@ -7020,6 +7028,8 @@ const bookTitles3 = book.every(element =>{
 console.log(bookTitles3); // false
 // not EVERY array element contains the word 'map'
 // therefore the entire expression returns false
+
+
 
 
 
@@ -7159,6 +7169,9 @@ console.log(sortByRating);
 // {title: 'a gentleman in moscow', authors: Array(1), rating: 4.54, genre: Array(2)}
 // {title: 'the name of the wind', authors: Array(1), rating: 4.54, genre: Array(2)}
 // {title: 'the way of kings', authors: Array(1), rating: 4.65, genre: Array(2)}
+
+
+
 
 
 
@@ -7355,8 +7368,6 @@ const minGrade = studentGrades.reduce((min, currentValue)=>(
 ));
 
 console.log(minGrade); // 58
-
-
 
 
 
@@ -7599,6 +7610,9 @@ console.log(cephCopy); // ['dumbo octopus', 'humboldt squid', 'flamboyant cuttle
 
 
 
+
+
+
 //! spread in object literals 
 //? copies properties from one object into another object literal.
 //? an object can only be spread to another object
@@ -7677,7 +7691,7 @@ const randomish = [...'hello', {
 
 
 
-// before rest we had to use the arguments object
+// before rest we had to use the 'arguments' object
 // using the arguments object which is the old way
 // the arguments object does NOT work in arrow functions
 function sumOf(){
@@ -7685,6 +7699,12 @@ function sumOf(){
 }
 sumOf(1, 3, 5); // in the console returns 3 arguments 
 sumOf(5, 4, 6, 8, 9, 10, 30); // 7 arguments
+
+
+
+
+
+
 
 
 
@@ -7744,6 +7764,10 @@ console.log(fullName('caleb', 'lopez', 'mr', 'jr', 'III'));
 const multiplyEx = (...nums) => (
     nums.reduce((total, currentVal) => total * currentVal
 ));
+
+
+
+
 
 
 
@@ -7845,6 +7869,13 @@ console.log(thirdPLace); // galen rupp
 console.log(others); // ['girmay ghebreslassie', 'alphonce simbu', 'jared ward']
 // the variable 'others' becomes an array with the rest of the values
 // that did not fit into the first three variables we created.
+
+
+
+
+
+
+
 
 
 
@@ -8073,3 +8104,28 @@ console.log(stats);
 
 
 //! computed properties
+// new syntax for objects
+// we can add a property with a dynamic key
+
+const role = 'host';
+const person2 = 'jools holland'
+
+// if you tried to do this, it wouldnt work
+
+// const team = {
+//    role: person2
+// }
+
+// team would be evaluated and returns 'jools holland', but the key isnt.
+// it just says role, but its suppose to evaluate to 'host'
+// much like 'person' actually evaluated to its variable value 'jools'
+// the key of roll is literally just turned into a string.
+// we want role to evaluate to its variable value of 'host'.
+
+// the old way to fix it would to do this:
+// after the object was inititalized, 
+// tell javascript that 'role' of the 'team' object is equal to person2
+
+const team = {}; 
+team[role] = person2;
+console.log(team);
