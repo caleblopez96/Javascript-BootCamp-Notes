@@ -8320,6 +8320,13 @@ greetingMessage();
 //? if 'this' is used inside of an object,
 //? its scope is the object.
 
+//? when a regular function and its not inside an object,
+//? 'this' refers to the window object.
+//? it isnt until the function is enclosed in an object that 'this'
+//? starts to refer to the parent object.
+
+//?
+
 const person4 = {
     first: 'cherilyn',
     last: 'sarkisian',
@@ -8356,6 +8363,66 @@ const person6 = {
     fullName(){
         console.log(`${this.first} ${this.last}`);
     }
-};
+}
 person6.fullName(); // barrack obama
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! 'this' invocation context
+//? the value of 'this' depends on the invocation context of the function its used in.
+//? the value will change depending on how the function is executed,
+//? not just how you write it.
+//? it depends on how you call it.
+
+//? the way the function is executed can determine what the value of 'this' is.
+
+//? arrow functions DO NOT get their own version of 'this'.
+//? arrow functions are by default scoped to the browser object.
+
+const person7 = {
+    first: 'donald',
+    last: 'trump',
+    nickname: '45',
+    fullName() {
+        const {
+            first,
+            last,
+            nickname
+        } = this;
+        return `${first} ${last} aka ${nickname}`
+        },
+        printBio(){
+            const fullName = this.fullName();
+            console.log(`${fullName} is a person!`)
+    },
+    laugh: () => {
+        console.log(this);
+        console.log(`${this.nickname} says ahahahahah`)
+    }
+}
+
+const printBio = person7.printBio(); // donald trump aka 45 is a person!
+// in printBio, person7 is the value of 'this'
+// when referring to a method, the value on the left side of the period
+//* 'this' refers to the object on the left side of the period.
+//* const variableName = object.method()
+//? object is what 'this' would refer to.
 
