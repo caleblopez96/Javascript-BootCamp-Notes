@@ -8104,11 +8104,14 @@ console.log(stats);
 
 
 //! computed properties
-// new syntax for objects
-// we can add a property with a dynamic key
+//? Basically using a variable as a key name inside of an object.
+//? new syntax for objects.
+//? we can add a property with a dynamic key.
 
 const role = 'host';
-const person2 = 'jools holland'
+const person2 = 'jools holland';
+const role2 = 'director';
+const person3 = 'james cameron';
 
 // if you tried to do this, it wouldnt work
 
@@ -8116,16 +8119,243 @@ const person2 = 'jools holland'
 //    role: person2
 // }
 
-// team would be evaluated and returns 'jools holland', but the key isnt.
-// it just says role, but its suppose to evaluate to 'host'
-// much like 'person' actually evaluated to its variable value 'jools'
-// the key of roll is literally just turned into a string.
-// we want role to evaluate to its variable value of 'host'.
+//? team would be evaluated and would return:
+//? {role: 'jools holland'}.
+
+//? instad of 'role' it should be 'host'.
+//? because they key wasnt evaluated,
+//? it just says role, but its suppose to evaluate to 'host'.
+//? much like 'person' actually evaluated to its variable value 'jools'.
+//? the key of roll is literally just turned into a string.
+//? we want 'role' to evaluate to its variable value of 'host'.
 
 // the old way to fix it would to do this:
-// after the object was inititalized, 
+// after the object is inititalized, 
 // tell javascript that 'role' of the 'team' object is equal to person2
 
-const team = {}; 
-team[role] = person2;
-console.log(team);
+// const team = {}; 
+// team[role] = person2;
+// team[role2] = person3;
+// console.log(team); // {host: 'jools holland' director: 'james cameron'}
+
+
+
+
+//? we can define the object then add in a key based off some computed variable:
+
+//* syntax: 
+
+//*   objectName = {
+//*     [variableName]: 'value'    
+//*   }
+
+//? inside of the square brackets goes the variable name that youre trying to use.
+
+const employeeName = 'john';
+const employeeName2 = 'bob';
+
+const employeePosition = {
+    [employeeName]: 'admin',
+    [employeeName2]: 'developer'
+};
+
+console.log(employeePosition);
+// {john: 'admin', bob: 'developer};
+
+//? the key [employeeName] evaluates to the variable employeeName 'john'.
+
+
+
+
+// a function that adds a key and value property to an object
+const addProperty = (obj, key, value) =>{
+    return {...obj, [key]: value}
+}
+console.log(addProperty(employeePosition, 'mood', ':)'));
+// {john: 'admin', bob: 'developer', mood: ':)'}:
+
+// the parameter 'obj' is given the argument of 'employeePosition' // and tells the function what obj to use.
+
+// the parameter 'key' is given the argument 'mood' 
+// which will be added to the object as a key.
+
+// the parameter 'value' is given the argument ':)' 
+// which is the value of the new key 'mood'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! adding methods to objects
+//? functions added to objects as properties are called methods.
+//? example:
+const mathEquations = {
+    multiply: function(x, y){
+        return x * y;
+    },
+    divide: function(x, y){
+        return x / y;
+    },
+    add: function(x, y){
+        return x + y;
+    }
+};
+
+//? objectName is the object that holds the functions.
+//? key is name of function inside of the obj that you want to use.
+//* syntax:
+
+//* objectName.key()
+
+
+console.log(mathEquations.multiply(4, 4));
+
+//? rather than having a bunch of functions everywhere
+//? a best practice is to group like functions in an object.
+
+
+
+//? you can use a shorthand function syntax inside the obj to define the function.
+//? you can also use arrow key function syntax
+//? the functionName is added as the key inside of the object
+
+//* syntax
+
+//*   const objectName = {
+//*   functionName(x,y){
+//*     return x + y
+//*   }    
+//* }
+const mathEquations2 = {
+    multiply: function(x, y){   // function expression
+        return x * y;
+    },
+    divide(x, y){           // shorthand syntax
+        return x / y;
+    },
+    add:(x, y) =>{         // arrow key syntax
+        return x + y;
+    }
+};
+console.log(mathEquations2.divide(10, 5)); // 2
+
+//? the function name is added as the key.
+
+
+//? this syntax isnt commonly used because it doesnt work with 'this'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! 'this' keyword
+//? ALWAYS RETURNS AN OBJECT
+//? helps write more useful methods inside of objects.
+//? 'this' is a reference to the current execution scope.
+
+//? 'let' and 'const' variables are not added to the window object.
+//? 'var' is the only variable declaration added to the window obj.
+
+//? if 'this' is not used inside of an object,
+//? its scope is the window.
+
+//? if 'this' is used inside of an object,
+//? its scope is the object.
+
+
+function sayHi(){
+    console.log('hi')
+    console.log(this);
+}
+sayHi();
+// hi
+// Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+//? Window refers to the global scope of the browser.
+
+
+const greetingMessage = () => {
+    console.log(this);
+}
+greetingMessage(); 
+// Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+// 'this' still refers to the window obj.
+
+
+
+
+
+
+//! 'this' in methods
+//? if 'this' is not used inside of an object,
+//? its scope is the window.
+
+//? if 'this' is used inside of an object,
+//? its scope is the object.
+
+const person4 = {
+    first: 'cherilyn',
+    last: 'sarkisian',
+    nickname: 'cher',
+    fullName(){
+        console.log(this)
+    }
+};
+person4.fullName(); 
+// {first: 'cherilyn', last: 'sarkisian', nickname: 'cher', fullName: ƒ}
+
+//? 'this' used inside of the object returned the object itself.
+//? the value of 'this' is the object 'person4'
+//? because its scoped to the obeject.
+
+const person5 = {
+    first: 'arnold',
+    last: 'schwartznagger',
+    nickname: 'terminator',
+    fullName(){
+        console.log(this.first);
+    }
+};
+person5.fullName(); // arnold.
+//? 'this' is scoped to the object. 
+//? so 'this' is reffering to person5 object.
+//? 'this.first' is the same as 'person5.first'.
+
+
+const person6 = {
+    first: 'barrack',
+    last: 'obama',
+    nickname: 'potus',
+    fullName(){
+        console.log(`${this.first} ${this.last}`);
+    }
+};
+person6.fullName(); // barrack obama
+
