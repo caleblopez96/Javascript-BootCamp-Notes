@@ -8564,13 +8564,13 @@ const myDeck = {
 
 //? its a bunch of objects that you can interact with via JS.
 
-//? HTML and CSS elements become objects that JS can manipulate.
+//? HTML and CSS elements become objects that JS can manipulate/access.
 
 //* use: console.dir() to check the object
 
 
 
-//! Document 
+//! document 
 //? the document object is our entry into DOM.
 //? everything in the DOM tree stems down from the document object.
 
@@ -8595,11 +8595,42 @@ const myDeck = {
 //! selecting
 //? when manipulating dom objects we normally select, then manipulate.
 
-//? there are three ways to select:
-//* getElementById --> document.getElementById('')
-//* getElementsByTagName --> document.getElementByTagName('')
-//* getElementsByClassName --> document.getElementByClassName('')
-//? the element TagName, Id and className MUST be a string.
+//? there are three old ways to select:
+//* .getElementById --> document.getElementById('')
+//* .getElementsByTagName --> document.getElementByTagName('')
+//* .getElementsByClassName --> document.getElementByClassName('')
+//? the TagName, Id and className MUST be a string.
+
+
+//? there are two new ways to select:
+//* .querySelector --> document.querySelector('element')
+//* .querySelector --> document.querySelector('.className')
+//* .querySelector --> document.querySelector('#idName')
+
+//* .querySelectorAll --> document.querySelectorAll('element')
+//* .querySelectorAll --> document.querySelectorAll('.className')
+//* .querySelectorAll --> document.querySelectorAll('#idName')
+
+
+
+
+//! selecting with specificity
+//? to select specifics use the index of the element you are trying to target
+//? if you have 5 p tags and you only want the first you would use [0]
+
+//* document.getElementById('')[index]
+//* document.getElementByTagName('')[index]
+//* document.getElementByClassName('')[index]
+
+//* document.querySelector('element')[index]
+//* document.querySelector('.className')[index]
+//* document.querySelector('#idName')[index]
+
+//* document.querySelectorAll('element')[index]
+//* document.querySelectorAll('.className')[index]
+//* document.querySelectorAll('#idName')[index]
+
+
 
 
 
@@ -8616,6 +8647,7 @@ const myDeck = {
 //* document.getElementById('put Id name in here')
 
 const myLogo = document.getElementById('logo');
+
 
 
 
@@ -8649,6 +8681,7 @@ console.log(theParagraphs); // HTMLCollection(5) [p, p, p, p, p]
 //? it IS iterable.
 
 //? iterating over all p tags:
+//? where 'p' represents each iterable object (the p tags).
 for(let p of theParagraphs) {
     console.log(p)
 };
@@ -8714,12 +8747,18 @@ console.log(specificElement.getElementsByTagName('p')[0]);
 
 
 
-//! selecting with querySelector()
+//! selecting with .querySelector()
 //? a newer, all-in-one method to select a SINGLE element
 //? this allows us to select a tag, id, or class name without having to specify.
+//? since .querySelector does not specifiy what its looking for,
+//? you have to use the css selector syntax inside of the parenthesis:
 
-//? inside of the parenthesis, pass in the selector:
-//* querySelector() --> document.querySelector()
+//? inside of the parenthesis, pass in the css selector:
+//* .querySelector() --> document.querySelector()
+
+//* .querySelector() --> document.querySelector('element')
+//* .querySelector() --> document.querySelector('.className')
+//* .querySelector() --> document.querySelector('#idName')
 
 
 
@@ -8736,5 +8775,205 @@ console.log(document.querySelector('#logo'))
 //* document.querySelector('.className');
 console.log(document.querySelector('.profilePicture'));
 
+
+
+
+
+
+
+
+
+//! selecting with .querySelectorAll()
+//? returns a collection of the css selector in an array like object called Nodelist.
+//? since .querySelectorAll doesnt specifiy what its looking for,
+//? we have to use css selector syntax('.className') ('#idName).
+
+
+//? inside of the parenthesis, pass in the css selector:
+//* .querySelectorAll() --> document.querySelectorAll('element')
+//* .querySelectorAll() --> document.querySelectorAll('.className')
+//* .querySelectorAll() --> document.querySelectorAll('#idName')
+
+
+// finds all h1 elements
+//* document.querySelectorAll('element');
+console.log(document.querySelectorAll('h1'));
+
+
+// finds all element with ID
+//* document.querySelectorAll('#idName');
+console.log(document.querySelectorAll('#logo'))
+
+// finds all element with class
+//* document.querySelectorAll('.className');
+console.log(document.querySelectorAll('.profilePicture'));
+
+
+
+const containerCards = document.querySelectorAll('.containerCard')
+console.log(containerCards);
+// NodeList(3) [div.containerCard, div.containerCard, div.containerCard]
+
+
+
+
+
+
+
+
+
+
+
+
+//! important DOM properties and methods.
+//? classList
+//? getAttribute()
+//? setAttribute()
+//? appendChild()
+//? append()
+//? prepend()
+//? removeChild()
+//? remove()
+//? createElement
+//? innerText
+//? textContent
+//? innerHTML
+//? value
+//? parentElement
+//? children
+//? nextSibling
+//? previousSibling
+//? style
+
+
+
+
+
+
+
+
+//! accessing text and content with .innerText.
+//? innerText returns the text inside of the selector.
+//? innerText returns all the text inside of the element regardless of nesting.
+
+//* element.innerText
+//* const variableName = document.querySelector('element')
+const firstHeader = document.querySelector('h1')
+console.log(firstHeader.innerText) // Hi, My Names Caleb.
+
+
+
+//? changing the text of the first h1 which is represented by the variable firstHeader.
+//* variableNameOfSavedElement.innerText = 'your new text goes here'
+firstHeader.innerText = 'Hi, My Names Caleb :)'
+
+
+
+
+
+//? innerText returns all the text inside of the element regardless of nesting.
+//? the ul below has 3 li's nested inside.
+//? .innerText returns the ul and all the text of the 3 nested li's.
+// html:
+// <ul>
+//     <li>thing1</li>
+//     <li>thing2</li>
+//     <li>thing3</li>
+// </ul>
+
+const nestedExample = document.querySelector('ul')
+console.log(nestedExample.innerText); // thing1 thing2 thing3
+
+
+// nestedExample.innerText = 'test'
+//? doing the above removed the li's from the ul
+//? and basically restructured the html to look like this:
+// <ul>
+//    test
+//</ul>
+
+
+
+
+
+
+
+
+
+//! accessing text and content with .textContent.
+//? returns/retrieves not only the text, but the tags associated with selected element.
+
+//? similair to .innerText.
+
+//* element.innerText
+//? is almost the same as 
+//* element.textContent
+
+//? except: .innerText returns just the text
+//? .textContent returns the text with whatever tags and formatting was used in the HTML:
+const innerVsTextContent = document.querySelector('#unformattedText')
+
+//? .innerText
+console.log(innerVsTextContent.innerText);
+/* This just needs to be different and unique in some way to illustrate what im trying to show :) leave the weird indentations and what not.*/
+
+//! vs
+
+//? .textContent
+console.log(innerVsTextContent.textContent);
+/*
+This just needs to be different and unique in some way to illustrate what 
+                im trying to show :) leave the weird indentations and what not.
+
+*/
+//? .innerText returns the text that is currently visible on the screen client side.
+
+//? .textContent returns all the content from the selector that is in the HTML file.
+
+
+
+
+
+
+
+
+
+
+//! .innerHTML
+//? returns/retrieves not only the text, but the tags inside the element.
+
+//* element.innerHTML
+
+console.log(document.querySelector('.containerCard').innerHTML);
+/* <h1 class="header"> Hi, my names Caleb</h1>
+<p class="loneWolf">Full time Full Stack Web Development Student</p>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, iusto modi in necessitatibus beatae adipisci minima, ipsum dolores aperiam aut illum sequi eos qui? Blanditiis.</p> */
+
+
+//? although not best practice,
+//? you can use innerHTML to add HTML elements:
+//? just write the HTML inside of the declaration statement as a string.
+// const containerCard = document.querySelector('.containerCard');
+// containerCard.innerHTML = '<b> this is a bold tag </b>';
+
+//? keep in mind this will remove whatever element/content is there,
+//? and replace it with whatever elements you specified to be there.
+//? in the example above, the elements and content of .containerCard
+//? would be replaced by the single b tag specified during the declaration.
+//? do this to avoid overriding everything:
+
+// firstHeader.innerHTML += ' and I love web development'
+//? the above would change the firstHeader from:
+//? Hi, my names caleb :)
+//? TO:
+//? Hi, my names caleb :) and I love web development.
+
+//? adding an element to firstHeader without deleting the content thats already there.
+// firstHeader.innerHTML += '<b> and I love web development </b>'
+
+//? if the above was done with .innerText, 
+//? it would treat it as just a string,
+//? the bold tags wouldnt be interpreted as tags and just written as a string.
+// 'hi, im caleb :) and <b> i love web development </b>'
 
 
