@@ -8421,8 +8421,320 @@ const person7 = {
 
 const printBio = person7.printBio(); // donald trump aka 45 is a person!
 // in printBio, person7 is the value of 'this'
-// when referring to a method, the value on the left side of the period
+// when referring to a method, 
+//? the value on the left side of the period
 //* 'this' refers to the object on the left side of the period.
 //* const variableName = object.method()
 //? object is what 'this' would refer to.
+
+
+
+
+//? arrow functions do not get their own 'this' which is a shortcoming.
+//? the shortcoming can be used as an advantage.
+
+//? when you need to create a function inside another function,
+//? and you want to reference the parent object as 'this'
+//? arrow functions are your friend.
+
+//? since arrow functions dont get their own 'this', 
+//? they can inherit 'this' from the parent object which can be useful.
+
+
+
+const annoyer = {
+    phrases: ['literally', 'cray cray', 'i cant even', 'totes', 'cant stop wont stop', 'yolo'],
+    pickPhrase() {
+        const {phrases} = this;
+        const index = Math.floor(Math.random() * phrases.length);
+        return phrases[idx];
+    },
+    start(){
+        this.timerId = setInterval(() => {
+            console.log(this.pickPhrase())
+        }, 3000)
+    },
+    stop() {
+        clearInterval(this.timerId);
+    } 
+}
+
+//? in the above code:
+//? we used an arrow function in setInterval.
+//? this allows 'this' to be inherited from its parent aka the closest 'this'.
+
+//? inside of our start() function, 'this' gets its value from pickPhrase().
+//? the arrow function didnt get its own 'this' so it took 'this' from pickPhrase() 
+
+
+
+
+
+/*
+const deckMaker = () => {
+    const deck = [];
+    const cardSuits = ['hearts', 'diamonds', 'spades', 'clubs'];
+    const cardValues = '2,3,4,5,6,7,8,9,10,J,Q,K,A';
+    for (let value of cardValues.split(',')) {
+        for (let suit of cardSuits) {
+            deck.push({
+                cardValues,
+                cardSuits
+            })
+        }
+    }
+    return deck;
+}
+
+function drawCard(deck){
+    return deck.pop()
+}
+
+//? these work, but there are better ways:
+// const myDeck = deckMaker();
+// const card1 = deckMaker(myDeck);
+
+const myDeck = {
+    deck: [],
+    drawnCards: [],
+    cardSuits: ['hearts', 'diamonds', 'spades', 'clubs'],
+    cardValues: '2,3,4,5,6,7,8,9,10,J,Q,K,A',
+    initializeDeck() {
+        const {cardSuits, cardValues, deck} = this;
+        for (let value of cardValues.split(',')) {
+            for (let suit of cardSuits) {
+                deck.push({
+                    cardValues,
+                    cardSuits
+                })
+            }
+        }
+    },
+    drawACard() {
+        const card = this.deck.pop();
+        this.drawnCards.push(card);
+        return card;
+    },
+        drawMultiple(numCards) {
+            const cards = [];
+            for(i = 0; i < numCards; i++) {
+                cards.push(this.drawACard());
+            }
+            return cards;
+        }
+    };
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! the DOM
+//? Document Object Model
+
+//? the DOM is a javascript representation of a webpage.
+
+//? its a bunch of objects that you can interact with via JS.
+
+//? HTML and CSS elements become objects that JS can manipulate.
+
+//* use: console.dir() to check the object
+
+
+
+//! Document 
+//? the document object is our entry into DOM.
+//? everything in the DOM tree stems down from the document object.
+
+//? it contains representations of all the content of a page.
+//? it also includes tons of useful methods and properties.
+
+//? you can use 
+//* console.dir(document)
+//? to view the webpage as an object.
+
+
+
+
+
+
+
+
+
+
+
+
+//! selecting
+//? when manipulating dom objects we normally select, then manipulate.
+
+//? there are three ways to select:
+//* getElementById --> document.getElementById('')
+//* getElementsByTagName --> document.getElementByTagName('')
+//* getElementsByClassName --> document.getElementByClassName('')
+//? the element TagName, Id and className MUST be a string.
+
+
+
+
+
+
+
+//! getElementById()
+//? due to ID's being unique,
+//? getElementById() will only ever target one element.
+
+//? the Id you are trying to select goes inside the parenthesis as a string.
+
+//* document.getElementById('put Id name in here')
+
+const myLogo = document.getElementById('logo');
+
+
+
+
+
+
+
+
+
+
+//! getElementsByTagName()
+//? the element(s) returned/targeted will be stored in a list 
+//? depending on how many elements there are with that tag name.
+
+//? the element(s) you are trying to target go inside the parenthesis as a string.
+
+//* document.getElementsByTagName('put tag name here')
+
+const theParagraphs = document.getElementsByTagName('p')
+
+console.log(theParagraphs); // HTMLCollection(5) [p, p, p, p, p]
+
+//? since JS stores these items in an 'array-like' item,
+//? you can access certain elements by indices in the list.
+//* theParagraphs[0] --> would give you access to the first p tag
+//* theParagraphs[1] --> would give u access to the second p tag.
+//* theParagraphs[2] --> would give u access to the third p tag.
+
+
+//? this can also be helpful because although it is NOT a real array
+//? it IS iterable.
+
+//? iterating over all p tags:
+for(let p of theParagraphs) {
+    console.log(p)
+};
+// <p>...</p>
+// <p>Full time Full Stack Web Development Student</p>
+// <p>...</p>
+// <p>...</p>
+// <p>...</p>
+
+
+//? since the returned list is not an acutal array,
+//? lets put it into an array using spread:
+const arrayOfPTags = [...theParagraphs];
+console.log(arrayOfPTags); // (5) [p, p, p, p, p]
+
+
+
+
+
+
+
+
+
+
+//! getElementsByClassName()
+//? returns a collection of the elements by class name specificed in the parenthesis.
+
+//* document.getElementsByClassName('put class name in here')
+
+const byClassName = document.getElementsByClassName('header')
+
+console.log(byClassName) 
+// HTMLCollection(4) [h1.header, h1.header, h1.header, h1.header]
+
+
+
+
+
+
+
+
+//? If you wanted to target a specific nested element,
+//? you could save the parent element to a variable
+//? then use that variable in place of document. .
+
+//? just save the element you want to use as the parent to a variable
+//? then use that variable name instead of document. .
+
+//? example:
+// saving the first h1 with a class of 'header'
+const specificElement = document.getElementsByClassName('containerCard')[0]
+console.log(specificElement)
+// using the specified element as a parent to only target elements nested within 
+console.log(specificElement.getElementsByTagName('p')[0]);
+
+
+
+
+
+
+
+
+
+
+
+//! selecting with querySelector()
+//? a newer, all-in-one method to select a SINGLE element
+//? this allows us to select a tag, id, or class name without having to specify.
+
+//? inside of the parenthesis, pass in the selector:
+//* querySelector() --> document.querySelector()
+
+
+
+// finds first h1 element 
+//* document.querySelector('element');
+console.log(document.querySelector('h1'));
+
+
+// finds first element with ID
+//* document.querySelector('#idName');
+console.log(document.querySelector('#logo'))
+
+// finds first element with class
+//* document.querySelector('.className');
+console.log(document.querySelector('.profilePicture'));
+
+
 
