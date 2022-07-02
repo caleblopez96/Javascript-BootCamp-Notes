@@ -7904,7 +7904,7 @@ const runner = {
     title: 'Winner'
 }
 
-//          variable    variable
+//          variable    variable = variableNameOfObjectToDestructure
 const {runnerFirstName, country} = runner;
 console.log(runnerFirstName); // eliud
 console.log(country); // kenya
@@ -8649,6 +8649,13 @@ const myDeck = {
 const myLogo = document.getElementById('logo');
 
 
+// a function that when called:
+// changes the color of the element with the Id of 'unformattedText'
+// to red using: 
+//* getElementById('IdName').style.cssPropertyName = "value";
+const changeCSSColor = () =>{
+    return document.getElementById("unformattedText").style.color = "red";
+}
 
 
 
@@ -8915,14 +8922,14 @@ const innerVsTextContent = document.querySelector('#unformattedText')
 
 //? .innerText
 console.log(innerVsTextContent.innerText);
-/* This just needs to be different and unique in some way to illustrate what im trying to show :) leave the weird indentations and what not.*/
+/* 'This just needs to be different and unique in some way to illustrate what im trying to show :) leave the weird indentations and what not.'*/
 
 //! vs
 
 //? .textContent
 console.log(innerVsTextContent.textContent);
 /*
-This just needs to be different and unique in some way to illustrate what 
+'This just needs to be different and unique in some way to illustrate what 
                 im trying to show :) leave the weird indentations and what not.
 
 */
@@ -8953,14 +8960,14 @@ console.log(document.querySelector('.containerCard').innerHTML);
 //? although not best practice,
 //? you can use innerHTML to add HTML elements:
 //? just write the HTML inside of the declaration statement as a string.
-// const containerCard = document.querySelector('.containerCard');
-// containerCard.innerHTML = '<b> this is a bold tag </b>';
+//* const containerCard = document.querySelector('.containerCard');
+//* containerCard.innerHTML = '<b> this is a bold tag </b>';
 
 //? keep in mind this will remove whatever element/content is there,
 //? and replace it with whatever elements you specified to be there.
 //? in the example above, the elements and content of .containerCard
 //? would be replaced by the single b tag specified during the declaration.
-//? do this to avoid overriding everything:
+//? use += to avoid overriding everything:
 
 // firstHeader.innerHTML += ' and I love web development'
 //? the above would change the firstHeader from:
