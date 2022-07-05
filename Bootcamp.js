@@ -1408,9 +1408,13 @@ console.log(someExample <= 40 && someExample2.length === 5 ); // true
 
 // 'if' passwordExample is less than or equal to 6 && passwordExample does not contain a space 
 
-// passwordExample.indexOf(' ') searches for a space in the password because indexOf returns the value -1 if it is unable to find the index of whatever you're looking for, in this case its a space (represented as a string that only has a space inside it)
+// passwordExample.indexOf(' ') searches for a space in the password because indexOf returns the value -1.
+// if it is unable to find the index of whatever you're looking for, in this case its a space (represented as a string that only has a space inside it)
 
-// so we want to check if indexOf passwordExample contains a space. if it does it'll tell you where the index is located with a positive number. if its unable to find it, itll return -1. so we want it to be === -1 because if its === -1 then that means it could not find a space in the indexOf whatever you searched
+// so we want to check if indexOf passwordExample contains a space. 
+// if it does it'll tell you where the index is located with a positive number. 
+// if its unable to find it, itll return -1. 
+// so we want it to be === -1 because if its === -1 then that means it could not find a space in the indexOf whatever you searched.
 
 let passwordExample = 'taco tuesday';
 
@@ -8791,9 +8795,9 @@ console.log(document.querySelector('.profilePicture'));
 
 
 //! selecting with .querySelectorAll()
-//? returns a collection of the css selector in an array like object called Nodelist.
+//? returns a collection of the css selector in an 'array like object' called Nodelist.
 //? since .querySelectorAll doesnt specifiy what its looking for,
-//? we have to use css selector syntax('.className') ('#idName).
+//? we have to use css selector syntax('.className') ('#idName) ([attributeName]).
 
 
 //? inside of the parenthesis, pass in the css selector:
