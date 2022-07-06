@@ -8988,3 +8988,109 @@ console.log(document.querySelector('.containerCard').innerHTML);
 // 'hi, im caleb :) and <b> i love web development </b>'
 
 
+
+
+
+
+
+
+
+
+
+
+
+//! accessing value, src, href and other attributes
+//? remember you can find a list of attributes that you can use
+//? if you just use the drop down arrow that the Nodelist gives you.
+//? the tag youre accessing must have that attribute or it will return undefined.
+
+//? syntax for accessing some frequently used attributes:
+//* const variableName = document.querySelectorAll('selectorName')
+//* variableName[index].value
+
+//* variableName[index].href
+
+//* variableName[index].src
+
+
+const inputs = document.querySelectorAll('input');
+console.log(inputs); // NodeList(4) [input, input, input, input]
+//? value examples using the inputs
+//accessing the value of the first input tag and getting the value
+console.log(inputs[0].value); // (there is no value so nothing is logged)
+console.log(inputs[2].value); // on (because there is a checkbox)
+
+
+
+
+
+//? checked examples for a checkbox
+// checkboxes have a property called '.checked'
+console.log(inputs[2].checked); // false
+// the checkbox on my web page is unchecked so we get false
+
+//? placeholder example using the password input box
+console.log(inputs[1].placeholder) // password
+
+
+
+
+
+//? accessing the href of an 'a' tag
+const anchorTag = document.querySelectorAll('a');
+console.log(anchorTag[1].href) // http://www.github.com/caleblopez96
+
+//? accessing the src attribute of the img with class of .profilePicture
+const myUglyMug = document.querySelector('.profilePicture')
+console.log(myUglyMug.src) // http://127.0.0.1:5500/images/ProfilePicture.jpg
+
+
+
+
+
+
+//? how to change the value of an attribute
+//* variableName[index].attribute = put the new value you want here
+inputs[0].value = ''
+//? this would reset the value of the input by setting it to an empty string.
+// to change the placeholder of the password field,
+inputs[1].placeholder = 'password pls'
+// changes the placeholder from 'password' to 'password pls'
+
+
+
+
+
+
+
+
+
+
+//! getting and setting attributes using getAttribute() and setAttribute()
+//? allows to get attributes or change values of attributes on elements.
+//? commonly used attributes like value, src, href have their own shortcut property
+
+//* const variableName = document.querySelector('element[attribute]')
+//* document.querySelector('element[attribute="attributeName"]')
+const inputRange = document.querySelector('input[type="range"]')
+console.log(inputRange)
+// on our webpage, the input with attribute type range has other attributes.
+console.log(inputRange.max); // 500 (our 'max' attribute is set to 500)
+console.log(inputRange.min); // 100 (our 'min' attribute is set to 100)
+
+
+//? setAttribute() takes two arguments:
+//? first argument is the attribute that you want to set.
+//? the second argument is the value of the new attribute you want to set.
+//* variableName.setAttribute('attributeName', 'valueToSet')
+inputRange.setAttribute('max', '1000')
+// the above code changed the max attribute's value to 1000
+console.log(inputRange.max); // 1000 
+
+
+
+
+//? using setAttribute() to set a new type to our input field:
+//* variableName.setAttribute('"type"', 'type')
+//* inputRange.setAttribute('type', 'radio');
+// the above code would change the range input to a radio button.
