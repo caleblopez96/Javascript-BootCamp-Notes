@@ -9066,6 +9066,12 @@ inputs[1].placeholder = 'password pls'
 
 
 
+
+
+
+
+
+
 //! getting and setting attributes using getAttribute() and setAttribute()
 //? allows to get attributes or change values of attributes on elements.
 //? commonly used attributes like value, src, href have their own shortcut property
@@ -9094,3 +9100,49 @@ console.log(inputRange.max); // 1000
 //* variableName.setAttribute('"type"', 'type')
 //* inputRange.setAttribute('type', 'radio');
 // the above code would change the range input to a radio button.
+
+
+
+
+
+
+
+
+
+
+//! chaning multiple elements
+//? to change multiple objects we first need to get the elements.
+//? this can be done with 
+//? .querySelectorAll()
+//? or
+//? getElementById('#idName'), getElementsByClassName('.classNameHere') etc..
+
+//? When we select multiple objects, they are returned to us in an 'array' like object.
+//? which we can then iterate over with a 'for loop.
+
+
+//? example that iterates over all elements with the class name newLis
+//? and chnages the innerText
+//* for loop
+const newLis = document.querySelectorAll('.newLis');
+for (i = 0; i < newLis.length; i++) {
+    console.log(newLis[i].innerText) // dogs cats birds
+}
+
+//? example that iterates over all elements with the class name newLis
+//? and chnages the innerHTML
+//* for of loop
+//TODO FIX THIS
+for (let li of newLis) {
+    li.innerHTML = '<b>DOGS</b> are the best';
+    console.log(li.innerText);
+}
+
+
+//? chaning all li's with the class of newLis innerText to dogo
+for (i = 0; i < newLis.length; i++) {
+    newLis[i].innerText = 'dogo' // dogo dogo dogo
+}
+// the above code changed the newLis innerText from 'dogs' 'cats' 'birds'
+// to 'dogo' 'dogo' 'dogo'
+
