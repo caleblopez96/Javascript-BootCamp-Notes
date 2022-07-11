@@ -7380,7 +7380,7 @@ console.log(minGrade); // 58
 const numLessZero1 = (num) =>{
     num <= 0 ? true : false
 };
-console.log(numLessZero(15))
+console.log(numLessZero1(15))
 
 
 
@@ -9110,19 +9110,24 @@ console.log(inputRange.max); // 1000
 
 
 
-//! chaning multiple elements
-//? to change multiple objects we first need to get the elements.
+
+
+
+
+
+//! changing multiple elements
+//? to change multiple elements we first need to get the elements.
 //? this can be done with 
 //? .querySelectorAll()
 //? or
 //? getElementById('#idName'), getElementsByClassName('.classNameHere') etc..
 
-//? When we select multiple objects, they are returned to us in an 'array' like object.
-//? which we can then iterate over with a 'for loop.
+//? When we select multiple elements, they are returned to us in an 'array' like object.
+//? which we can then iterate over with a 'for' loop.
 
 
 //? example that iterates over all elements with the class name newLis
-//? and chnages the innerText
+//? and changes the innerText
 //* for loop
 const newLis = document.querySelectorAll('.newLis');
 for (i = 0; i < newLis.length; i++) {
@@ -9130,19 +9135,106 @@ for (i = 0; i < newLis.length; i++) {
 }
 
 //? example that iterates over all elements with the class name newLis
-//? and chnages the innerHTML
+//? and changes the innerHTML
 //* for of loop
-//TODO FIX THIS
 for (let li of newLis) {
-    li.innerHTML = '<b>DOGS</b> are the best';
-    console.log(li.innerText);
+    li.innerHTML = '<b>DOGS</b> are the best'
 }
+// the bold tags were parsed and the innerHTML was changed.
 
 
-//? chaning all li's with the class of newLis innerText to dogo
-for (i = 0; i < newLis.length; i++) {
-    newLis[i].innerText = 'dogo' // dogo dogo dogo
+//? changing all li's with the class of newLis2 innerText to dogo
+const newLis2 = document.querySelectorAll('.newLis2')
+for (i = 0; i < newLis2.length; i++) {
+    newLis2[i].innerText = 'dogo' // dogo dogo dogo
 }
-// the above code changed the newLis innerText from 'dogs' 'cats' 'birds'
+// the above code changed the newLis2 innerText from:
+// 'fish snakes frogs'
 // to 'dogo' 'dogo' 'dogo'
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! changing styles and css properties with .style
+//? every element has a style property.
+
+//? if you try to access the style property,
+//? it will return everything as blank even if there is a style.
+//? it will only return the style and property if the style was defined inline.
+
+//? using the style property will not work unless reading inline styles
+//? however you can edit the style. the edited style will be given as an inline style.
+//? if you look at the html in the console, all the styles below were applied
+//? by giving the element the css properties inline in the html.
+
+//? must use querySelector(), NOT querySelectorAll()
+
+//* const varName = document.querySelector('element')
+//* element.style.styleName = 'new style'
+
+const h2 = document.querySelector('h2')
+console.log(h2.style.color) // teal
+h2.style.color = 'green'
+console.log(h2.style.color) // green
+// the color of the h2 changed from the inline style defintion of teal to green.
+
+//? when specifiying a new style, the property must be camel cased
+//? background-color : is the css property
+//? backgroundColor : is how you would specifiy for Javascript
+h2.style.fontSize = '2em';
+
+
+// changing the color of the newLis3 to be a color in the array liColors
+// 'for each' to iterate over the li's
+// first parameter 'li' represents each li in newLis3
+// 'i' represents the index
+const newLis3 = document.querySelectorAll('.newLis3');
+const liColors = ['red', 'yellow', 'green'];
+
+newLis3.forEach((li, i) => {
+    const colors = liColors[i];
+    li.style.color = colors;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! getComputedStyle()
+//? allows you to retrieve css styles that are defined externally.
+//? doesnt allow you to set, only retrieve the current style.
+
+//? it returns every property that has been computed 
+//? and also every property that hasnt been computed.
+
+console.log(getComputedStyle(h2)); // CSSStyleDeclaration {all the styles are here}
+//? inside of this CSSStyleDeclaration object 
+//? you can see all styles that were set in the external style sheet.
+
+
+//? to check an individual style use:
+//* getComputedStyle('element').style
+console.log(getComputedStyle(h2).color); // rgb(0, 128, 0)
+
+//? the computed style value can changed based off the state of the selector:
+//? if you run computedStyles on an object that has a :hover style,
+//? and the element isnt hovered, you will see the non hover style.
+//? if the object is hovered, the style value will change to the hover state.
 
