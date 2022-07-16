@@ -8615,6 +8615,17 @@ const myDeck = {
 //* .querySelectorAll --> document.querySelectorAll('.className')
 //* .querySelectorAll --> document.querySelectorAll('#idName')
 
+//? you can get specific with selecting elements.
+//? you can search within an element by replacing document. with the element
+//* element.querySelector('element')
+
+//* const section = document.querySelector('section')
+//* section.querySelector('p')
+//? the above code selects the 'p' element inside of section.
+//? normally querySelector('') returns the first element
+//? however we can specify where it starts its search for the first element.
+
+
 
 
 
@@ -9238,3 +9249,24 @@ console.log(getComputedStyle(h2).color); // rgb(0, 128, 0)
 //? and the element isnt hovered, you will see the non hover style.
 //? if the object is hovered, the style value will change to the hover state.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! manipulating classes
+//? a way of adding multiple styles to an element
+
+
+//? below selects the first element with an id #todoList,
+//? then it looks inside the element with an id of $todoList
+const stuffToDo = document.querySelector('#todoList', 'todo')
