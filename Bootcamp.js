@@ -9265,8 +9265,85 @@ console.log(getComputedStyle(h2).color); // rgb(0, 128, 0)
 
 //! manipulating classes
 //? a way of adding multiple styles to an element
+//? using:
+//* classList.remove('className')
+//* classList.add('className')
+//* classList.toggle('ClassName')
+
+//? when you need to change the style of an element,
+//? create a class with the styles you want to add 
+//? then use javascript to add the style to the element
+
+//? if you use varName.style it creates the style inline 
+//? its better for reusability and readability to just create a class in css
+//? and then use javascript to add the new style to the element.
 
 
 //? below selects the first element with an id #todoList,
 //? then it looks inside the element with an id of $todoList
-const stuffToDo = document.querySelector('#todoList', 'todo')
+const stuffToDo = document.querySelector('#todoList', '.todo')
+
+
+
+//? .classList 
+//? returns an array like object with methods that can be used on the class
+
+//? remvoing a class (below code goes in console)
+//* const varName = document.querySelector('element')
+//* varVname.classList.remove('classNameToRemove')
+stuffToDo.classList.remove('fakeToDoList');
+
+
+//? adding a class (below code goes in console)
+//* const varName = document.querySelector('element')
+//* varVname.classList.add('classNameToAdd')
+stuffToDo.classList.add('done');
+
+
+//? toggling a class (below code goes in console)
+//* const varName = document.querySelector('element')
+//* varVname.classList.toggle('className')
+stuffToDo.classList.toggle('done');
+
+
+
+
+
+
+
+
+
+
+
+
+//! creating and inserting elements into the DOM 
+
+//* document.createElement('element')
+//? creating a new h2 element in the dom:
+//* document.createElement('h2')
+
+const newH2 = document.createElement('h2');
+
+//? after creating the element element inside of the dom,
+//? you need to do stuff with it such as:
+//? adding a class
+//? adding text content
+
+
+//? adding text to the new h2
+//? (below code in console)
+newH2.innerText = 'im a new h2';
+//? newH2 is now a new h2 element inside of the dom with the above inner text.
+
+
+//? adding a class to the new h2
+//? (below code in console)
+newH2.classList.add('changeStyle');
+
+
+
+//? then your newly created element needs to be inserted into the dom.
+//? in order to do this, we need to select an element to append it to.
+//* .appendChild
+const section = document.querySelector('.section');
+section.appendChild(newH2);
