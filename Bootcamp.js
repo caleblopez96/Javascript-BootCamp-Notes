@@ -9341,9 +9341,187 @@ newH2.innerText = 'im a new h2';
 newH2.classList.add('changeStyle');
 
 
-
+//? appendChild
 //? then your newly created element needs to be inserted into the dom.
 //? in order to do this, we need to select an element to append it to.
 //* .appendChild
 const section = document.querySelector('.section');
 section.appendChild(newH2);
+//? appendChild appends to parent element and becomes the last child.
+
+
+
+
+//? insertBefore
+//? select the parent
+//? then select the element to insert before
+//* insertBefore(parentElement, elementToInsertBefore)
+
+
+
+//? append()
+//? allows you to insert multiple elements at once.
+const newP = document.createElement('p');
+newP.innerText = 'im a new paragraph';
+const newP2 = document.createElement('p')
+newP2.innerText = 'im also a new paragraph';
+
+const loneParagraph = document.querySelector('.loneWolf')
+
+
+loneParagraph.append(newP, newP2);
+//? the above created two new p elements and appended them to 
+//? the p tag with the class loneWolf
+
+
+
+//? prepend()
+//? does the same as above, just puts the element at the beginning of the element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! removing elements from the DOM
+
+
+//? .removeChild()
+//* parentNode.removeChild(childToBeRemoved)
+
+//? find parent that has the child that needs to be removed
+const ulExample = document.querySelector('.section ul');
+//? find the element that needs to be removed (removing second li)
+const removeLi = document.querySelectorAll('.newLis3')[1];
+//? use the removeChild() method
+ulExample.removeChild(removeLi);
+// the above code removed kroger as the second Li in the .section
+
+
+
+
+//? .remove()
+//? does not require that you find the parent first
+//* element.remove()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! DOM events
+//? allow code to be ran when a specific interaction happens from a user
+//? some popular events:
+//? clicks
+//? drags
+//? drops
+//? hovers
+//? scrolls
+//? form submission
+//? key presses
+//? focus/blur
+//? mouse wheel
+//? double click
+//? copying/pasting
+//? audio start
+//? screen resize
+//? printing
+
+//? formula:
+
+//* the thing/element     event type          the code to be run
+//? button                'click'             code to redirect user
+//? input                 hits return key     get search results
+//? img                   mouseover(hover)    display img caption
+
+
+//? you can put events inline in html,
+//? but the same reason you dont do css inline 
+//? is the same reason you dont do JS inline.
+//? when events are used inline, the word 'on' is prefixed to the event
+//? mouseover will need to be referred to as "onmouseover"
+//  inline event below:
+//? <button onmouseover="alert('you clicked me')">click me!</button>
+
+
+//! this works, but is not the best way to add event listeners
+const eventButton = document.querySelector('.clicker');
+eventButton.onclick = () => {
+    console.log('you clicked me'); 
+};
+//? in the above method,
+//? youre unable to add multiple events with the same listener.
+//? once you declare the value,
+//? if the value is changed, the first value is forever overriden,
+//? and the most recently defined property becomes the permanent value.
+
+
+
+
+//? BEST WAY TO ADD EVENTS WITH JAVASCRIPT
+//! USE THIS WAY:
+
+//? .addEventListener()
+//* element.addEventListener('event', function() {});
+//? when the event occurs, 
+//? the function will be called and the code will be ran.
+
+//* const varName = document.querySelector('element')
+//* varName.addEventListener('event', () => {
+//*    code to be run goes here
+//* });
+const eventButton2 = document.querySelector('.clickMe');
+eventButton2.addEventListener('click', () => {
+    console.log('you clicked me');
+});
+//? adding a second click event to the same button
+eventButton2.addEventListener('click', () => {
+    console.log('you clicked me im the second click event');
+});
+//? adding a mouse over effect
+eventButton2.addEventListener('mouseover', function(){
+    eventButton2.innerText = 'do it';
+});
+//? reverting to the inner text before the mouseover
+eventButton2.addEventListener('mouseout', ()=>{
+    eventButton2.innerText = 'CLICK ME'
+});
+
+
+
+
+
+//? making a button move around the screen when the user tries to click it
+
+//? use window.innerHeight
+//? and window.innerWidth 
+//? to get the dimensions of the users screen without having to hard code a number
+
+const impossibleButton = document.querySelector('.impossibleBtn')
+
+impossibleButton.addEventListener('mouseover', () =>{
+    const height = Math.floor(Math.random() * window.innerHeight);
+    const width = Math.floor(Math.random() * window.innerWidth);
+    impossibleButton.style.left = `${height}px`;
+    impossibleButton.style.top = `${width}px`;
+});
+
+impossibleButton.addEventListener('mouseover', ()=>{
+    console.log('hi')
+})
